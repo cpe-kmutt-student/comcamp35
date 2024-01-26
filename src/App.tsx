@@ -1,35 +1,34 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React from 'react'
 import './App.scss'
-import axios from 'axios'
+import Home from './pages/Home'
+import { Route, Routes, useLocation } from 'react-router-dom'
+import { BASE_PATH, REGISTER_PATH } from './constants/router'
+import Navbar from './components/Navbar'
+import AuthProvider from './context/auth-context'
+import Register from './pages/Register'
+import NotFoundPage from './pages/NotFoundPage'
 
 const App: React.FC = (): JSX.Element => {
-  const [currentUser, setCurrentUser] = useState()
+  const location = useLocation()
 
-  const signOut = async () => {
-    await axios.post('/api/auth/sign-out')
-
-    window.location.reload()
+  const navbarFilter = () => {
+    switch (location.pathname) {
+      case BASE_PATH:
+        return <Navbar />
+      case REGISTER_PATH:
+        return <Navbar />
+    }
   }
-
-  const signIn = () => {
-    window.location.pathname = '/api/auth/google'
-  }
-
-  const getCurrentUserInfo = useCallback(async () => {
-    const res = await axios.get('/api/users/info')
-    setCurrentUser(res.data)
-  }, [])
-
-  useEffect(() => {
-    getCurrentUserInfo()
-  }, [getCurrentUserInfo])
-
   return (
-    <div className="App">
-      <h1>ComCamp 35th</h1>
-      {currentUser ? <button onClick={signOut}>Sign Out</button> : <button onClick={signIn}>Sign In</button>}
-      <div>{JSON.stringify(currentUser)}</div>
-    </div>
+    <AuthProvider>
+      {navbarFilter()}
+      <Routes>
+        <Route path={BASE_PATH} element={<Home />} />
+        <Route path={REGISTER_PATH} element={<Register />} />
+
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </AuthProvider>
   )
 }
 

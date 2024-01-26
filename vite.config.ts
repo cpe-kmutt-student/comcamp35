@@ -18,13 +18,6 @@ export default defineConfig(({ mode }) => {
     envPrefix: ENV_PREFIX,
     server: {
       port: 3000,
-      proxy: {
-        '/api': {
-          target: process.env.APP_BACKEND_URL,
-          changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api/, ''),
-        },
-      },
     },
     preview: {
       host: '0.0.0.0',
