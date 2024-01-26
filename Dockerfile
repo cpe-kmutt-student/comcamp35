@@ -1,6 +1,8 @@
 FROM node:18-alpine AS base
+
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
-RUN corepack prepare pnpm@latest --activate
 
 WORKDIR /app
 COPY . ./
@@ -12,8 +14,8 @@ FROM deps AS build
 RUN pnpm build
 
 FROM build AS deploy
+
 ENV APP_BACKEND_URL APP_BACKEND_URL
 
-ENV NODE_ENV=production
-
-CMD [ "pnpm", "preview" ]
+EXPOSE 8000
+CMD [ "pnpm", "serve" ]
