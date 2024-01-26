@@ -11,8 +11,6 @@ import NotFoundPage from './pages/NotFoundPage'
 const App: React.FC = (): JSX.Element => {
   const location = useLocation()
 
-  console.log(import.meta.env.APP_BACKEND_URL)
-
   const navbarFilter = () => {
     switch (location.pathname) {
       case BASE_PATH:
