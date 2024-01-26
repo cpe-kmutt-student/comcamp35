@@ -18,4 +18,4 @@ FROM build AS deploy
 ENV APP_BACKEND_URL APP_BACKEND_URL
 
 EXPOSE 8000
-CMD [ "pnpm", "serve" ]
+CMD [ "pnpm", "preview" ]
