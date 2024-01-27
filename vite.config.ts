@@ -7,7 +7,7 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 const ENV_PREFIX = 'APP_'
 
 export default defineConfig(({ mode }) => {
-  process.env = loadEnv(mode, process.cwd(), '')
+  process.env = { ...process.env, ...loadEnv(mode, process.cwd()) }
 
   return {
     base: '/',
@@ -18,24 +18,24 @@ export default defineConfig(({ mode }) => {
     envPrefix: ENV_PREFIX,
     server: {
       port: 3000,
-      proxy: {
-        '/api': {
-          target: process.env.APP_BACKEND_URL,
-          changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api/, ''),
-        },
-      },
+      // proxy: {
+      //   '/api': {
+      //     target: process.env.APP_BACKEND_URL,
+      //     changeOrigin: true,
+      //     rewrite: (path) => path.replace(/^\/api/, ''),
+      //   },
+      // },
     },
     preview: {
       host: '0.0.0.0',
       port: 8000,
-      proxy: {
-        '/api': {
-          target: process.env.APP_BACKEND_URL,
-          changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api/, ''),
-        },
-      },
+      // proxy: {
+      //   '/api': {
+      //     target: process.env.APP_BACKEND_URL,
+      //     changeOrigin: true,
+      //     rewrite: (path) => path.replace(/^\/api/, ''),
+      //   },
+      // },
     },
   }
 })
