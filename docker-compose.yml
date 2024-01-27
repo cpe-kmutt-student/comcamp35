@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: comcamp35
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - VITE_BACKEND_URL=http://localhost:4000
+    volumes:
+      - '.:/usr/src/app'
+    ports:
+      - '8080:8000'

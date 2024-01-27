@@ -34,7 +34,7 @@ const Navbar: React.FC = (): JSX.Element => {
       {auth.is_authenticated ? (
         <button onClick={signOut}>Sign Out</button>
       ) : (
-        <a href={import.meta.env.APP_BACKEND_URL + '/auth/google'}>
+        <a href={import.meta.env.VITE_BACKEND_URL + '/auth/google'}>
           <button>Sign In</button>
         </a>
       )}
