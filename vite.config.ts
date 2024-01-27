@@ -4,8 +4,6 @@ import eslint from 'vite-plugin-eslint'
 import * as path from 'path'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
-const ENV_PREFIX = 'APP_'
-
 export default defineConfig(({ mode }) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) }
 
@@ -15,7 +13,6 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias: [{ find: '@', replacement: path.resolve(__dirname, 'src') }],
     },
-    envPrefix: ENV_PREFIX,
     server: {
       port: 3000,
       // proxy: {

@@ -15,7 +15,7 @@ RUN pnpm build
 
 FROM build AS deploy
 
-ENV APP_BACKEND_URL APP_BACKEND_URL
+ENV VITE_BACKEND_URL APP_BACKEND_URL
 
 EXPOSE 8000
 CMD [ "pnpm", "preview" ]
