@@ -1,5 +1,20 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+@import "https://fonts.googleapis.com/css2?family=Prompt&display=swap";
+
+@font-face {
+  font-family: "Upheavtt";
+  src: url(fonts/upheavtt.ttf) format("truetype");
+}
+
+body,
+input,
+textarea,
+button {
+  font-family: "Prompt", sans-serif;
+}
+
+.title {
+  font-family: "Upheavtt", sans-serif;
+  font-weight: normal;
 }
 
 * {

@@ -1,0 +1,49 @@
+.notFoundPage {
+    display: grid;
+    min-height: 100vh;
+
+    .content {
+        place-self: center;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+
+        h1 {
+            font-size: 48px;
+        }
+
+        img {
+            width: 350px;
+        }
+
+        button {
+            padding: 5px 20px;
+            border: 2px solid #000000;
+            font-size: 16px;
+            font-weight: normal;
+            transition: all 200ms;
+            cursor: pointer;
+            background: #000000;
+            color: #ffffff;
+
+            &:hover {
+                background: #ffffff;
+                color: #000000;
+            }
+        }
+
+        @media screen and (max-width: 360px) {
+            padding: 0 10px;
+
+            img {
+                width: 100%;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+        }
+    }
+}

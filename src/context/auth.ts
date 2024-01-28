@@ -1,17 +1,17 @@
 import { createContext, useContext } from 'react'
 
-export interface User {
+export interface IUser {
   email: string
   firstName: string
   lastName: string
   profile_url: string
   is_registered: boolean
-  is_authenticated: boolean
+  is_authenticated: null | boolean
 }
 
 export interface IAuthContext {
-  auth: User
-  setAuth: (user: User) => void
+  auth: IUser
+  setAuth: (user: IUser) => void
 }
 
 export const initialValue: IAuthContext = {
@@ -21,7 +21,7 @@ export const initialValue: IAuthContext = {
     lastName: '',
     profile_url: '',
     is_registered: false,
-    is_authenticated: false,
+    is_authenticated: null,
   },
   setAuth: () => {},
 }

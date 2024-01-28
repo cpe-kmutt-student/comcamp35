@@ -1,0 +1,26 @@
+.registerPage {
+    margin: 0 auto;
+    width: 1024px;
+
+    .profile {
+        margin-top: 20px;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 20px;
+
+        img {
+            width: 80px;
+            border-radius: 100px;
+        }
+    }
+
+    .header {
+        margin-top: 20px;
+
+        h1 {
+            text-align: center;
+        }
+    }
+}

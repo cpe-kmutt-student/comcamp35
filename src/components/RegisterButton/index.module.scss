@@ -1,0 +1,26 @@
+.button {
+    padding: 10px 20px;
+    border: 2px solid #000000;
+    background: #ffffff;
+    color: #000000;
+    font-size: 16px;
+    font-weight: normal;
+    transition: all 200ms;
+    cursor: pointer;
+
+    &:hover {
+        background: #000000;
+        color: #ffffff;
+    }
+}
+
+.buttonActive {
+    @extend .button;
+    background: #000000;
+    color: #ffffff;
+
+    &:hover {
+        background: #ffffff;
+        color: #000000;
+    }
+}
