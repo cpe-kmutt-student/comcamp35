@@ -3,7 +3,7 @@ import React from 'react'
 const CampHighlight: React.FC = () => {
   return (
     <div>
-      <h2>• What Is Comcamp</h2>
+      <h2>• Highlight ค่าย</h2>
       <h3>- กิจกรรมสันทนาการ</h3>
       <p>
         - ภายในค่ายจะมีกิจกรรมสุดพิเศษจากรุ่นพี่ เพื่อสร้างความใกล้ชิดและกระชับความสัมพันธ์ระหว่างเพื่อน ๆ พี่ ๆ
