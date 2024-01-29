@@ -1,6 +1,6 @@
 import React from 'react'
 
-const WhatIsComCamp: React.FC = () => {
+const About: React.FC = () => {
   return (
     <div>
       <h2>• What Is Comcamp</h2>
@@ -15,4 +15,4 @@ const WhatIsComCamp: React.FC = () => {
   )
 }
 
-export default WhatIsComCamp
+export default About
