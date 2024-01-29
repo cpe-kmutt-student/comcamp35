@@ -1,14 +1,14 @@
 import React from 'react'
-import Invitation from 'src/components/Home/Content/Invitation'
-import WhatIsComCamp from 'src/components/Home/Content/About'
-import ShortStory from 'src/components/Home/Content/Shortstory'
-import CampHighlight from 'src/components/Home/Content/Camphighlight'
+import ShortStory from './Content/Shortstory'
+import Invitation from './Content/Invitation'
+import About from './Content/About'
+import CampHighlight from './Content/Camphighlight'
 
 const Content: React.FC = () => {
   return (
     <div>
       <Invitation />
-      <WhatIsComCamp />
+      <About />
       <ShortStory />
       <CampHighlight />
     </div>

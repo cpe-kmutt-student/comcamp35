@@ -1,13 +1,11 @@
-import { useAuth } from 'src/context/auth'
 import Content from 'src/components/Home'
-const Home: React.FC = (): JSX.Element => {
-  const { auth } = useAuth()
+import styles from './index.module.scss'
 
+const Home: React.FC = (): JSX.Element => {
   return (
-    <>
-      <div>{auth.is_authenticated && <h2>Welcome, {auth.firstName + ' ' + auth.lastName}</h2>}</div>
+    <div className={styles.homePage}>
       <Content />
-    </>
+    </div>
   )
 }
 
