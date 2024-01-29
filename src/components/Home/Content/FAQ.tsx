@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FAQ: React.FC = () => {
+const Faq: React.FC = () => {
   return (
     <div>
       <h2>• FAQ คำถามที่พบบ่อย</h2>
@@ -17,4 +17,4 @@ const FAQ: React.FC = () => {
   )
 }
 
-export default FAQ
+export default Faq

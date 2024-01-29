@@ -7,7 +7,7 @@ import Condition from './Content/Condition'
 import Timeline from './Content/Timeline'
 import ReceivingNum from './Content/ReceivingNum'
 import Location from './Content/Location'
-import FAQ from './Content/FAQ'
+import Faq from './Content/FAQ'
 import Sponsor from './Content/Sponsor'
 import Contact from './Content/Contact'
 
@@ -22,7 +22,7 @@ const Content: React.FC = () => {
       <Timeline />
       <ReceivingNum />
       <Location />
-      <FAQ />
+      <Faq />
       <Sponsor />
       <Contact />
     </div>
