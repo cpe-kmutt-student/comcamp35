@@ -1,89 +1,43 @@
 .hero {
-    align-items: center;
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    height: 1080px;
-    padding: 240px 60px 0px;
-    position: relative;
-  
-    .logo {
-      height: auto;
-      position: relative;
-      width: 640px;
-    }
-  
-    .textWrapper {
-      color: #000000;
-      font-size: 64px;
-      position: relative;
-      white-space: nowrap;
-      width: fit-content;
-    }
-  
-    .content {
-      color: #000000;
-      font-size: 20px;
-      line-height: 32px;
-      position: relative;
-      text-align: center;
-      width: 538px;
-    }
-  
-    .button {
-        align-items: center;
-        background-color: #000000;
-        border: 2px solid;
-        box-sizing: border-box;
-        justify-content: center;
-        padding: 8px 28px;
-        position: relative;
-        transition: all 200ms;
-        cursor: pointer;
+  align-items: center;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 100dvh;
 
-    &:hover {
-        background: #ffffff;
-        .textWrapper2 {
-            color: #000000
-        }
-    }
-  
-      .textWrapper2 {
-        color: #ffffff;
-        margin-top: -1px;
-        position: relative;
-        text-align: center;
-        white-space: nowrap;
-        width: fit-content;
-        font-size: 16px;
-        font-weight: normal;
-      }
-    }
-
-    @media screen and (max-width: 640px) {
-        .logo {
-            height: auto;
-            position: relative;
-            width: 130%;
-        }
-        .textWrapper {
-            color: #000000;
-            font-size: 45px;
-            position: relative;
-            white-space: nowrap;
-            width: fit-content;
-          }
-        
-          .content {
-            color: #000000;
-            font-size: 20px;
-            line-height: 32px;
-            position: relative;
-            text-align: center;
-            width: 450px;
-          }
-    }
-
+  .logo {
+    height: auto;
+    width: 640px;
   }
-  
+
+  .campDate {
+    color: #000000;
+    white-space: nowrap;
+    font-size: 64px;
+  }
+
+  .content {
+    color: #000000;
+    font-size: 20px;
+    text-align: center;
+    width: 548px;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 0 30px;
+
+    .logo {
+      width: 100%;
+    }
+
+    .content {
+      width: 100%;
+    }
+
+    .campDate {
+      font-size: 32px;
+    }
+  }
+}
