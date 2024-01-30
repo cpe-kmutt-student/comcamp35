@@ -8,7 +8,8 @@ const Navbar: React.FC = (): JSX.Element => {
 
   return (
     <div className={styles.navbar}>
-      <h1>ComCamp 35th</h1>
+      {/* <h1>ComCamp 35th</h1> */}
+      <img className={styles.navbarLogo} alt="Logo" src="src\assets\logo.webp" />
       {auth.is_authenticated ? (
         <SignOutButton active>ออกจากระบบ</SignOutButton>
       ) : (
