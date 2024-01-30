@@ -1,0 +1,43 @@
+.hero {
+  align-items: center;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 100dvh;
+
+  .logo {
+    height: auto;
+    width: 640px;
+  }
+
+  .campDate {
+    color: #000000;
+    white-space: nowrap;
+    font-size: 64px;
+  }
+
+  .content {
+    color: #000000;
+    font-size: 20px;
+    text-align: center;
+    width: 548px;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 0 30px;
+
+    .logo {
+      width: 100%;
+    }
+
+    .content {
+      width: 100%;
+    }
+
+    .campDate {
+      font-size: 32px;
+    }
+  }
+}

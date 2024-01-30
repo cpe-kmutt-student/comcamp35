@@ -3,7 +3,7 @@ import React from 'react'
 const Timeline: React.FC = () => {
   return (
     <div>
-      <h2>• timeline</h2>
+      <h2>timeline</h2>
       <p>
         - เปิดรับสมัคร: 1 - 10 มีนาคม 2567
         <br></br>- ประกาศผล: 16 มีนาคม 2567

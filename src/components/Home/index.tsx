@@ -1,12 +1,12 @@
 import React from 'react'
-import ShortStory from './Content/Shortstory'
-import Invitation from './Content/Invitation'
+import Hero from './Content/Hero'
+// import Invitation from './Content/Invitation'
 import About from './Content/About'
 import CampHighlight from './Content/Camphighlight'
 import Condition from './Content/Condition'
 import Timeline from './Content/Timeline'
-import ReceivingNum from './Content/ReceivingNum'
-import Location from './Content/Location'
+// import ReceivingNum from './Content/ReceivingNum'
+// import Location from './Content/Location'
 import Faq from './Content/FAQ'
 import Sponsor from './Content/Sponsor'
 import Contact from './Content/Contact'
@@ -14,14 +14,14 @@ import Contact from './Content/Contact'
 const Content: React.FC = () => {
   return (
     <div>
-      <Invitation />
+      <Hero />
+      {/* <Invitation /> */} {/* ยิวยังไม่ได้ใส่ section นี้ */}
       <About />
-      <ShortStory />
       <CampHighlight />
       <Condition />
       <Timeline />
-      <ReceivingNum />
-      <Location />
+      {/* <ReceivingNum /> */} {/* ยิวยังไม่ได้ใส่ section นี้ */}
+      {/* <Location /> */} {/* ยิวยังไม่ได้ใส่ section นี้ */}
       <Faq />
       <Sponsor />
       <Contact />
