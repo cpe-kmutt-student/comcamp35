@@ -1,4 +1,4 @@
-import RegistrationFrom from "src/components/RegistrationForm"
+import RegistrationFrom from 'src/components/RegistrationForm'
 
 const RegistrationPage: React.FC = (): JSX.Element => {
   return (
