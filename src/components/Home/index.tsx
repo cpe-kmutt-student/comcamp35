@@ -10,6 +10,7 @@ import Timeline from './Content/Timeline'
 import Faq from './Content/FAQ'
 import Sponsor from './Content/Sponsor'
 import Contact from './Content/Contact'
+import GeneralForm from '../GeneralForm'
 
 const Content: React.FC = () => {
   return (
@@ -25,6 +26,7 @@ const Content: React.FC = () => {
       <Faq />
       <Sponsor />
       <Contact />
+      <GeneralForm />
     </div>
   )
 }
