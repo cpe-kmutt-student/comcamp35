@@ -182,13 +182,6 @@ const GeneralForm: React.FC = () => {
           wrapperCol={{
             span: 8,
           }}
-          rules={[
-            {
-              required: true,
-              validator: (_, value) =>
-                value ? Promise.resolve() : Promise.reject('Please confirm you can bring your laptop!'),
-            },
-          ]}
         >
           <Checkbox>สามารถนำมาได้</Checkbox>
         </Form.Item>
