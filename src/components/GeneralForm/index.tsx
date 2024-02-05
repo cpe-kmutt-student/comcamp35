@@ -127,7 +127,7 @@ const GeneralForm: React.FC = () => {
           ]}
           hasFeedback
         >
-          <Input type="tel" max={10} placeholder="example: 1234567890" />
+          <Input type="tel" minLength={10} maxLength={10} placeholder="example: 1234567890" />
         </Form.Item>
 
         <Form.Item
@@ -184,6 +184,7 @@ const GeneralForm: React.FC = () => {
           }}
           rules={[
             {
+              required: true,
               validator: (_, value) =>
                 value ? Promise.resolve() : Promise.reject('Please confirm you can bring your laptop!'),
             },
