@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './Hero.module.scss'
 import RegisterButton from 'src/components/RegisterButton'
-import { LOGO_PATH } from 'src/constants/imgPath'
+import Logo from 'src/assets/logo.webp'
 import { useAuth } from 'src/context/auth'
 
 const Hero: React.FC = () => {
@@ -9,7 +9,7 @@ const Hero: React.FC = () => {
 
   return (
     <div className={styles.hero}>
-      <img className={styles.logo} alt="logo" src={LOGO_PATH} />
+      <img className={styles.logo} alt="logo" src={Logo} />
       <h1 className={styles.campDate}>7-11 April 2024</h1>
       <p className={styles.content}>
         เมื่อโลกโปรเเกรมมอนกำลังจะล่มสลาย<br></br>
