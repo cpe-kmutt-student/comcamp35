@@ -3,7 +3,7 @@ import styles from './Condition.module.scss'
 
 const Condition: React.FC = () => {
   return (
-    <div>
+    <div className={styles.main}>
       <div className={styles.Header}>
         <h2>CONDITIONS</h2>
       </div>
