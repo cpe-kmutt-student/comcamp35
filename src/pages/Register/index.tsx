@@ -1,7 +1,7 @@
 import { useAuth } from 'src/context/auth'
 import styles from './index.module.scss'
 import GeneralForm, { IGeneralForm } from 'src/components/GeneralForm'
-import { StepProps, Steps } from 'antd'
+import { StepProps, Steps, Typography } from 'antd'
 import { useState } from 'react'
 import { apiInstance } from 'src/lib/axios'
 
@@ -24,6 +24,7 @@ const Register: React.FC = (): JSX.Element => {
   const [currentStep, setCurrentStep] = useState<number>(0)
   const [isSubmitting, setSubmit] = useState<boolean>(false)
 
+  const { Title } = Typography
   const { auth } = useAuth()
 
   const onFormSubmit = async (values: IGeneralForm) => {
@@ -52,7 +53,7 @@ const Register: React.FC = (): JSX.Element => {
         <div>{auth.email}</div>
       </div>
       <div className={styles.header}>
-        <h1>ฟอร์มสมัคร Com Camp 35</h1>
+        <Title level={2}>ฟอร์มสมัคร Com Camp 35</Title>
       </div>
       <Steps current={currentStep} items={stepsInfo} style={{ margin: '30px 0' }} />
       <div className={styles.form}>{stepFilter()}</div>

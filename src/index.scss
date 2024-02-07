@@ -1,20 +1,28 @@
-@import "https://fonts.googleapis.com/css2?family=Prompt&display=swap";
+@import 'https://fonts.googleapis.com/css2?family=Prompt&display=swap';
 
 @font-face {
-  font-family: "Upheavtt";
-  src: url(fonts/upheavtt.ttf) format("truetype");
+  font-family: 'Upheavtt';
+  src: url(fonts/upheavtt.ttf) format('truetype');
 }
 
 body,
 input,
 textarea,
 button {
-  font-family: "Prompt", sans-serif;
+  font-family: 'Prompt', sans-serif !important;
 }
 
-.title {
-  font-family: "Upheavtt", sans-serif;
+h1,
+h2 {
+  font-family: 'Upheavtt', sans-serif !important;
   font-weight: normal;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Prompt', sans-serif !important;
 }
 
 * {
