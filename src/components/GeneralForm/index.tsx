@@ -1,8 +1,28 @@
 import React from 'react'
-import { Form, Input, Button, Checkbox, DatePicker } from 'antd'
 import styles from './index.module.scss'
+import { Button, Checkbox, Flex, TextField } from '@radix-ui/themes'
+import { useFormik } from 'formik'
+import Label from '../Form/Label'
+import ErrorMessage from '../Form/ErrorMessage'
+import Select, { ISelectItem } from '../Form/Select'
+
+type Props = {
+  onSubmit: (values: IGeneralForm) => void
+  isSubmitting: boolean
+}
+
+enum PrefixEnum {
+  MR = 'นาย',
+  MRS = 'นางสาว',
+  OTHER = 'อื่นๆ',
+}
+
+interface IPrefix extends ISelectItem {
+  value: PrefixEnum
+}
 
 export interface IGeneralForm {
+  prefix: string
   first_name: string
   middle_name?: string
   last_name: string
@@ -21,16 +41,127 @@ export interface IGeneralForm {
   insurance: string
 }
 
-type Props = {
-  onSubmit: (values: IGeneralForm) => void
-  isSubmitting: boolean
+const initialValues: IGeneralForm = {
+  prefix: '',
+  first_name: '',
+  middle_name: '',
+  last_name: '',
+  nick_name: '',
+  birth_date: '',
+  tel: '',
+  address: '',
+  travel: '',
+  shirt_size: '',
+  can_bring_laptop: false,
+  food_allergy: '',
+  favorite_food: '',
+  disease: '',
+  personal_drug: '',
+  drug_allergy: '',
+  insurance: '',
 }
 
-const GeneralForm: React.FC<Props> = ({ onSubmit, isSubmitting }: Props) => {
+const prefixChoices: IPrefix[] = [
+  {
+    label: PrefixEnum.MR,
+    value: PrefixEnum.MR,
+  },
+  {
+    label: PrefixEnum.MRS,
+    value: PrefixEnum.MRS,
+  },
+  {
+    label: PrefixEnum.OTHER,
+    value: PrefixEnum.OTHER,
+  },
+]
+
+const validate = (values: IGeneralForm) => {
+  const errors: Record<string, string> = {}
+  if (!values.first_name) errors.first_name = 'กรุณาระบุชื่อจริง'
+  if (!values.last_name) errors.last_name = 'กรุณาระบุนามสกุล'
+
+  return errors
+}
+
+const GeneralForm: React.FC<Props> = () => {
+  const formik = useFormik({
+    initialValues,
+    validate,
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2))
+    },
+  })
+
   return (
     <div className={styles.GenForm}>
-      <Form name="GeneralForm" onFinish={onSubmit} layout="vertical">
+      <form onSubmit={formik.handleSubmit}>
         <div className={styles.inputGroup}>
+          <div className={styles.selection}>
+            <Label name="คำนำหน้าชื่อ" htmlFor="first_name" required />
+            <Select
+              items={prefixChoices}
+              placeholder="กรุณาเลือกคำนำหน้าชื่อ"
+              onSelect={(value: string) => formik.setFieldValue('prefix', value)}
+            />
+          </div>
+          <div>
+            <Label name="ชื่อจริง" htmlFor="first_name" required />
+            <TextField.Input
+              name="first_name"
+              type="text"
+              id="first_name"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              value={formik.values.first_name}
+            />
+            <ErrorMessage>
+              {formik.errors.first_name && formik.touched.first_name && formik.errors.first_name}
+            </ErrorMessage>
+          </div>
+        </div>
+        <div className={styles.inputGroup}>
+          <div>
+            <Label name="ชื่อกลาง (ถ้ามี)" htmlFor="middle_name" />
+            <TextField.Input
+              name="middle_name"
+              type="text"
+              id="middle_name"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              value={formik.values.middle_name}
+            />
+          </div>
+          <div>
+            <Label name="นามสกุล" htmlFor="last_name" required />
+            <TextField.Input
+              name="last_name"
+              type="text"
+              id="last_name"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              value={formik.values.last_name}
+            />
+            <ErrorMessage>
+              {formik.errors.last_name && formik.touched.last_name && formik.errors.last_name}
+            </ErrorMessage>
+          </div>
+        </div>
+        <div style={{ margin: '20px 0' }}>
+          <Flex gap="2" align={'center'}>
+            <Checkbox
+              name="can_bring_laptop"
+              id="can_bring_laptop"
+              onCheckedChange={(checked: boolean) => formik.setFieldValue('can_bring_laptop', checked)}
+            />
+            สามารถนำโน๊ตบุ๊คมาได้
+          </Flex>
+        </div>
+        <div style={{ textAlign: 'right' }}>
+          <Button type="submit">ถัดไป</Button>
+        </div>
+      </form>
+      {/* <div className={styles.inputGroup}>
           <Form.Item
             label="ชื่อจริง"
             name="first_name"
@@ -204,7 +335,7 @@ const GeneralForm: React.FC<Props> = ({ onSubmit, isSubmitting }: Props) => {
 
         {/* TODO : Use Selection instead */}
 
-        <Form.Item
+      {/* <Form.Item
           label="สิทธิการรักษา"
           name="insurance"
           rules={[
@@ -223,8 +354,7 @@ const GeneralForm: React.FC<Props> = ({ onSubmit, isSubmitting }: Props) => {
           <Button type="primary" htmlType="submit" loading={isSubmitting}>
             ถัดไป
           </Button>
-        </Form.Item>
-      </Form>
+        </Form.Item> */}
     </div>
   )
 }

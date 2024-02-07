@@ -1,8 +1,14 @@
 .GenForm {
     .inputGroup {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
         gap: 15px;
+        margin-bottom: 10px;
+    }
+
+    .selection {
+        display: flex;
+        flex-direction: column;
     }
 
 

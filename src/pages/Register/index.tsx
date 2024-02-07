@@ -1,30 +1,28 @@
 import { useAuth } from 'src/context/auth'
 import styles from './index.module.scss'
 import GeneralForm, { IGeneralForm } from 'src/components/GeneralForm'
-import { StepProps, Steps, Typography } from 'antd'
 import { useState } from 'react'
 import { apiInstance } from 'src/lib/axios'
+import { Card, Heading } from '@radix-ui/themes'
 
-const stepsInfo: StepProps[] = [
-  {
-    title: 'ข้อมูลทั่วไป',
-  },
-  {
-    title: 'ข้อมูลผู้ปกครอง',
-  },
-  {
-    title: 'ข้อมูลการศึกษา',
-  },
-  {
-    title: 'อัพโหลดเอกสาร',
-  },
-]
+// const stepsInfo: StepProps[] = [
+//   {
+//     title: 'ข้อมูลทั่วไป',
+//   },
+//   {
+//     title: 'ข้อมูลผู้ปกครอง',
+//   },
+//   {
+//     title: 'ข้อมูลการศึกษา',
+//   },
+//   {
+//     title: 'อัพโหลดเอกสาร',
+//   },
+// ]
 
 const Register: React.FC = (): JSX.Element => {
   const [currentStep, setCurrentStep] = useState<number>(0)
   const [isSubmitting, setSubmit] = useState<boolean>(false)
-
-  const { Title } = Typography
   const { auth } = useAuth()
 
   const onFormSubmit = async (values: IGeneralForm) => {
@@ -53,10 +51,12 @@ const Register: React.FC = (): JSX.Element => {
         <div>{auth.email}</div>
       </div>
       <div className={styles.header}>
-        <Title level={2}>ฟอร์มสมัคร Com Camp 35</Title>
+        <Heading size="7">ฟอร์มสมัคร Com Camp 35</Heading>
       </div>
-      <Steps current={currentStep} items={stepsInfo} style={{ margin: '30px 0' }} />
-      <div className={styles.form}>{stepFilter()}</div>
+      {/* <Steps current={currentStep} items={stepsInfo} style={{ margin: '30px 0' }} /> */}
+      <Card variant="surface" className={styles.form}>
+        {stepFilter()}
+      </Card>
     </div>
   )
 }

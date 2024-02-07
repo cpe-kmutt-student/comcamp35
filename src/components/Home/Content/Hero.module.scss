@@ -1,11 +1,11 @@
 .hero {
   align-items: center;
-  background-color: #ffffff;
   display: flex;
   justify-content: center;
   flex-direction: column;
   gap: 12px;
   min-height: 100dvh;
+  background-color: #150627;
 
   .logo {
     height: auto;
@@ -13,13 +13,12 @@
   }
 
   .campDate {
-    color: #000000;
     white-space: nowrap;
     font-size: 64px;
+    margin-block: 10px 40px;
   }
 
   .content {
-    color: #000000;
     font-size: 20px;
     text-align: center;
     width: 548px;
