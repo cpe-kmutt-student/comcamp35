@@ -4,7 +4,12 @@
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
-    border-bottom: 1px solid #000000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    backdrop-filter: blur(5px);
+    background-color: #1d093750;
 }
 
 .navbarLogo {

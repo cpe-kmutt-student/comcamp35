@@ -6,6 +6,8 @@ import Navbar from './components/Navbar'
 import Register from './pages/Register'
 import NotFoundPage from './pages/NotFoundPage'
 import ProtectedRoute from './components/ProtectedRoute'
+import { Theme } from '@radix-ui/themes'
+import '@radix-ui/themes/styles.css'
 
 const App: React.FC = (): JSX.Element => {
   const location = useLocation()
@@ -19,7 +21,7 @@ const App: React.FC = (): JSX.Element => {
     }
   }
   return (
-    <div>
+    <Theme accentColor="amber" grayColor="slate" scaling="95%" panelBackground="translucent">
       {navbarFilter()}
       <Routes>
         <Route path={BASE_PATH} element={<Home />} />
@@ -29,7 +31,7 @@ const App: React.FC = (): JSX.Element => {
 
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
-    </div>
+    </Theme>
   )
 }
 

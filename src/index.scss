@@ -1,4 +1,4 @@
-@import 'https://fonts.googleapis.com/css2?family=Prompt&display=swap';
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai+Looped:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 @font-face {
   font-family: 'Upheavtt';
@@ -9,24 +9,44 @@ body,
 input,
 textarea,
 button {
-  font-family: 'Prompt', sans-serif !important;
+  font-family: 'Noto Sans Thai Looped', sans-serif !important;
+}
+
+.title {
+  font-family: 'Upheavtt', sans-serif !important;
+  font-weight: normal !important;
 }
 
 h1,
-h2 {
-  font-family: 'Upheavtt', sans-serif !important;
-  font-weight: normal;
-}
-
+h2,
 h3,
 h4,
 h5,
 h6 {
-  font-family: 'Prompt', sans-serif !important;
+  font-family: 'Noto Sans Thai Looped', sans-serif !important;
+}
+
+.dark,
+.dark-theme {
+  --color-page-background: #0f041b !important;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(90, 90, 90);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
 }
