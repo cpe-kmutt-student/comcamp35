@@ -1,0 +1,25 @@
+.main {
+    min-height: 100dvh;
+    margin-top: 100px;
+    padding: 0 60px;
+}
+
+.Header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: xx-large;
+    margin-bottom: 12px;
+}
+
+.condition {
+    padding: 0 70px;
+    margin-bottom: 30px;
+    font-size: medium;
+    font-weight: 600;
+}
+
+p {
+    font-size: medium;
+    font-weight: 600;
+}
