@@ -1,5 +1,15 @@
 .GenForm {
-    // display: flex;
-    // justify-content: center;
-    margin: 70px 0px;
+    .inputGroup {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 15px;
+    }
+
+
+    @media screen and (max-width: 512px) {
+        .inputGroup {
+            grid-template-columns: 1fr;
+            gap: 0;
+        }
+    }
 }
