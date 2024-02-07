@@ -10,7 +10,7 @@ const Hero: React.FC = () => {
   return (
     <div className={styles.hero}>
       <img className={styles.logo} alt="logo" src={LOGO_PATH} />
-      <h1 className={styles.campDate}>7-15 April 2024</h1>
+      <h1 className={styles.campDate}>7-11 April 2024</h1>
       <p className={styles.content}>
         เมื่อโลกโปรเเกรมมอนกำลังจะล่มสลาย<br></br>
         เหล่าหัวหน้ากิลด์จึงได้ทำการรวบรวมบรรดาเด็กน้อยผู้มีพรสวรรค์ที่ซ่อนเร้นเพื่อทำการฝึกฝนและปลุกทักษะที่หลับใหลให้ตื่นขึ้น
