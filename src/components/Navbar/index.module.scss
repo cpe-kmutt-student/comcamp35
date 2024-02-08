@@ -1,17 +1,52 @@
+@import '../../_variable.scss';
+
 .navbar {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    backdrop-filter: blur(5px);
-    background-color: #1d093750;
+  padding: 5px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  backdrop-filter: blur(5px);
+  background-color: #1d093750;
+
+  .nav_mobile {
+    display: none;
+  }
+
+  @media screen and (max-width: 850px) {
+    .nav_desktop {
+      display: none;
+    }
+
+    .nav_mobile {
+      display: block;
+    }
+  }
+}
+
+.nav_menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #1d093750;
+  backdrop-filter: blur(5px);
+}
+
+.nav {
+  cursor: pointer;
+  transition: all 200ms;
+
+  &:hover {
+    color: $primary-color;
+  }
+
+  @media screen and (max-width: 850px) {
+    width: 100%;
+    text-align: center;
+  }
 }
 
 .navbarLogo {
-    width: 100px;
+  width: 100px;
 }

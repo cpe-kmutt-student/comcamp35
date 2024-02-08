@@ -25,18 +25,25 @@
   }
 
   @media screen and (max-width: 768px) {
-    padding: 0 30px;
-
     .logo {
       width: 100%;
     }
 
     .content {
       width: 100%;
+      padding-inline: 25px;
     }
 
     .campDate {
+      font-size: 40px;
+      margin-block: 0;
+    }
+  }
+
+  @media screen and (max-width: 350px) {
+    .campDate {
       font-size: 32px;
+      margin-block: 0;
     }
   }
 }

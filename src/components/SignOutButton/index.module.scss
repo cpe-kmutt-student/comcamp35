@@ -1,7 +1,9 @@
+@import '../../variable';
+
 .button {
-    padding: 10px 20px;
+    padding: 5px 20px;
     border: 2px solid #000000;
-    background: #FFD541;
+    background: $primary-color;
     color: #000000;
     font-size: 16px;
     font-weight: normal;
@@ -20,7 +22,7 @@
     color: #ffffff;
 
     &:hover {
-        background: #FFD541;
+        background: $primary-color;
         color: #000000;
     }
 }

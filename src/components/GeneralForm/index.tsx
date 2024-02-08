@@ -4,21 +4,13 @@ import { Button, Checkbox, Flex, TextField } from '@radix-ui/themes'
 import { useFormik } from 'formik'
 import Label from '../Form/Label'
 import ErrorMessage from '../Form/ErrorMessage'
-import Select, { ISelectItem } from '../Form/Select'
+import Select from '../Form/Select'
+import DatePicker from '../Form/DatePicker'
+import { insuranceChoices, prefixChoices, shirtSizeChoices } from './utils/data'
 
 type Props = {
   onSubmit: (values: IGeneralForm) => void
   isSubmitting: boolean
-}
-
-enum PrefixEnum {
-  MR = 'นาย',
-  MRS = 'นางสาว',
-  OTHER = 'อื่นๆ',
-}
-
-interface IPrefix extends ISelectItem {
-  value: PrefixEnum
 }
 
 export interface IGeneralForm {
@@ -26,8 +18,8 @@ export interface IGeneralForm {
   first_name: string
   middle_name?: string
   last_name: string
-  nick_name: string
-  birth_date: string
+  nickname: string
+  birth_date: string | Date
   tel: string
   address: string
   travel: string
@@ -46,8 +38,8 @@ const initialValues: IGeneralForm = {
   first_name: '',
   middle_name: '',
   last_name: '',
-  nick_name: '',
-  birth_date: '',
+  nickname: '',
+  birth_date: new Date(),
   tel: '',
   address: '',
   travel: '',
@@ -61,36 +53,27 @@ const initialValues: IGeneralForm = {
   insurance: '',
 }
 
-const prefixChoices: IPrefix[] = [
-  {
-    label: PrefixEnum.MR,
-    value: PrefixEnum.MR,
-  },
-  {
-    label: PrefixEnum.MRS,
-    value: PrefixEnum.MRS,
-  },
-  {
-    label: PrefixEnum.OTHER,
-    value: PrefixEnum.OTHER,
-  },
-]
-
 const validate = (values: IGeneralForm) => {
   const errors: Record<string, string> = {}
+  if (!values.prefix) errors.prefix = 'กรุณาระบุคำนำหน้าชื่อ'
   if (!values.first_name) errors.first_name = 'กรุณาระบุชื่อจริง'
   if (!values.last_name) errors.last_name = 'กรุณาระบุนามสกุล'
+  if (!values.nickname) errors.nickname = 'กรุณาระบุชื่อเล่น'
+  if (!values.tel) errors.tel = 'กรุณาระบุเบอร์โทรศัพท์'
+  if (!values.birth_date) errors.birth_date = 'กรุณาระบุวันเกิด'
+  if (!values.address) errors.address = 'กรุณาระบุที่อยู่'
+  if (!values.shirt_size) errors.shirt_size = 'กรุณาระบุไซส์เสื้อ'
+  if (!values.travel) errors.travel = 'กรุณาระบุวิธีการเดินทางมามหาวิทยาลัย'
+  if (!values.insurance) errors.insurance = 'กรุณาระบุสิทธิการรักษา'
 
   return errors
 }
 
-const GeneralForm: React.FC<Props> = () => {
+const GeneralForm: React.FC<Props> = ({ onSubmit, isSubmitting }: Props) => {
   const formik = useFormik({
     initialValues,
     validate,
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2))
-    },
+    onSubmit,
   })
 
   return (
@@ -104,7 +87,11 @@ const GeneralForm: React.FC<Props> = () => {
               placeholder="กรุณาเลือกคำนำหน้าชื่อ"
               onSelect={(value: string) => formik.setFieldValue('prefix', value)}
             />
+            <ErrorMessage>{formik.errors.prefix && formik.touched.prefix && formik.errors.prefix}</ErrorMessage>
           </div>
+        </div>
+
+        <div className={styles.inputGroup}>
           <div>
             <Label name="ชื่อจริง" htmlFor="first_name" required />
             <TextField.Input
@@ -119,8 +106,6 @@ const GeneralForm: React.FC<Props> = () => {
               {formik.errors.first_name && formik.touched.first_name && formik.errors.first_name}
             </ErrorMessage>
           </div>
-        </div>
-        <div className={styles.inputGroup}>
           <div>
             <Label name="ชื่อกลาง (ถ้ามี)" htmlFor="middle_name" />
             <TextField.Input
@@ -147,6 +132,164 @@ const GeneralForm: React.FC<Props> = () => {
             </ErrorMessage>
           </div>
         </div>
+
+        <div className={styles.inputGroup}>
+          <div>
+            <Label name="ชื่อเล่น" htmlFor="nick_nnicknameame" required />
+            <TextField.Input
+              name="nickname"
+              type="text"
+              id="nickname"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              value={formik.values.nickname}
+            />
+            <ErrorMessage>{formik.errors.nickname && formik.touched.nickname && formik.errors.nickname}</ErrorMessage>
+          </div>
+          <Flex direction="column">
+            <Label name="วันเกิด (ค.ศ.)" htmlFor="birth_date" required />
+            <DatePicker
+              id="birth_date"
+              name="birth_date"
+              onBlur={formik.handleBlur}
+              onChange={(date: Date) => formik.setFieldValue('birth_date', date)}
+              value={new Date(formik.values.birth_date)}
+            />
+            <ErrorMessage>
+              {formik.errors.birth_date && formik.touched.birth_date && formik.errors.birth_date}
+            </ErrorMessage>
+          </Flex>
+          <div>
+            <Label name="เบอร์โทรศัพท์" htmlFor="tel" required />
+            <TextField.Input
+              name="tel"
+              type="text"
+              id="tel"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              value={formik.values.tel}
+            />
+            <ErrorMessage>{formik.errors.tel && formik.touched.tel && formik.errors.tel}</ErrorMessage>
+          </div>
+        </div>
+
+        <div className={styles.inputGroup}>
+          <div>
+            <Label name="ที่อยู่" htmlFor="address" required />
+            <TextField.Input
+              name="address"
+              type="text"
+              id="address"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              value={formik.values.address}
+            />
+            <ErrorMessage>{formik.errors.address && formik.touched.address && formik.errors.address}</ErrorMessage>
+          </div>
+          <div>
+            <Label name="วิธีการเดินทางมามหาวิทยาลัย" htmlFor="travel" required />
+            <TextField.Input
+              name="travel"
+              type="text"
+              id="travel"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              value={formik.values.travel}
+            />
+            <ErrorMessage>{formik.errors.travel && formik.touched.travel && formik.errors.travel}</ErrorMessage>
+          </div>
+          <div className={styles.selection}>
+            <Label name="ไซส์เสื้อ" htmlFor="shirt_size" required />
+            <Select
+              items={shirtSizeChoices}
+              placeholder="กรุณาเลือกไซส์เสื้อ"
+              onSelect={(value: string) => formik.setFieldValue('shirt_size', value)}
+            />
+            <ErrorMessage>
+              {formik.errors.shirt_size && formik.touched.shirt_size && formik.errors.shirt_size}
+            </ErrorMessage>
+          </div>
+        </div>
+
+        <div className={styles.inputGroup}>
+          <div>
+            <Label name="อาหารที่แพ้ (ถ้ามี)" htmlFor="food_allergy" />
+            <TextField.Input
+              name="food_allergy"
+              type="text"
+              id="food_allergy"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              value={formik.values.food_allergy}
+            />
+          </div>
+          <div>
+            <Label name="อาหารที่ชอบ (ถ้ามี)" htmlFor="favorite_food" />
+            <TextField.Input
+              name="favorite_food"
+              type="text"
+              id="favorite_food"
+              placeholder="เช่น ฮาลาล, มังสวิรัติ, เจ, อื่น ๆ"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              value={formik.values.favorite_food}
+            />
+          </div>
+          <div>
+            <Label name="โรคประจำตัว (ถ้ามี)" htmlFor="disease" />
+            <TextField.Input
+              name="disease"
+              type="text"
+              id="disease"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              value={formik.values.disease}
+            />
+          </div>
+        </div>
+
+        <div className={styles.inputGroup}>
+          <div>
+            <Label name="ยาประจำตัว (ถ้ามี)" htmlFor="personal_drug" />
+            <TextField.Input
+              name="personal_drug"
+              type="text"
+              id="personal_drug"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              value={formik.values.personal_drug}
+            />
+            <ErrorMessage>
+              {formik.errors.personal_drug && formik.touched.personal_drug && formik.errors.personal_drug}
+            </ErrorMessage>
+          </div>
+          <div>
+            <Label name="ยาที่แพ้ (ถ้ามี)" htmlFor="drug_allergy" />
+            <TextField.Input
+              name="drug_allergy"
+              type="text"
+              id="drug_allergy"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              value={formik.values.drug_allergy}
+            />
+            <ErrorMessage>
+              {formik.errors.drug_allergy && formik.touched.drug_allergy && formik.errors.drug_allergy}
+            </ErrorMessage>
+          </div>
+          <div className={styles.selection}>
+            <Label name="สิทธิการรักษา" htmlFor="insurance" required />
+            <Select
+              items={insuranceChoices}
+              placeholder="กรุณาเลือกสิทธิการรักษา"
+              onSelect={(value: string) => formik.setFieldValue('insurance', value)}
+            />
+            <ErrorMessage>
+              {formik.errors.insurance && formik.touched.insurance && formik.errors.insurance}
+            </ErrorMessage>
+          </div>
+        </div>
+
         <div style={{ margin: '20px 0' }}>
           <Flex gap="2" align={'center'}>
             <Checkbox
@@ -158,203 +301,11 @@ const GeneralForm: React.FC<Props> = () => {
           </Flex>
         </div>
         <div style={{ textAlign: 'right' }}>
-          <Button type="submit">ถัดไป</Button>
-        </div>
-      </form>
-      {/* <div className={styles.inputGroup}>
-          <Form.Item
-            label="ชื่อจริง"
-            name="first_name"
-            rules={[
-              {
-                required: true,
-                message: 'กรุณาระบุชื่อจริง',
-              },
-            ]}
-          >
-            <Input placeholder="Ex: Walter" />
-          </Form.Item>
-
-          <Form.Item
-            label="ชื่อกลาง (ถ้ามี)"
-            name="middle_name"
-            rules={[
-              {
-                required: false,
-              },
-            ]}
-          >
-            <Input placeholder="Ex: Hartwell" />
-          </Form.Item>
-
-          <Form.Item
-            label="นามสกุล"
-            name="last_name"
-            rules={[
-              {
-                required: true,
-                message: 'กรุณาระบุนามสกุล',
-              },
-            ]}
-          >
-            <Input placeholder="Ex: White" />
-          </Form.Item>
-        </div>
-        <div className={styles.inputGroup}>
-          <Form.Item
-            label="ชื่อเล่น"
-            name="nickname"
-            rules={[
-              {
-                required: true,
-                message: 'กรุณาระบุชื่อเล่น',
-              },
-            ]}
-          >
-            <Input placeholder="Ex: Heisenberg" />
-          </Form.Item>
-
-          <Form.Item
-            label="วันเกิด"
-            name="birth_date"
-            rules={[
-              {
-                required: true,
-                message: 'กรุณาระบุวันเกิด',
-              },
-            ]}
-          >
-            <DatePicker style={{ width: '100%' }} picker="date" format={'DD/MM/YYYY'} />
-          </Form.Item>
-
-          <Form.Item
-            label="เบอร์โทร"
-            name="tel"
-            rules={[
-              {
-                required: true,
-                message: 'กรุณาระบุเบอร์โทร',
-              },
-            ]}
-          >
-            <Input type="tel" minLength={10} maxLength={10} placeholder="Ex: 0987654321" />
-          </Form.Item>
-        </div>
-        <Form.Item
-          label="ที่อยู่"
-          name="address"
-          rules={[
-            {
-              required: true,
-              message: 'กรุณาระบุที่อยู่',
-            },
-          ]}
-        >
-          <Input placeholder="Ex: 42 Bangkok" />
-        </Form.Item>
-        <Form.Item
-          label="วิธีเดินทาง"
-          name="travel"
-          rules={[
-            {
-              required: true,
-              message: 'กรุณาระบุวิธีเดินทางมา KMUTT',
-            },
-          ]}
-        >
-          <Input placeholder="Ex: Helicoptor" />
-        </Form.Item>
-        <Form.Item
-          label="ไซส์เสื้อ"
-          name="shirt_size"
-          rules={[
-            {
-              required: true,
-              message: 'กรุณาระบุไซส์เสื้อ',
-            },
-          ]}
-        >
-          <Input placeholder="Ex: L" />
-        </Form.Item>
-        <Form.Item
-          label="อาหารที่แพ้"
-          name="food_allergy"
-          rules={[
-            {
-              required: true,
-              message: 'กรุณาระบุอาหารที่แพ้',
-            },
-          ]}
-        >
-          <Input placeholder="Ex: dog" />
-        </Form.Item>
-        <Form.Item
-          label="อาหารที่ชอบ (ถ้ามี)"
-          name="favorite_food"
-          rules={[
-            {
-              required: false,
-            },
-          ]}
-        >
-          <Input placeholder="Ex: meth" />
-        </Form.Item>
-        <Form.Item
-          label="โรคประจำตัว (ถ้ามี)"
-          name="disease"
-          rules={[
-            {
-              required: false,
-            },
-          ]}
-        >
-          <Input placeholder="Ex: cancer" />
-        </Form.Item>
-        <Form.Item
-          label="ยาประจำตัว (ถ้ามี)"
-          name="personal_drug"
-          rules={[
-            {
-              required: false,
-            },
-          ]}
-        >
-          <Input placeholder="Ex: pregnancy test" />
-        </Form.Item>
-        <Form.Item
-          label="แพ้ยา (ถ้ามี)"
-          name="drug_allergy"
-          rules={[
-            {
-              required: false,
-            },
-          ]}
-        >
-          <Input placeholder="Ex: dog" />
-        </Form.Item>
-
-        {/* TODO : Use Selection instead */}
-
-      {/* <Form.Item
-          label="สิทธิการรักษา"
-          name="insurance"
-          rules={[
-            {
-              required: true,
-              message: 'กรุณาระบุสิทธิการรักษา',
-            },
-          ]}
-        >
-          <Input placeholder="Ex: สิทธิข้าราชการ" />
-        </Form.Item>
-        <Form.Item label="สามารถนำ Laptop มาได้" name="can_bring_laptop" valuePropName="checked" style={{ margin: 0 }}>
-          <Checkbox>สามารถนำมาได้</Checkbox>
-        </Form.Item>
-        <Form.Item style={{ textAlign: 'right' }}>
-          <Button type="primary" htmlType="submit" loading={isSubmitting}>
+          <Button type="submit" disabled={isSubmitting}>
             ถัดไป
           </Button>
-        </Form.Item> */}
+        </div>
+      </form>
     </div>
   )
 }

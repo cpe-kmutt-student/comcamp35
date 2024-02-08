@@ -1,0 +1,13 @@
+@import '../../../variable';
+
+.datePicker {
+  background-color: #00000050;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  color: #edeef0;
+  width: 100%;
+
+  &:active {
+    border: 1px solid $primary-color;
+  }
+}

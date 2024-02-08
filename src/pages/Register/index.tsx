@@ -3,7 +3,7 @@ import styles from './index.module.scss'
 import GeneralForm, { IGeneralForm } from 'src/components/GeneralForm'
 import { useState } from 'react'
 import { apiInstance } from 'src/lib/axios'
-import { Card, Heading } from '@radix-ui/themes'
+import { Avatar, Box, Container, Flex, Heading } from '@radix-ui/themes'
 
 // const stepsInfo: StepProps[] = [
 //   {
@@ -25,7 +25,7 @@ const Register: React.FC = (): JSX.Element => {
   const [isSubmitting, setSubmit] = useState<boolean>(false)
   const { auth } = useAuth()
 
-  const onFormSubmit = async (values: IGeneralForm) => {
+  const onGeneralFormSubmit = async (values: IGeneralForm) => {
     setSubmit(true)
 
     try {
@@ -40,23 +40,23 @@ const Register: React.FC = (): JSX.Element => {
   const stepFilter = () => {
     switch (currentStep) {
       case 0:
-        return <GeneralForm onSubmit={onFormSubmit} isSubmitting={isSubmitting} />
+        return <GeneralForm onSubmit={onGeneralFormSubmit} isSubmitting={isSubmitting} />
     }
   }
 
   return (
     <div className={styles.registerPage}>
-      <div className={styles.profile}>
-        <img src={auth.profile_url} alt="profile" />
+      <Flex className={styles.profile} align="center" gap="5" style={{ marginTop: '8rem' }}>
+        <Avatar src={auth.profile_url} fallback={auth.email.substring(0, 3)} size="5" radius="large" />
         <div>{auth.email}</div>
-      </div>
+      </Flex>
       <div className={styles.header}>
         <Heading size="7">ฟอร์มสมัคร Com Camp 35</Heading>
       </div>
       {/* <Steps current={currentStep} items={stepsInfo} style={{ margin: '30px 0' }} /> */}
-      <Card variant="surface" className={styles.form}>
-        {stepFilter()}
-      </Card>
+      <Box style={{ background: 'var(--gray-a2)', borderRadius: 'var(--radius-3)' }} className={styles.form}>
+        <Container size="4">{stepFilter()}</Container>
+      </Box>
     </div>
   )
 }
