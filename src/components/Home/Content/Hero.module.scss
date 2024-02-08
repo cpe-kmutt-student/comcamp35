@@ -7,15 +7,38 @@
   min-height: 100dvh;
   background-color: #150627;
 
-  .logo {
-    height: auto;
-    width: 640px;
+  .image {
+    position: relative;
+
+    .logoBg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border-radius: 50%;
+      width: 320px;
+      height: 320px;
+      background-image: linear-gradient(-45deg, #f9a31b 50%, #143464 50%);
+      filter: blur(100px);
+      transform: translate(-50%, -50%);
+    }
+
+    .logo {
+      height: auto;
+      width: 640px;
+      position: relative;
+      // -webkit-filter: drop-shadow(0 10px 100px #FFD54170);
+      // filter: drop-shadow(0 10px 100px #FFD54170);
+      user-select: none;
+      pointer-events: none;
+    }
   }
 
   .campDate {
+    position: relative;
     white-space: nowrap;
     font-size: 64px;
     margin-block: 10px 40px;
+    z-index: 5;
   }
 
   .content {
@@ -25,7 +48,7 @@
   }
 
   @media screen and (max-width: 768px) {
-    .logo {
+    .image .logo {
       width: 100%;
     }
 

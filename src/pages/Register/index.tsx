@@ -4,21 +4,7 @@ import GeneralForm, { IGeneralForm } from 'src/components/GeneralForm'
 import { useState } from 'react'
 import { apiInstance } from 'src/lib/axios'
 import { Avatar, Box, Container, Flex, Heading } from '@radix-ui/themes'
-
-// const stepsInfo: StepProps[] = [
-//   {
-//     title: 'ข้อมูลทั่วไป',
-//   },
-//   {
-//     title: 'ข้อมูลผู้ปกครอง',
-//   },
-//   {
-//     title: 'ข้อมูลการศึกษา',
-//   },
-//   {
-//     title: 'อัพโหลดเอกสาร',
-//   },
-// ]
+import SignOutButton from 'src/components/SignOutButton'
 
 const Register: React.FC = (): JSX.Element => {
   const [currentStep, setCurrentStep] = useState<number>(0)
@@ -46,9 +32,12 @@ const Register: React.FC = (): JSX.Element => {
 
   return (
     <div className={styles.registerPage}>
-      <Flex className={styles.profile} align="center" gap="5" style={{ marginTop: '8rem' }}>
-        <Avatar src={auth.profile_url} fallback={auth.email.substring(0, 3)} size="5" radius="large" />
-        <div>{auth.email}</div>
+      <Flex direction="row" justify="between" align="center" style={{ marginTop: '8rem' }}>
+        <Flex className={styles.profile} align="center" gap="5">
+          <Avatar src={auth.profile_url} fallback={auth.email.substring(0, 3)} size="5" radius="large" />
+          <div>{auth.email}</div>
+        </Flex>
+        <SignOutButton active>ออกจากระบบ</SignOutButton>
       </Flex>
       <div className={styles.header}>
         <Heading size="7">ฟอร์มสมัคร Com Camp 35</Heading>

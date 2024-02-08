@@ -21,7 +21,7 @@ const App: React.FC = (): JSX.Element => {
     }
   }
   return (
-    <Theme accentColor="amber" grayColor="slate" scaling="95%" panelBackground="translucent">
+    <Theme appearance="dark" accentColor="amber" grayColor="slate" scaling="95%" panelBackground="translucent">
       {navbarFilter()}
       <Routes>
         <Route path={BASE_PATH} element={<Home />} />

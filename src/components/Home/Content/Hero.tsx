@@ -10,7 +10,10 @@ const Hero: React.FC = () => {
 
   return (
     <div className={styles.hero}>
-      <img className={styles.logo} alt="logo" src={Logo} />
+      <div className={styles.image}>
+        <div className={styles.logoBg} />
+        <img className={styles.logo} alt="logo" src={Logo} />
+      </div>
       <Heading size="9" className={[styles.campDate, 'title'].join(' ')}>
         7-11 April 2024
       </Heading>

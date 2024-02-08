@@ -13,6 +13,7 @@
 
     img {
       width: 350px;
+      pointer-events: none;
     }
 
     @media screen and (max-width: 450px) {

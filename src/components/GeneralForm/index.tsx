@@ -1,12 +1,13 @@
 import React from 'react'
 import styles from './index.module.scss'
-import { Button, Checkbox, Flex, TextField } from '@radix-ui/themes'
+import { Button, Checkbox, Flex } from '@radix-ui/themes'
 import { useFormik } from 'formik'
 import Label from '../Form/Label'
 import ErrorMessage from '../Form/ErrorMessage'
-import Select from '../Form/Select'
 import DatePicker from '../Form/DatePicker'
 import { insuranceChoices, prefixChoices, shirtSizeChoices } from './utils/data'
+import FormikSelect from '../Form/Formik/Select'
+import FormikTextField from '../Form/Formik/Input'
 
 type Props = {
   onSubmit: (values: IGeneralForm) => void
@@ -80,72 +81,58 @@ const GeneralForm: React.FC<Props> = ({ onSubmit, isSubmitting }: Props) => {
     <div className={styles.GenForm}>
       <form onSubmit={formik.handleSubmit}>
         <div className={styles.inputGroup}>
-          <div className={styles.selection}>
-            <Label name="คำนำหน้าชื่อ" htmlFor="first_name" required />
-            <Select
-              items={prefixChoices}
-              placeholder="กรุณาเลือกคำนำหน้าชื่อ"
-              onSelect={(value: string) => formik.setFieldValue('prefix', value)}
-            />
-            <ErrorMessage>{formik.errors.prefix && formik.touched.prefix && formik.errors.prefix}</ErrorMessage>
-          </div>
+          <FormikSelect
+            label="คำนำหน้าชื่อ"
+            items={prefixChoices}
+            placeholder="กรุณาเลือกคำนำหน้าชื่อ"
+            required
+            errors={formik.errors.prefix}
+            touched={formik.touched.prefix}
+            onSelect={(value: string) => formik.setFieldValue('prefix', value)}
+          />
         </div>
 
         <div className={styles.inputGroup}>
-          <div>
-            <Label name="ชื่อจริง" htmlFor="first_name" required />
-            <TextField.Input
-              name="first_name"
-              type="text"
-              id="first_name"
-              onBlur={formik.handleBlur}
-              onChange={formik.handleChange}
-              value={formik.values.first_name}
-            />
-            <ErrorMessage>
-              {formik.errors.first_name && formik.touched.first_name && formik.errors.first_name}
-            </ErrorMessage>
-          </div>
-          <div>
-            <Label name="ชื่อกลาง (ถ้ามี)" htmlFor="middle_name" />
-            <TextField.Input
-              name="middle_name"
-              type="text"
-              id="middle_name"
-              onBlur={formik.handleBlur}
-              onChange={formik.handleChange}
-              value={formik.values.middle_name}
-            />
-          </div>
-          <div>
-            <Label name="นามสกุล" htmlFor="last_name" required />
-            <TextField.Input
-              name="last_name"
-              type="text"
-              id="last_name"
-              onBlur={formik.handleBlur}
-              onChange={formik.handleChange}
-              value={formik.values.last_name}
-            />
-            <ErrorMessage>
-              {formik.errors.last_name && formik.touched.last_name && formik.errors.last_name}
-            </ErrorMessage>
-          </div>
+          <FormikTextField
+            label="ชื่อจริง"
+            name="first_name"
+            required
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+            errors={formik.errors.first_name}
+            touched={formik.touched.first_name}
+            value={formik.values.first_name}
+          />
+          <FormikTextField
+            label="ชื่อกลาง (ถ้ามี)"
+            name="middle_name"
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+            value={formik.values.middle_name}
+          />
+          <FormikTextField
+            label="นามสกุล"
+            name="last_name"
+            required
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+            errors={formik.errors.last_name}
+            touched={formik.touched.last_name}
+            value={formik.values.last_name}
+          />
         </div>
 
         <div className={styles.inputGroup}>
-          <div>
-            <Label name="ชื่อเล่น" htmlFor="nick_nnicknameame" required />
-            <TextField.Input
-              name="nickname"
-              type="text"
-              id="nickname"
-              onBlur={formik.handleBlur}
-              onChange={formik.handleChange}
-              value={formik.values.nickname}
-            />
-            <ErrorMessage>{formik.errors.nickname && formik.touched.nickname && formik.errors.nickname}</ErrorMessage>
-          </div>
+          <FormikTextField
+            label="ชื่อเล่น"
+            name="nickname"
+            required
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+            errors={formik.errors.nickname}
+            touched={formik.touched.nickname}
+            value={formik.values.nickname}
+          />
           <Flex direction="column">
             <Label name="วันเกิด (ค.ศ.)" htmlFor="birth_date" required />
             <DatePicker
@@ -159,135 +146,98 @@ const GeneralForm: React.FC<Props> = ({ onSubmit, isSubmitting }: Props) => {
               {formik.errors.birth_date && formik.touched.birth_date && formik.errors.birth_date}
             </ErrorMessage>
           </Flex>
-          <div>
-            <Label name="เบอร์โทรศัพท์" htmlFor="tel" required />
-            <TextField.Input
-              name="tel"
-              type="text"
-              id="tel"
-              onBlur={formik.handleBlur}
-              onChange={formik.handleChange}
-              value={formik.values.tel}
-            />
-            <ErrorMessage>{formik.errors.tel && formik.touched.tel && formik.errors.tel}</ErrorMessage>
-          </div>
+          <FormikTextField
+            label="เบอร์โทรศัพท์"
+            name="tel"
+            required
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+            errors={formik.errors.tel}
+            touched={formik.touched.tel}
+            value={formik.values.tel}
+          />
         </div>
 
         <div className={styles.inputGroup}>
-          <div>
-            <Label name="ที่อยู่" htmlFor="address" required />
-            <TextField.Input
-              name="address"
-              type="text"
-              id="address"
-              onBlur={formik.handleBlur}
-              onChange={formik.handleChange}
-              value={formik.values.address}
-            />
-            <ErrorMessage>{formik.errors.address && formik.touched.address && formik.errors.address}</ErrorMessage>
-          </div>
-          <div>
-            <Label name="วิธีการเดินทางมามหาวิทยาลัย" htmlFor="travel" required />
-            <TextField.Input
-              name="travel"
-              type="text"
-              id="travel"
-              onBlur={formik.handleBlur}
-              onChange={formik.handleChange}
-              value={formik.values.travel}
-            />
-            <ErrorMessage>{formik.errors.travel && formik.touched.travel && formik.errors.travel}</ErrorMessage>
-          </div>
-          <div className={styles.selection}>
-            <Label name="ไซส์เสื้อ" htmlFor="shirt_size" required />
-            <Select
-              items={shirtSizeChoices}
-              placeholder="กรุณาเลือกไซส์เสื้อ"
-              onSelect={(value: string) => formik.setFieldValue('shirt_size', value)}
-            />
-            <ErrorMessage>
-              {formik.errors.shirt_size && formik.touched.shirt_size && formik.errors.shirt_size}
-            </ErrorMessage>
-          </div>
+          <FormikTextField
+            label="ที่อยู่"
+            name="address"
+            required
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+            errors={formik.errors.address}
+            touched={formik.touched.address}
+            value={formik.values.address}
+          />
+          <FormikTextField
+            label="วิธีการเดินทางมามหาวิทยาลัย"
+            name="travel"
+            required
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+            errors={formik.errors.travel}
+            touched={formik.touched.travel}
+            value={formik.values.travel}
+          />
+          <FormikSelect
+            items={shirtSizeChoices}
+            label="ไซส์เสื้อ"
+            placeholder="กรุณาเลือกไซส์เสื้อ"
+            required
+            errors={formik.errors.shirt_size}
+            touched={formik.touched.shirt_size}
+            onSelect={(value: string) => formik.setFieldValue('shirt_size', value)}
+          />
         </div>
 
         <div className={styles.inputGroup}>
-          <div>
-            <Label name="อาหารที่แพ้ (ถ้ามี)" htmlFor="food_allergy" />
-            <TextField.Input
-              name="food_allergy"
-              type="text"
-              id="food_allergy"
-              onBlur={formik.handleBlur}
-              onChange={formik.handleChange}
-              value={formik.values.food_allergy}
-            />
-          </div>
-          <div>
-            <Label name="อาหารที่ชอบ (ถ้ามี)" htmlFor="favorite_food" />
-            <TextField.Input
-              name="favorite_food"
-              type="text"
-              id="favorite_food"
-              placeholder="เช่น ฮาลาล, มังสวิรัติ, เจ, อื่น ๆ"
-              onBlur={formik.handleBlur}
-              onChange={formik.handleChange}
-              value={formik.values.favorite_food}
-            />
-          </div>
-          <div>
-            <Label name="โรคประจำตัว (ถ้ามี)" htmlFor="disease" />
-            <TextField.Input
-              name="disease"
-              type="text"
-              id="disease"
-              onBlur={formik.handleBlur}
-              onChange={formik.handleChange}
-              value={formik.values.disease}
-            />
-          </div>
+          <FormikTextField
+            label="อาหารที่แพ้ (ถ้ามี)"
+            name="food_allergy"
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+            value={formik.values.food_allergy}
+          />
+          <FormikTextField
+            label="อาหารที่ชอบ (ถ้ามี)"
+            name="favorite_food"
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+            value={formik.values.favorite_food}
+          />
+          <FormikTextField
+            label="โรคประจำตัว (ถ้ามี)"
+            name="disease"
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+            value={formik.values.disease}
+          />
         </div>
 
         <div className={styles.inputGroup}>
-          <div>
-            <Label name="ยาประจำตัว (ถ้ามี)" htmlFor="personal_drug" />
-            <TextField.Input
-              name="personal_drug"
-              type="text"
-              id="personal_drug"
-              onBlur={formik.handleBlur}
-              onChange={formik.handleChange}
-              value={formik.values.personal_drug}
-            />
-            <ErrorMessage>
-              {formik.errors.personal_drug && formik.touched.personal_drug && formik.errors.personal_drug}
-            </ErrorMessage>
-          </div>
-          <div>
-            <Label name="ยาที่แพ้ (ถ้ามี)" htmlFor="drug_allergy" />
-            <TextField.Input
-              name="drug_allergy"
-              type="text"
-              id="drug_allergy"
-              onBlur={formik.handleBlur}
-              onChange={formik.handleChange}
-              value={formik.values.drug_allergy}
-            />
-            <ErrorMessage>
-              {formik.errors.drug_allergy && formik.touched.drug_allergy && formik.errors.drug_allergy}
-            </ErrorMessage>
-          </div>
-          <div className={styles.selection}>
-            <Label name="สิทธิการรักษา" htmlFor="insurance" required />
-            <Select
-              items={insuranceChoices}
-              placeholder="กรุณาเลือกสิทธิการรักษา"
-              onSelect={(value: string) => formik.setFieldValue('insurance', value)}
-            />
-            <ErrorMessage>
-              {formik.errors.insurance && formik.touched.insurance && formik.errors.insurance}
-            </ErrorMessage>
-          </div>
+          <FormikTextField
+            label="ยาประจำตัว (ถ้ามี)"
+            name="personal_drug"
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+            value={formik.values.personal_drug}
+          />
+          <FormikTextField
+            label="ยาที่แพ้ (ถ้ามี)"
+            name="drug_allergy"
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+            value={formik.values.drug_allergy}
+          />
+          <FormikSelect
+            items={insuranceChoices}
+            label="สิทธิการรักษา"
+            placeholder="กรุณาเลือกสิทธิการรักษา"
+            required
+            errors={formik.errors.insurance}
+            touched={formik.touched.insurance}
+            onSelect={(value: string) => formik.setFieldValue('insurance', value)}
+          />
         </div>
 
         <div style={{ margin: '20px 0' }}>
