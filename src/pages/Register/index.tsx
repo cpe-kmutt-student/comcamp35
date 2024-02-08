@@ -32,7 +32,13 @@ const Register: React.FC = (): JSX.Element => {
 
   return (
     <div className={styles.registerPage}>
-      <Flex direction="row" justify="between" align="center" style={{ marginTop: '8rem' }}>
+      <Flex
+        direction={{ initial: 'column', sm: 'row' }}
+        justify={{ initial: 'center', sm: 'between' }}
+        align="center"
+        gap={{ initial: '5', sm: undefined }}
+        style={{ marginTop: '8rem' }}
+      >
         <Flex className={styles.profile} align="center" gap="5">
           <Avatar src={auth.profile_url} fallback={auth.email.substring(0, 3)} size="5" radius="large" />
           <div>{auth.email}</div>
