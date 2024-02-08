@@ -1,0 +1,9 @@
+.footer {
+  z-index: 1;
+  color: var(--gray-a11);
+  width: 100%;
+  padding-block: 20px;
+  border-top: 1px solid #50505050;
+  backdrop-filter: blur(5px);
+  background-color: #1d093750;
+}

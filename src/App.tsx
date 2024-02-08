@@ -8,6 +8,7 @@ import NotFoundPage from './pages/NotFoundPage'
 import ProtectedRoute from './components/ProtectedRoute'
 import { Theme } from '@radix-ui/themes'
 import '@radix-ui/themes/styles.css'
+import Footer from './components/Footer'
 
 const App: React.FC = (): JSX.Element => {
   const location = useLocation()
@@ -31,6 +32,7 @@ const App: React.FC = (): JSX.Element => {
 
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      <Footer />
     </Theme>
   )
 }

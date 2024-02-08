@@ -9,7 +9,7 @@ const Contact: React.FC = () => {
         เลขที่ 126 ถ.ประชาอุทิศ แขวงบางมด เขตทุ่งครุ กรุงเทพฯ 10140
         <br></br>• Contect พี่ฟีฟ่า : 080 493 5928 พี่หมูเล็ก : 093 583 1518 พี่น้ำขิง : 061 506 6249 พี่พลอย : 097 940
         7172
-        <br></br>• Social Media Facebook: Comcamp KMUTT Instagram: comcamp.kmutt Tiktok: comcamp.kmutt
+        <br></br>• Social Media Facebook: ComCamp KMUTT Instagram: comcamp.kmutt Tiktok: comcamp.kmutt
       </p>
     </div>
   )
