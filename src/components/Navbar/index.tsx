@@ -38,6 +38,9 @@ const Navbar: React.FC = (): JSX.Element => {
             <Text className={styles.nav}>TIMELINE</Text>
             <Text className={styles.nav}>FAQ</Text>
             <Text className={styles.nav}>CONTACT</Text>
+            <Link to={REGISTER_PATH} className={styles.nav}>
+              <Text>REGISTRATION</Text>
+            </Link>
           </Flex>
         </div>
       ) : (

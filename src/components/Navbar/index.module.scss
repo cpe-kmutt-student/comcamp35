@@ -38,6 +38,8 @@
 
 .nav {
   cursor: pointer;
+  text-decoration: none;
+  color: #ffffff;
   transition: all 200ms;
 
   &:hover {
