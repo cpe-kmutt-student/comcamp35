@@ -48,7 +48,7 @@ const Navbar: React.FC = (): JSX.Element => {
             <Text className={styles.nav}>ไฮไลท์</Text>
             <Text className={styles.nav}>การเรียน</Text>
             <Text className={styles.nav}>คุณสมบัติ</Text>
-            <Text className={styles.nav}>เส้นเวลา</Text>
+            <Text className={styles.nav}>ช่วงเวลา</Text>
             <Text className={styles.nav}>คำถามที่พบบ่อย</Text>
             <Text className={styles.nav}>ช่องทางการติดต่อ</Text>
             {isTodayCampDay() && <NavRegisMobile />}
@@ -61,7 +61,7 @@ const Navbar: React.FC = (): JSX.Element => {
             <Text className={styles.nav}>ไฮไลท์</Text>
             <Text className={styles.nav}>การเรียน</Text>
             <Text className={styles.nav}>คุณสมบัติ</Text>
-            <Text className={styles.nav}>เส้นเวลา</Text>
+            <Text className={styles.nav}>ช่วงเวลา</Text>
             <Text className={styles.nav}>คำถามที่พบบ่อย</Text>
             <Text className={styles.nav}>ช่องทางการติดต่อ</Text>
           </Flex>
@@ -74,8 +74,8 @@ const Navbar: React.FC = (): JSX.Element => {
             {isTodayCampDay() && (
               <div className={styles.nav_desktop}>
                 {auth.is_authenticated ? (
-                  <Link to={REGISTER_PATH}>
-                    <Avatar src={auth.profile_url} fallback={auth.email.substring(0, 3)} size="3" radius="large" />
+                  <Link to={REGISTER_PATH} className={styles.avatar}>
+                    <Avatar src={auth.profile_url} fallback={auth.email.substring(0, 3)} size="2" radius="large" />
                   </Link>
                 ) : (
                   <RegisterButton active>ลงทะเบียน</RegisterButton>

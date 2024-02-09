@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './Hero.module.scss'
+import styles from './hero.module.scss'
 import RegisterButton from 'src/components/RegisterButton'
 import Logo from 'src/assets/logo.svg'
 import { useAuth } from 'src/context/auth'
