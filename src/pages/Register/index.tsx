@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { apiInstance } from 'src/lib/axios'
 import { Avatar, Box, Container, Flex, Heading } from '@radix-ui/themes'
 import SignOutButton from 'src/components/SignOutButton'
+import GuardianForm, { IGuardianForm } from 'src/components/GuardianForm'
 
 const Register: React.FC = (): JSX.Element => {
   const [currentStep, setCurrentStep] = useState<number>(0)
@@ -23,10 +24,24 @@ const Register: React.FC = (): JSX.Element => {
     }
   }
 
+  // const onGuardianFormSubmit = async (values: IGuardianForm) => {
+  //   setSubmit(true)
+
+  //   try {
+  //     await apiInstance.post('/form', values)
+  //     setCurrentStep(currentStep + 1)
+  //     setSubmit(false)
+  //   } catch (err) {
+  //     setSubmit(false)
+  //   }
+  // }
+
   const stepFilter = () => {
     switch (currentStep) {
       case 0:
         return <GeneralForm onSubmit={onGeneralFormSubmit} isSubmitting={isSubmitting} />
+      // case 1:
+      //   return <GuardianForm onSubmit={onGuardianFormSubmit} isSubmitting={isSubmitting} />
     }
   }
 
@@ -40,7 +55,7 @@ const Register: React.FC = (): JSX.Element => {
         style={{ marginTop: '8rem' }}
       >
         <Flex className={styles.profile} align="center" gap="5">
-          <Avatar src={auth.profile_url} fallback={auth.email.substring(0, 3)} size="5" radius="large" />
+          <Avatar src={auth.profile_url} fallback={auth.email?.substring(0, 3)} size="5" radius="large" />
           <div>{auth.email}</div>
         </Flex>
         <SignOutButton active>ออกจากระบบ</SignOutButton>
