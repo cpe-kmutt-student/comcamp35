@@ -1,8 +1,9 @@
 import React from 'react'
+import styles from './highlight.module.scss'
 
 const CampHighlight: React.FC = () => {
   return (
-    <div>
+    <div className={styles.highlight}>
       <h2>Highlight</h2>
       <h3>- กิจกรรมสันทนาการ</h3>
       <p>

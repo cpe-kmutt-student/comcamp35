@@ -1,5 +1,6 @@
 import React from 'react'
-import styles from './Condition.module.scss'
+import styles from './condition.module.scss'
+import { Text } from '@radix-ui/themes'
 
 const Condition: React.FC = () => {
   return (
@@ -16,11 +17,11 @@ const Condition: React.FC = () => {
         </ul>
       </div>
       <div className={styles.condition2}>
-        <p>
+        <Text>
           คุณสมบัติเพิ่มเติม : ม.ปลาย ศึกษาเกี่ยวกับสายวิทยาศาสตร์ คณิตศาสตร์ และ คอมพิวเตอร์ (หรือสายอื่น ๆ ที่
           เกี่ยวข้องกับ คอมพิวเตอร์และเทคโนโลยี) หรือ ปวช. ในสาขาคอมพิวเตอร์ธุรกิจ, สาขาช่างไฟฟ้ากำลัง (อิเล็กทรอนิกส์),
           สาขาเมคคาทรอนิกส์ และหุ่นยนต์ (หรือสายอื่น ๆ ที่เกี่ยวข้องกับคอมพิวเตอร์และเทคโนโลยี)
-        </p>
+        </Text>
       </div>
     </div>
   )
