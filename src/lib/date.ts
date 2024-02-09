@@ -1,5 +1,5 @@
-const START_DATE = '2024/04/07'
-const END_DATE = '2024/04/11'
+const START_DATE = '2024/02/01'
+const END_DATE = '2024/03/10'
 
 const today = new Date().getTime()
 const startDate = new Date(START_DATE).getTime()

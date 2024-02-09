@@ -4,9 +4,10 @@ import RegisterButton from '../RegisterButton'
 import Logo from 'src/assets/logo.svg'
 import { Link } from 'react-router-dom'
 import { BASE_PATH, REGISTER_PATH } from 'src/constants/router'
-import { Button, Flex, Text } from '@radix-ui/themes'
+import { Avatar, Button, Flex, IconButton, Text } from '@radix-ui/themes'
 import { HamburgerMenuIcon, Cross1Icon } from '@radix-ui/react-icons'
 import { useState } from 'react'
+import { isTodayCampDay } from 'src/lib/date'
 
 const Navbar: React.FC = (): JSX.Element => {
   const [isExpand, setExpand] = useState<boolean>(false)
@@ -21,54 +22,66 @@ const Navbar: React.FC = (): JSX.Element => {
     )
   }
 
+  const NavRegisMobile = () => {
+    return auth.is_authenticated ? (
+      <Link to={REGISTER_PATH} className={styles.nav}>
+        <Text className={styles.nav}>ไปยังหน้าลงทะเบียน</Text>
+      </Link>
+    ) : (
+      <a href={import.meta.env.VITE_BACKEND_URL + '/auth/google'} className={styles.nav}>
+        <Text className={styles.nav}>ลงทะเบียน</Text>
+      </a>
+    )
+  }
+
   return (
     <>
       {isExpand ? (
         <div className={styles.nav_menu}>
           <Flex justify="between" align="center" direction="row" style={{ padding: '5px 20px' }}>
             <Image />
-            <Button size="3" variant="soft" onClick={() => setExpand(false)}>
+            <IconButton size="3" color="gray" variant="soft" highContrast onClick={() => setExpand(false)}>
               <Cross1Icon />
-            </Button>
+            </IconButton>
           </Flex>
           <Flex gap="5" justify="center" align="center" direction="column" style={{ padding: '20px 0' }}>
-            <Text className={styles.nav}>HIGHLIGHTS</Text>
-            <Text className={styles.nav}>LEARNING</Text>
-            <Text className={styles.nav}>CONDITIONS</Text>
-            <Text className={styles.nav}>TIMELINE</Text>
-            <Text className={styles.nav}>FAQ</Text>
-            <Text className={styles.nav}>CONTACT</Text>
-            <Link to={REGISTER_PATH} className={styles.nav}>
-              <Text>REGISTRATION</Text>
-            </Link>
+            <Text className={styles.nav}>ไฮไลท์</Text>
+            <Text className={styles.nav}>การเรียน</Text>
+            <Text className={styles.nav}>คุณสมบัติ</Text>
+            <Text className={styles.nav}>เส้นเวลา</Text>
+            <Text className={styles.nav}>คำถามที่พบบ่อย</Text>
+            <Text className={styles.nav}>ช่องทางการติดต่อ</Text>
+            {isTodayCampDay() && <NavRegisMobile />}
           </Flex>
         </div>
       ) : (
         <Flex justify="between" align="center" className={styles.navbar}>
           <Image />
           <Flex gap="5" className={styles.nav_desktop}>
-            <Text className={styles.nav}>HIGHLIGHTS</Text>
-            <Text className={styles.nav}>LEARNING</Text>
-            <Text className={styles.nav}>CONDITIONS</Text>
-            <Text className={styles.nav}>TIMELINE</Text>
-            <Text className={styles.nav}>FAQ</Text>
-            <Text className={styles.nav}>CONTACT</Text>
+            <Text className={styles.nav}>ไฮไลท์</Text>
+            <Text className={styles.nav}>การเรียน</Text>
+            <Text className={styles.nav}>คุณสมบัติ</Text>
+            <Text className={styles.nav}>เส้นเวลา</Text>
+            <Text className={styles.nav}>คำถามที่พบบ่อย</Text>
+            <Text className={styles.nav}>ช่องทางการติดต่อ</Text>
           </Flex>
           <div>
             <div className={styles.nav_mobile}>
-              <Button size="3" variant="soft" onClick={() => setExpand(true)}>
+              <IconButton size="3" color="gray" variant="soft" highContrast onClick={() => setExpand(true)}>
                 <HamburgerMenuIcon />
-              </Button>
+              </IconButton>
             </div>
-            <div className={styles.nav_desktop}>
-              {auth.is_authenticated ? (
-                <RegisterButton active to={REGISTER_PATH}>
-                  ไปยังหน้าสมัคร
-                </RegisterButton>
-              ) : (
-                <RegisterButton active>ลงทะเบียน</RegisterButton>
-              )}
-            </div>
+            {isTodayCampDay() && (
+              <div className={styles.nav_desktop}>
+                {auth.is_authenticated ? (
+                  <Link to={REGISTER_PATH}>
+                    <Avatar src={auth.profile_url} fallback={auth.email.substring(0, 3)} size="3" radius="large" />
+                  </Link>
+                ) : (
+                  <RegisterButton active>ลงทะเบียน</RegisterButton>
+                )}
+              </div>
+            )}
           </div>
         </Flex>
       )}

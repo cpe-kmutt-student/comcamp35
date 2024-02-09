@@ -1,26 +1,26 @@
 import React from 'react'
 import styles from './about.module.scss'
-import { Flex, Heading, Text } from '@radix-ui/themes'
+import { Flex, Heading } from '@radix-ui/themes'
 
 const About: React.FC = () => {
   return (
     <Flex
       direction={{ initial: 'column-reverse', md: 'row' }}
       justify={{ initial: 'center', md: 'between' }}
-      gap="9"
+      gap={{ initial: '5', md: '9' }}
       align="center"
       className={styles.about}
     >
       <div>
         <Heading size={{ initial: '8', md: '9' }} className="title" align={{ initial: 'center', md: 'left' }}>
-          What Is ComCamp
+          What is ComCamp?
         </Heading>
-        <Text className={styles.paragraph} size={{ initial: '5', md: '6' }}>
+        <p className={styles.paragraph}>
           โครงการฝึกอบรมเชิงปฏิบัติการคอมพิวเตอร์ หรือ ComCamp คือค่ายที่ทางภาควิชาวิศวกรรมคอมพิวเตอร์
           มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรีได้จัดขึ้น โดยภายในค่ายจะมีทั้งการแนะแนวการศึกษาต่อและกิจกรรมต่าง ๆ
           เพื่อให้น้อง ๆ ได้เข้ามารู้จักกับภาควิชาวิศวกรรมคอมพิวเตอร์มากขึ้น ซึ่งจะทำให้น้อง ๆ
           ได้รับความรู้และแรงบันดาลใจ พร้อมกับความสนุกสนานจากกิจกรรมสันทนาการสุดพิเศษจากพี่ ๆ CPE อีกด้วย
-        </Text>
+        </p>
       </div>
       <div>
         <img
