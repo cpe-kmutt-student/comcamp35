@@ -7,15 +7,15 @@ const About: React.FC = () => {
     <Flex
       direction={{ initial: 'column-reverse', md: 'row' }}
       justify={{ initial: 'center', md: 'between' }}
-      gap="5"
+      gap="9"
       align="center"
       className={styles.about}
     >
       <div>
-        <Heading size="8" className="title" align={{ initial: 'center', md: 'left' }}>
+        <Heading size={{ initial: '8', md: '9' }} className="title" align={{ initial: 'center', md: 'left' }}>
           What Is ComCamp
         </Heading>
-        <Text className={styles.paragraph}>
+        <Text className={styles.paragraph} size={{ initial: '5', md: '6' }}>
           โครงการฝึกอบรมเชิงปฏิบัติการคอมพิวเตอร์ หรือ ComCamp คือค่ายที่ทางภาควิชาวิศวกรรมคอมพิวเตอร์
           มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรีได้จัดขึ้น โดยภายในค่ายจะมีทั้งการแนะแนวการศึกษาต่อและกิจกรรมต่าง ๆ
           เพื่อให้น้อง ๆ ได้เข้ามารู้จักกับภาควิชาวิศวกรรมคอมพิวเตอร์มากขึ้น ซึ่งจะทำให้น้อง ๆ
@@ -24,9 +24,10 @@ const About: React.FC = () => {
       </div>
       <div>
         <img
-          src="https://assets-prd.ignimgs.com/2022/12/29/bocchi-blogroll-1672352846343.jpg"
-          alt="image"
-          width={500}
+          src="https://i1.sndcdn.com/artworks-z6RnczcFGweMGmYd-SMU6eQ-t500x500.jpg"
+          alt="about"
+          width={350}
+          height={350}
         />
       </div>
     </Flex>
