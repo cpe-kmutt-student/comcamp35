@@ -1,5 +1,9 @@
 .main {
   min-height: 100dvh;
+  background-color: #150627;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .Header {
@@ -11,8 +15,30 @@
 }
 
 .condition {
-  padding: 0 70px;
+  padding: 0 150px;
   margin-bottom: 30px;
   font-size: medium;
   font-weight: 600;
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
+  justify-content: center;
+  column-gap: 24px;
+  row-gap: 24px;
+}
+
+.condition div {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  border: 2px solid #333;
+  height: 200px;
+  width: 100%;
+  padding: 30px;
+}
+
+.condition2 {
+  font-size: medium;
+  font-weight: 600;
+  text-align: center;
 }
