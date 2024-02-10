@@ -1,19 +1,38 @@
 .about {
   min-height: 100dvh;
-  padding: 0 240px;
+  padding: 0 10%;
 
-  img {
-    border-radius: 20px;
+  .image {
+    position: relative;
+    user-select: none;
+    pointer-events: none;
+
+    .bg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border-radius: 50%;
+      width: 320px;
+      height: 320px;
+      background-image: linear-gradient(90deg, rgba(20, 52, 100, 1) 50%, rgba(20, 52, 100, 1) 50%);
+      filter: blur(100px);
+      transform: translate(-50%, -50%);
+
+      @media screen and (max-width: 280px) {
+        display: none;
+      }
+    }
+
+    img {
+      isolation: isolate;
+      border-radius: 20px;
+    }
   }
 
   .paragraph {
     font-size: 18px;
     text-align: left;
     text-indent: 50px;
-  }
-
-  @media screen and (max-width: 1300px) {
-    padding: 24px;
   }
 
   @media screen and (max-width: 1020px) {
@@ -26,9 +45,12 @@
 
   @media screen and (max-width: 512px) {
     text-align: center;
-    img {
-      width: 80%;
-      height: 80%;
+
+    .image {
+      img {
+        width: 80%;
+        height: 80%;
+      }
     }
   }
 }

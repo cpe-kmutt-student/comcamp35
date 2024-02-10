@@ -199,7 +199,7 @@ const GeneralForm: React.FC<Props> = ({ onSubmit, isSubmitting }: Props) => {
             value={formik.values.food_allergy}
           />
           <FormikTextField
-            label="อาหารที่ต้องการเป็นพิเศษ (ถ้ามี)"
+            label="ข้อจำกัดด้านอาหาร (ถ้ามี)"
             name="special_food_needs"
             placeholder="Ex. ฮาลาล, มังสวิรัติ, เจ, อื่น ๆ"
             onBlur={formik.handleBlur}

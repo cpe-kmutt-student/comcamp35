@@ -22,7 +22,8 @@ const About: React.FC = () => {
           ได้รับความรู้และแรงบันดาลใจ พร้อมกับความสนุกสนานจากกิจกรรมสันทนาการสุดพิเศษจากพี่ ๆ CPE อีกด้วย
         </p>
       </div>
-      <div>
+      <div className={styles.image}>
+        <div className={styles.bg} />
         <img
           src="https://i1.sndcdn.com/artworks-z6RnczcFGweMGmYd-SMU6eQ-t500x500.jpg"
           alt="about"

@@ -34,7 +34,7 @@
     .logo {
       height: auto;
       width: 640px;
-      position: relative;
+      isolation: isolate;
     }
 
     .subText {
