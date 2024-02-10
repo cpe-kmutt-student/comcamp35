@@ -9,6 +9,7 @@ import ProtectedRoute from './components/ProtectedRoute'
 import { Theme } from '@radix-ui/themes'
 import '@radix-ui/themes/styles.css'
 import Footer from './components/Footer'
+import { Toaster } from 'react-hot-toast'
 
 const App: React.FC = (): JSX.Element => {
   const location = useLocation()
@@ -23,6 +24,7 @@ const App: React.FC = (): JSX.Element => {
   }
   return (
     <Theme appearance="dark" accentColor="amber" grayColor="slate" scaling="95%" panelBackground="translucent">
+      <Toaster />
       {navbarFilter()}
       <Routes>
         <Route path={BASE_PATH} element={<Home />} />
