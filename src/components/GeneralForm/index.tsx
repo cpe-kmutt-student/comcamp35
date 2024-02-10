@@ -27,7 +27,7 @@ export interface IGeneralForm {
   shirt_size: string
   can_bring_laptop: boolean
   food_allergy?: string
-  favorite_food?: string
+  special_food_needs?: string
   disease?: string
   personal_drug?: string
   drug_allergy?: string
@@ -47,7 +47,7 @@ const initialValues: IGeneralForm = {
   shirt_size: '',
   can_bring_laptop: false,
   food_allergy: '',
-  favorite_food: '',
+  special_food_needs: '',
   disease: '',
   personal_drug: '',
   drug_allergy: '',
@@ -199,11 +199,12 @@ const GeneralForm: React.FC<Props> = ({ onSubmit, isSubmitting }: Props) => {
             value={formik.values.food_allergy}
           />
           <FormikTextField
-            label="อาหารที่ชอบ (ถ้ามี)"
-            name="favorite_food"
+            label="อาหารที่ต้องการเป็นพิเศษ (ถ้ามี)"
+            name="special_food_needs"
+            placeholder="Ex. ฮาลาล, มังสวิรัติ, เจ, อื่น ๆ"
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
-            value={formik.values.favorite_food}
+            value={formik.values.special_food_needs}
           />
           <FormikTextField
             label="โรคประจำตัว (ถ้ามี)"
