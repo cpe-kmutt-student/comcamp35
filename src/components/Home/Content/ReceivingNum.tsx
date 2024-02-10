@@ -1,6 +1,6 @@
 import React from 'react'
 
-// TODO: Might consider merge this with other component
+// todo: Might consider merge this with other component
 
 const ReceivingNum: React.FC = () => {
   return (
