@@ -9,11 +9,12 @@ type Props = {
   items: ISelectItem[]
   placeholder?: string
   onSelect?: (value: string) => void
+  value?: string
 }
 
-const Select: React.FC<Props> = ({ items, placeholder, onSelect }: Props): JSX.Element => {
+const Select: React.FC<Props> = ({ items, placeholder, onSelect, value }: Props): JSX.Element => {
   return (
-    <RDSelect.Root onValueChange={onSelect}>
+    <RDSelect.Root onValueChange={onSelect} value={value}>
       <RDSelect.Trigger placeholder={placeholder} />
       <RDSelect.Content>
         <RDSelect.Group>

@@ -1,11 +1,12 @@
 import React from 'react'
 import styles from './index.module.scss'
-import { Button } from '@radix-ui/themes'
+import { Button, Flex, Heading, Separator } from '@radix-ui/themes'
 import { useFormik } from 'formik'
 import FormikTextField from '../Form/Formik/Input'
 
 type Props = {
   onSubmit: (values: IGuardianForm) => void
+  goBack: () => void
   isSubmitting: boolean
 }
 
@@ -43,7 +44,7 @@ const validate = (values: IGuardianForm) => {
   return errors
 }
 
-const GuardianForm: React.FC<Props> = ({ onSubmit, isSubmitting }: Props) => {
+const GuardianForm: React.FC<Props> = ({ onSubmit, isSubmitting, goBack }: Props) => {
   const formik = useFormik({
     initialValues,
     validate,
@@ -53,6 +54,10 @@ const GuardianForm: React.FC<Props> = ({ onSubmit, isSubmitting }: Props) => {
   return (
     <div className={styles.GenForm}>
       <form onSubmit={formik.handleSubmit}>
+        <Heading size="5" mt="3">
+          ข้อมูลผู้ปกครอง
+        </Heading>
+        <Separator my="4" size="4" />
         <div className={styles.inputGroup}>
           <FormikTextField
             label="ชื่อ"
@@ -85,7 +90,7 @@ const GuardianForm: React.FC<Props> = ({ onSubmit, isSubmitting }: Props) => {
             value={formik.values.relation}
           />
           <FormikTextField
-            label="อีเมลล์"
+            label="อีเมลล์ (ถ้ามี)"
             name="email"
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
@@ -93,6 +98,10 @@ const GuardianForm: React.FC<Props> = ({ onSubmit, isSubmitting }: Props) => {
           />
         </div>
 
+        <Heading size="5" mt="5">
+          ข้อมูลผู้ปกครองที่ติดต่อได้ในกรณีฉุกเฉิน
+        </Heading>
+        <Separator my="4" size="4" />
         <div className={styles.inputGroup}>
           <FormikTextField
             label="ชื่อผู้ติดต่อฉุกเฉิน"
@@ -125,20 +134,22 @@ const GuardianForm: React.FC<Props> = ({ onSubmit, isSubmitting }: Props) => {
             value={formik.values.emergency_relation}
           />
           <FormikTextField
-            label="อีเมลล์ของผู้ติดต่อฉุกเฉิน"
+            label="อีเมลล์ของผู้ติดต่อฉุกเฉิน (ถ้ามี)"
             name="emergency_email"
-            required
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
             value={formik.values.emergency_email}
           />
         </div>
 
-        <div style={{ textAlign: 'right' }}>
+        <Flex justify="end" align="center" gap="4">
+          <Button onClick={goBack} variant="outline">
+            ย้อนกลับ
+          </Button>
           <Button type="submit" disabled={isSubmitting}>
             ถัดไป
           </Button>
-        </div>
+        </Flex>
       </form>
     </div>
   )

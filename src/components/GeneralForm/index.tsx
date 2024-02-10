@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback, useEffect } from 'react'
 import styles from './index.module.scss'
 import { Button, Checkbox, Flex } from '@radix-ui/themes'
 import { useFormik } from 'formik'
@@ -8,6 +8,7 @@ import DatePicker from '../Form/DatePicker'
 import { insuranceChoices, prefixChoices, shirtSizeChoices } from './utils/data'
 import FormikSelect from '../Form/Formik/Select'
 import FormikTextField from '../Form/Formik/Input'
+import { apiInstance } from 'src/lib/axios'
 
 type Props = {
   onSubmit: (values: IGeneralForm) => void
@@ -77,6 +78,38 @@ const GeneralForm: React.FC<Props> = ({ onSubmit, isSubmitting }: Props) => {
     onSubmit,
   })
 
+  const getGeneralInfo = useCallback(async () => {
+    const { data: userInfo } = await apiInstance.get('/users/info')
+    const { data: generalInfo } = await apiInstance.get('/form')
+
+    const newValues: IGeneralForm = {
+      prefix: userInfo.prefix,
+      first_name: userInfo.first_name,
+      middle_name: userInfo.middle_name,
+      last_name: userInfo.last_name,
+      nickname: userInfo.nickname,
+      birth_date: new Date(generalInfo.birth_date),
+      tel: generalInfo.tel,
+      address: generalInfo.address,
+      travel: generalInfo.travel,
+      shirt_size: generalInfo.shirt_size,
+      can_bring_laptop: generalInfo.can_bring_laptop,
+      food_allergy: generalInfo.food_allergy,
+      special_food_needs: generalInfo.special_food_needs,
+      disease: generalInfo.disease,
+      personal_drug: generalInfo.personal_drug,
+      drug_allergy: generalInfo.drug_allergy,
+      insurance: generalInfo.insurance,
+    }
+
+    formik.setValues(newValues)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  useEffect(() => {
+    getGeneralInfo()
+  }, [getGeneralInfo])
+
   return (
     <div className={styles.GenForm}>
       <form onSubmit={formik.handleSubmit}>
@@ -85,6 +118,7 @@ const GeneralForm: React.FC<Props> = ({ onSubmit, isSubmitting }: Props) => {
             label="คำนำหน้าชื่อ"
             items={prefixChoices}
             placeholder="กรุณาเลือกคำนำหน้าชื่อ"
+            value={formik.values.prefix}
             required
             errors={formik.errors.prefix}
             touched={formik.touched.prefix}
@@ -183,6 +217,7 @@ const GeneralForm: React.FC<Props> = ({ onSubmit, isSubmitting }: Props) => {
             items={shirtSizeChoices}
             label="ไซส์เสื้อ"
             placeholder="กรุณาเลือกไซส์เสื้อ"
+            value={formik.values.shirt_size}
             required
             errors={formik.errors.shirt_size}
             touched={formik.touched.shirt_size}
@@ -234,6 +269,7 @@ const GeneralForm: React.FC<Props> = ({ onSubmit, isSubmitting }: Props) => {
             items={insuranceChoices}
             label="สิทธิการรักษา"
             placeholder="กรุณาเลือกสิทธิการรักษา"
+            value={formik.values.insurance}
             required
             errors={formik.errors.insurance}
             touched={formik.touched.insurance}
@@ -246,6 +282,7 @@ const GeneralForm: React.FC<Props> = ({ onSubmit, isSubmitting }: Props) => {
             <Checkbox
               name="can_bring_laptop"
               id="can_bring_laptop"
+              checked={!!formik.values.can_bring_laptop}
               onCheckedChange={(checked: boolean) => formik.setFieldValue('can_bring_laptop', checked)}
             />
             สามารถนำโน๊ตบุ๊คมาได้

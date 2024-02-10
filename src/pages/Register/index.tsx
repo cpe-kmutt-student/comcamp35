@@ -6,6 +6,7 @@ import { apiInstance } from 'src/lib/axios'
 import { Avatar, Box, Container, Flex, Heading } from '@radix-ui/themes'
 import SignOutButton from 'src/components/SignOutButton'
 import { errorAlert, savedAlert } from 'src/lib/toast'
+import GuardianForm, { IGuardianForm } from 'src/components/GuardianForm'
 
 const Register: React.FC = (): JSX.Element => {
   const [currentStep, setCurrentStep] = useState<number>(0)
@@ -26,24 +27,28 @@ const Register: React.FC = (): JSX.Element => {
     }
   }
 
-  // const onGuardianFormSubmit = async (values: IGuardianForm) => {
-  //   setSubmit(true)
+  const onGuardianFormSubmit = async (values: IGuardianForm) => {
+    setSubmit(true)
 
-  //   try {
-  //     await apiInstance.post('/form', values)
-  //     setCurrentStep(currentStep + 1)
-  //     setSubmit(false)
-  //   } catch (err) {
-  //     setSubmit(false)
-  //   }
-  // }
+    try {
+      await apiInstance.post('/guardian', values)
+      setCurrentStep(currentStep + 1)
+      setSubmit(false)
+    } catch (err) {
+      setSubmit(false)
+    }
+  }
+
+  const goBack = () => {
+    setCurrentStep(currentStep - 1)
+  }
 
   const stepFilter = () => {
     switch (currentStep) {
       case 0:
         return <GeneralForm onSubmit={onGeneralFormSubmit} isSubmitting={isSubmitting} />
-      // case 1:
-      //   return <GuardianForm onSubmit={onGuardianFormSubmit} isSubmitting={isSubmitting} />
+      case 1:
+        return <GuardianForm onSubmit={onGuardianFormSubmit} goBack={goBack} isSubmitting={isSubmitting} />
     }
   }
 

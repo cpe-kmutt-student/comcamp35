@@ -11,6 +11,7 @@ type Props = {
   placeholder?: string
   errors?: string
   touched?: boolean
+  value?: string
 }
 
 const FormikSelect: React.FC<Props> = ({
@@ -21,11 +22,12 @@ const FormikSelect: React.FC<Props> = ({
   onSelect,
   errors,
   touched,
+  value,
 }: Props): JSX.Element => {
   return (
     <div className={styles.selection}>
       <Label name={label} htmlFor="first_name" required={required} />
-      <Select items={items} placeholder={placeholder} onSelect={onSelect} />
+      <Select items={items} placeholder={placeholder} onSelect={onSelect} value={value} />
       <ErrorMessage>{errors && touched && errors}</ErrorMessage>
     </div>
   )
