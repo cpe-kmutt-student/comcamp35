@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { apiInstance } from 'src/lib/axios'
 import { Avatar, Box, Container, Flex, Heading } from '@radix-ui/themes'
 import SignOutButton from 'src/components/SignOutButton'
-import GuardianForm, { IGuardianForm } from 'src/components/GuardianForm'
+// import GuardianForm, { IGuardianForm } from 'src/components/GuardianForm'
 
 const Register: React.FC = (): JSX.Element => {
   const [currentStep, setCurrentStep] = useState<number>(0)
