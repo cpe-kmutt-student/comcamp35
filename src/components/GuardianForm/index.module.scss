@@ -1,0 +1,20 @@
+.GenForm {
+    .inputGroup {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 15px;
+        margin-bottom: 10px;
+    }
+
+    .selection {
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    @media screen and (max-width: 512px) {
+        .inputGroup {
+            grid-template-columns: 1fr;
+        }
+    }
+}
