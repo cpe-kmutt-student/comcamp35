@@ -1,9 +1,22 @@
 import React from 'react'
-import styles from './Hero.module.scss'
+import styles from './hero.module.scss'
 import RegisterButton from 'src/components/RegisterButton'
 import Logo from 'src/assets/logo.svg'
 import { useAuth } from 'src/context/auth'
 import { Heading, Text } from '@radix-ui/themes'
+import { isTodayCampDay } from 'src/lib/date'
+
+const quotes: string[] = [
+  'รักเด็ก',
+  'โลลิจงเจริญ',
+  'เห็นใจกราฟิก',
+  'เห็นใจเทคนิค',
+  'คุกกี้',
+  'CPE37',
+  'มั่วสุมแข็งแกร่ง',
+]
+
+const quotesIndex = Math.floor(Math.random() * quotes.length)
 
 const Hero: React.FC = () => {
   const { auth } = useAuth()
@@ -13,9 +26,10 @@ const Hero: React.FC = () => {
       <div className={styles.image}>
         <div className={styles.logoBg} />
         <img className={styles.logo} alt="logo" src={Logo} />
+        <div className={styles.subText}>{quotes[quotesIndex]}</div>
       </div>
       <Heading size="9" className={[styles.campDate, 'title'].join(' ')}>
-        7-11 April 2024
+        {isTodayCampDay() ? '7-11 April 2024' : 'Coming Soon'}
       </Heading>
       <Text className={styles.content}>
         เมื่อโลกโปรเเกรมมอนกำลังจะล่มสลาย<br></br>
@@ -23,7 +37,7 @@ const Hero: React.FC = () => {
         ! <br />
         เพื่อรวมพลังกันกอบกู้โลกใบนี้ให้รอดพ้นจากเหล่าวายร้าย !!
       </Text>
-      {!auth.is_authenticated && <RegisterButton active>ลงทะเบียน</RegisterButton>}
+      {!auth.is_authenticated && isTodayCampDay() && <RegisterButton active>ลงทะเบียน</RegisterButton>}
     </div>
   )
 }

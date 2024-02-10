@@ -1,40 +1,61 @@
-import { IInsurance, IPrefix, IShirtSize, InsuranceEnum, PrefixEnum, ShirtSizeEnum } from './type'
+import { ISelectItem } from 'src/components/Form/Select'
+import { IInsurance, InsuranceEnum } from './type'
 
-export const prefixChoices: IPrefix[] = [
+export const prefixChoices: ISelectItem[] = [
   {
-    label: PrefixEnum.MR,
-    value: PrefixEnum.MR,
+    label: 'นาย',
+    value: 'นาย',
   },
   {
-    label: PrefixEnum.MRS,
-    value: PrefixEnum.MRS,
-  },
-  {
-    label: PrefixEnum.OTHER,
-    value: PrefixEnum.OTHER,
+    label: 'นางสาว',
+    value: 'นางสาว',
   },
 ]
 
-export const shirtSizeChoices: IShirtSize[] = [
+export const shirtSizeChoices: ISelectItem[] = [
   {
     label: 'S',
-    value: ShirtSizeEnum.S,
+    value: 'S',
   },
   {
     label: 'M',
-    value: ShirtSizeEnum.M,
+    value: 'M',
   },
   {
     label: 'L',
-    value: ShirtSizeEnum.L,
+    value: 'L',
   },
   {
     label: 'XL',
-    value: ShirtSizeEnum.XL,
+    value: 'XL',
   },
   {
     label: '2XL',
-    value: ShirtSizeEnum.XXL,
+    value: '2XL',
+  },
+  {
+    label: '3XL',
+    value: '3XL',
+  },
+  {
+    label: '4XL',
+    value: '4XL',
+  },
+  {
+    label: '5XL',
+    value: '5XL',
+  },
+  {
+    label: '6XL',
+    value: '6XL',
+  },
+  {
+    label: '7XL',
+    value: '7XL',
+  },
+  {
+    label: '8XL',
+    value: '8XL',
   },
 ]
 

@@ -1,0 +1,112 @@
+.hero {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 100dvh;
+  background-color: #150627;
+  background-image: url('../../../assets/background.gif');
+  background-position: bottom;
+  background-size: cover;
+
+  .image {
+    position: relative;
+    animation: up-down 2s ease-in-out infinite alternate;
+    user-select: none;
+    pointer-events: none;
+
+    .logoBg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border-radius: 50%;
+      width: 320px;
+      height: 320px;
+      background-image: linear-gradient(38deg, rgba(20, 52, 100, 1) 69%, rgba(249, 163, 27, 1) 81%);
+      filter: blur(100px);
+      transform: translate(-50%, -50%);
+
+      @media screen and (max-width: 280px) {
+        display: none;
+      }
+    }
+
+    .logo {
+      height: auto;
+      width: 640px;
+      isolation: isolate;
+    }
+
+    .subText {
+      position: absolute;
+      bottom: 50px;
+      right: 20px;
+      color: #ffd541;
+      animation: scale 0.3s ease-in-out infinite alternate;
+      font-size: 28px;
+      font-family: 'Zftermin', sans-serif !important;
+    }
+  }
+
+  .campDate {
+    position: relative;
+    white-space: nowrap;
+    font-size: 64px;
+    z-index: 5;
+    margin-block: 0 12px;
+  }
+
+  .content {
+    font-size: 20px;
+    text-align: center;
+    width: 548px;
+    margin-block: 0 24px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .image {
+      .subText {
+        display: none;
+      }
+
+      .logo {
+        width: 100%;
+      }
+    }
+
+    .content {
+      width: 100%;
+      padding-inline: 25px;
+    }
+
+    .campDate {
+      font-size: 40px;
+      margin-block: 0;
+    }
+  }
+
+  @media screen and (max-width: 350px) {
+    .campDate {
+      font-size: 32px;
+      margin-block: 0;
+    }
+  }
+}
+
+@keyframes up-down {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(10px);
+  }
+}
+
+@keyframes scale {
+  from {
+    transform: scale(1) rotate(-20deg);
+  }
+  to {
+    transform: scale(1.1) rotate(-20deg);
+  }
+}
