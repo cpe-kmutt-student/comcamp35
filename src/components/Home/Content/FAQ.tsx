@@ -1,19 +1,45 @@
 import React from 'react'
+import FAQAccordion, { IFAQ } from 'src/components/FAQAccordion'
+import { Flex, Heading } from '@radix-ui/themes'
+import styles from './faq.module.scss'
+
+const faqContents: IFAQ[] = [
+  {
+    question: 'ค่ายเปิดรับสมัครถึงวันไหน',
+    answer: 'ค่ายเปิดรับสมัครตั้งแต่วันที่ 1 - 10 มีนาคม 2567 ค่ะ',
+  },
+  {
+    question: 'ค่ายเปิดรับสมัครถึงวันไหน',
+    answer: 'ค่ายเปิดรับสมัครตั้งแต่วันที่ 1 - 10 มีนาคม 2567 ค่ะ',
+  },
+  {
+    question: 'ค่ายเปิดรับสมัครถึงวันไหน',
+    answer: 'ค่ายเปิดรับสมัครตั้งแต่วันที่ 1 - 10 มีนาคม 2567 ค่ะ',
+  },
+  {
+    question: 'ค่ายเปิดรับสมัครถึงวันไหน',
+    answer: 'ค่ายเปิดรับสมัครตั้งแต่วันที่ 1 - 10 มีนาคม 2567 ค่ะ',
+  },
+  {
+    question: 'ค่ายเปิดรับสมัครถึงวันไหน',
+    answer: 'ค่ายเปิดรับสมัครตั้งแต่วันที่ 1 - 10 มีนาคม 2567 ค่ะ',
+  },
+  {
+    question: 'ค่ายเปิดรับสมัครถึงวันไหน',
+    answer: 'ค่ายเปิดรับสมัครตั้งแต่วันที่ 1 - 10 มีนาคม 2567 ค่ะ',
+  },
+]
 
 const Faq: React.FC = () => {
   return (
-    <div>
-      <h2>FAQ คำถามที่พบบ่อย</h2>
-      <p>
-        - ค่ายเปิดรับสมัครถึงวันไหนคะ
-        <br></br>== ค่ายเปิดรับสมัครตั้งแต่วันที่ 1 - 10 มีนาคม 2567 ค่ะ
-        <br></br>
-        <br></br>-ถ้าไม่มีพื้นฐานทางด้านคอมพิวเตอร์ สามารถสมัครได้ไหมครับ
-        <br></br>== เพียงแค่มีความสนใจทางด้านคอมพิวเตอร์ ไม่จำเป็นต้องมีพื้นฐานมาก่อนก็สามารถเข้าได้ค่ะ
-      </p>
-      {/* มีเยอะกว่านี้มากแต่ยังไม่ได้ใส่ */}
-      <br></br>
-    </div>
+    <Flex direction="column" justify="center" align="center" className={styles.faq}>
+      <Heading size={{ initial: '8', md: '9' }} className="title" align="center">
+        FAQ
+      </Heading>
+      <div className={styles.content}>
+        <FAQAccordion items={faqContents} />
+      </div>
+    </Flex>
   )
 }
 
