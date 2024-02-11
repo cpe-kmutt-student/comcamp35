@@ -1,6 +1,6 @@
 import { IFAQ } from 'src/components/FAQAccordion'
 
-const faqContents_all: IFAQ[] = [
+export const faqContents: IFAQ[] = [
   {
     question: 'ค่ายเปิดรับสมัครถึงวันไหน',
     answer: 'ค่ายเปิดรับสมัครตั้งแต่วันที่ 1 - 10 มีนาคม 2567 ค่ะ',
@@ -50,5 +50,3 @@ const faqContents_all: IFAQ[] = [
     answer: `เกณฑ์ในการคัดเลือกจะพิจารณาจากข้อมูลและความถูกต้องในใบสมัคร ประกอบกับพิจารณาจากการตอบคำถามของน้อง ๆ ที่ส่งเข้ามาด้วยค่ะ`,
   },
 ]
-
-export default faqContents_all
