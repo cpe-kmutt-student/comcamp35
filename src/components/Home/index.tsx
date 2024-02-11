@@ -7,7 +7,7 @@ import Condition from './Content/Condition'
 import Timeline from './Content/Timeline'
 // import ReceivingNum from './Content/ReceivingNum'
 // import Location from './Content/Location'
-import Faq from './Content/FAQ'
+import Faq from './Content/Faq'
 import Sponsor from './Content/Sponsor'
 import Contact from './Content/Contact'
 

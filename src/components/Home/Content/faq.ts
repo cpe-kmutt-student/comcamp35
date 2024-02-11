@@ -1,6 +1,6 @@
-import { IFAQ } from 'src/components/FAQAccordion'
+import { IFaq } from 'src/components/FAQAccordion'
 
-export const faqContents: IFAQ[] = [
+export const faqContents: IFaq[] = [
   {
     question: 'ค่ายเปิดรับสมัครถึงวันไหน',
     answer: 'ค่ายเปิดรับสมัครตั้งแต่วันที่ 1 - 10 มีนาคม 2567 ค่ะ',

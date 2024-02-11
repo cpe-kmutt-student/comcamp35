@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import FAQAccordion, { IFAQ } from 'src/components/FAQAccordion'
+import FAQAccordion, { IFaq } from 'src/components/FAQAccordion'
 import { Flex, Heading } from '@radix-ui/themes'
 import styles from './faq.module.scss'
 import { Link } from 'react-router-dom'
@@ -7,7 +7,7 @@ import { FAQ_PATH } from 'src/constants/router'
 import { faqContents } from './faq'
 
 const Faq: React.FC = () => {
-  const accordionContents: IFAQ[] = useMemo(() => {
+  const accordionContents: IFaq[] = useMemo(() => {
     return faqContents.slice(0, 6)
   }, [])
 
