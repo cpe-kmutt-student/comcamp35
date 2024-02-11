@@ -11,8 +11,11 @@ const ConditionContents: string[] = [
 
 const Condition: React.FC = () => {
   const renderCampCondition = ConditionContents.map((item: string, i: number) => (
-    <div key={i} className={styles.conditionItems}>
-      {item}
+    <div key={i} className={styles.conditionInfo}>
+      <div className={styles.InfoItems}>
+        <img src="src/assets/logo.svg" alt="condition img" width={70} height={70} />
+        <Text as="p">{item}</Text>
+      </div>
     </div>
   ))
 

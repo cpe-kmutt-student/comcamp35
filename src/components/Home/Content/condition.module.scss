@@ -2,16 +2,32 @@
   min-height: 100dvh;
   padding: 0 10%;
 
-  .conditionItems {
+  .conditionInfo {
     display: flex;
     align-items: center;
     text-align: center;
+    flex-direction: column;
     border: 2px solid #50505050;
     border-radius: 16px;
     background-color: #1a408d40;
-    height: 200px;
+    height: 300px;
     padding: 30px;
     transition: all 200ms;
+
+    .InfoItems {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    p {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
     &:hover {
       transform: scale(1.02);
