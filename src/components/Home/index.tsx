@@ -1,13 +1,10 @@
 import React from 'react'
 import Hero from './Content/Hero'
-// import Invitation from './Content/Invitation'
 import About from './Content/About'
 import Highlight from './Content/Highlight'
 import Condition from './Content/Condition'
 import Timeline from './Content/Timeline'
-// import ReceivingNum from './Content/ReceivingNum'
-// import Location from './Content/Location'
-import Faq from './Content/Faq'
+import FrequentlyAskedQuestionHome from './Content/Faq'
 import Sponsor from './Content/Sponsor'
 import Contact from './Content/Contact'
 
@@ -19,7 +16,7 @@ const Content: React.FC = () => {
       <Highlight />
       <Condition />
       <Timeline />
-      <Faq />
+      <FrequentlyAskedQuestionHome />
       <Sponsor />
       <Contact />
     </div>

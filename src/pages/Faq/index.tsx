@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { BASE_PATH } from 'src/constants/router'
 import { faqContents } from 'src/components/Home/Content/faq'
 
-const FaqFullPage: React.FC = () => {
+const FrequentlyAskedQuestionFull: React.FC = () => {
   return (
     <Flex direction="column" justify="center" align="center" className={styles.faq}>
       <Heading size={{ initial: '8', md: '9' }} className="title" align="center">
@@ -22,4 +22,4 @@ const FaqFullPage: React.FC = () => {
   )
 }
 
-export default FaqFullPage
+export default FrequentlyAskedQuestionFull

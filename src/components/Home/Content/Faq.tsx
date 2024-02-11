@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { FAQ_PATH } from 'src/constants/router'
 import { faqContents } from './faq'
 
-const Faq: React.FC = () => {
+const FrequentlyAskedQuestionHome: React.FC = () => {
   const accordionContents: IFaq[] = useMemo(() => {
     return faqContents.slice(0, 6)
   }, [])
@@ -26,4 +26,4 @@ const Faq: React.FC = () => {
   )
 }
 
-export default Faq
+export default FrequentlyAskedQuestionHome
