@@ -1,7 +1,7 @@
 import React from 'react'
 import Home from './pages/Home'
 import { Route, Routes, useLocation } from 'react-router-dom'
-import { BASE_PATH, REGISTER_PATH } from './constants/router'
+import { BASE_PATH, REGISTER_PATH, FAQ_PATH } from './constants/router'
 import Navbar from './components/Navbar'
 import Register from './pages/Register'
 import NotFoundPage from './pages/NotFoundPage'
@@ -10,6 +10,7 @@ import { Theme } from '@radix-ui/themes'
 import '@radix-ui/themes/styles.css'
 import Footer from './components/Footer'
 import { Toaster } from 'react-hot-toast'
+import Faqviewmore from './components/FAQViewmore'
 
 const App: React.FC = (): JSX.Element => {
   const location = useLocation()
@@ -31,7 +32,7 @@ const App: React.FC = (): JSX.Element => {
         <Route element={<ProtectedRoute />}>
           <Route path={REGISTER_PATH} element={<Register />} />
         </Route>
-
+        <Route path={FAQ_PATH} element={<Faqviewmore />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
