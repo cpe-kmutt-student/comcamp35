@@ -75,7 +75,7 @@ const Navbar: React.FC = (): JSX.Element => {
               <div className={styles.nav_desktop}>
                 {auth.is_authenticated ? (
                   <Link to={REGISTER_PATH} className={styles.avatar}>
-                    <Avatar src={auth.profile_url} fallback={auth.email.substring(0, 3)} size="2" radius="large" />
+                    <Avatar src={auth.profile_url} fallback={auth.email?.substring(0, 3)} size="2" radius="large" />
                   </Link>
                 ) : (
                   <RegisterButton active>ลงทะเบียน</RegisterButton>
