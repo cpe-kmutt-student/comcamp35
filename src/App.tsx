@@ -10,6 +10,7 @@ import { Theme } from '@radix-ui/themes'
 import '@radix-ui/themes/styles.css'
 import Footer from './components/Footer'
 import { Toaster } from 'react-hot-toast'
+import Faqviewmore from './components/FAQViewmore'
 
 const App: React.FC = (): JSX.Element => {
   const location = useLocation()
@@ -31,6 +32,7 @@ const App: React.FC = (): JSX.Element => {
         <Route element={<ProtectedRoute />}>
           <Route path={REGISTER_PATH} element={<Register />} />
         </Route>
+        <Route path="/faq" element={<Faqviewmore />} />
 
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
