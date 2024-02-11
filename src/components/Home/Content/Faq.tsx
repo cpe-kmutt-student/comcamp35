@@ -4,7 +4,7 @@ import { Flex, Heading } from '@radix-ui/themes'
 import styles from './faq.module.scss'
 import { Link } from 'react-router-dom'
 import { FAQ_PATH } from 'src/constants/router'
-import { faqContents } from './faq'
+import { faqContents } from './faqContents'
 
 const FrequentlyAskedQuestionHome: React.FC = () => {
   const accordionContents: IFaq[] = useMemo(() => {

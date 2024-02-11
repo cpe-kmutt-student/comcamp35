@@ -4,7 +4,7 @@ import { Flex, Heading } from '@radix-ui/themes'
 import styles from './index.module.scss'
 import { Link } from 'react-router-dom'
 import { BASE_PATH } from 'src/constants/router'
-import { faqContents } from 'src/components/Home/Content/faq'
+import { faqContents } from 'src/components/Home/Content/faqContents'
 
 const FrequentlyAskedQuestionFull: React.FC = () => {
   return (
