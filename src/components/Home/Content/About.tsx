@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './about.module.scss'
 import { Flex, Heading } from '@radix-ui/themes'
+import Laptop from 'src/assets/laptop.webp'
 
 const About: React.FC = () => {
   return (
@@ -24,12 +25,7 @@ const About: React.FC = () => {
       </div>
       <div className={styles.image}>
         <div className={styles.bg} />
-        <img
-          src="https://i1.sndcdn.com/artworks-z6RnczcFGweMGmYd-SMU6eQ-t500x500.jpg"
-          alt="about"
-          width={350}
-          height={350}
-        />
+        <img src={Laptop} alt="about" width={350} height={350} />
       </div>
     </Flex>
   )
