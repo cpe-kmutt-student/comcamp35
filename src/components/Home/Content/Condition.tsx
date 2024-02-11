@@ -9,10 +9,20 @@ const ConditionContents: string[] = [
   'ผู้ปกครองอนุญาตและยินยอมให้นักเรียนเข้าร่วมโครงการ',
 ]
 
+const GIF: string[] = [
+  'src/assets/regis.gif',
+  'src/assets/coding.gif',
+  'src/assets/checkin.gif',
+  'src/assets/approved.gif',
+]
+
 const Condition: React.FC = () => {
   const renderCampCondition = ConditionContents.map((item: string, i: number) => (
-    <div key={i} className={styles.conditionItems}>
-      {item}
+    <div key={i} className={styles.conditionInfo}>
+      <div className={styles.InfoItems}>
+        <img src={GIF[i % GIF.length]} alt="condition img" />
+        <Text as="p">{item}</Text>
+      </div>
     </div>
   ))
 
@@ -40,8 +50,8 @@ const Condition: React.FC = () => {
       <div className={styles.moreCondition}>
         <Text>
           คุณสมบัติเพิ่มเติม : ม.ปลาย ศึกษาเกี่ยวกับสายวิทยาศาสตร์ คณิตศาสตร์ และ คอมพิวเตอร์ (หรือสายอื่น ๆ ที่
-          เกี่ยวข้องกับ คอมพิวเตอร์และเทคโนโลยี) หรือ ปวช. ในสาขาคอมพิวเตอร์ธุรกิจ, สาขาช่างไฟฟ้ากำลัง (อิเล็กทรอนิกส์),
-          สาขาเมคคาทรอนิกส์ และหุ่นยนต์ (หรือสายอื่น ๆ ที่เกี่ยวข้องกับคอมพิวเตอร์และเทคโนโลยี)
+          เกี่ยวข้องกับ คอมพิวเตอร์และเทคโนโลยี)<br></br>หรือ ปวช. ในสาขาคอมพิวเตอร์ธุรกิจ, สาขาช่างไฟฟ้ากำลัง
+          (อิเล็กทรอนิกส์), สาขาเมคคาทรอนิกส์ และหุ่นยนต์ (หรือสายอื่น ๆ ที่เกี่ยวข้องกับคอมพิวเตอร์และเทคโนโลยี)
         </Text>
       </div>
     </Flex>
