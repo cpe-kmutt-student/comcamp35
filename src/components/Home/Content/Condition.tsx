@@ -8,7 +8,7 @@ import Approved from 'src/assets/approved.gif'
 
 const ConditionContents: { text: string; gif: string }[] = [
   {
-    text: 'น้อง ๆ ที่กำลังศึกษาอยู่ชั้นมัธยมศึกษาปีที่ 4 - 5 หรือเทียบเท่า (GPAX 3.00 ขึ้นไป)',
+    text: 'น้อง ๆ ที่กำลังศึกษาอยู่ชั้นมัธยมศึกษาปีที่ 4 - 5 ปีการศึกษา 2566 หรือเทียบเท่า (GPAX 3.00 ขึ้นไป)',
     gif: Regis,
   },
   {
