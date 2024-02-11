@@ -24,7 +24,7 @@ const AuthProvider: React.FC<Props> = ({ children }: Props): JSX.Element => {
         })
       }, 1000)
     } catch (err) {
-      setAuth({ ...initialValue.auth, is_authenticated: true })
+      setAuth({ ...initialValue.auth, is_authenticated: false })
     }
   }, [setAuth])
 
