@@ -1,27 +1,36 @@
 import React from 'react'
 import styles from './condition.module.scss'
 import { Flex, Grid, Heading, Text } from '@radix-ui/themes'
+import Regis from 'src/assets/regis.gif'
+import Coding from 'src/assets/coding.gif'
+import Checkin from 'src/assets/checkin.gif'
+import Approved from 'src/assets/approved.gif'
 
-const ConditionContents: string[] = [
-  'น้อง ๆ ที่กำลังศึกษาอยู่ชั้นมัธยมศึกษาปีที่ 4 - 5 หรือเทียบเท่า (GPAX 3.00 ขึ้นไป)',
-  'มีความสนใจในด้านคอมพิวเตอร์และภาควิชาวิศวกรรมคอมพิวเตอร์ โดยไม่จำเป็นต้องมีพื้นฐานการเขียนโปรแกรม',
-  'สามารถเข้าพักได้ในระยะเวลาและสถานที่ที่กำหนดตลอดโครงการ',
-  'ผู้ปกครองอนุญาตและยินยอมให้นักเรียนเข้าร่วมโครงการ',
-]
-
-const GIF: string[] = [
-  'src/assets/regis.gif',
-  'src/assets/coding.gif',
-  'src/assets/checkin.gif',
-  'src/assets/approved.gif',
+const ConditionContents: { text: string; gif: string }[] = [
+  {
+    text: 'น้อง ๆ ที่กำลังศึกษาอยู่ชั้นมัธยมศึกษาปีที่ 4 - 5 หรือเทียบเท่า (GPAX 3.00 ขึ้นไป)',
+    gif: Regis,
+  },
+  {
+    text: 'มีความสนใจในด้านคอมพิวเตอร์และภาควิชาวิศวกรรมคอมพิวเตอร์ โดยไม่จำเป็นต้องมีพื้นฐานการเขียนโปรแกรม',
+    gif: Coding,
+  },
+  {
+    text: 'สามารถเข้าพักได้ในระยะเวลาและสถานที่ที่กำหนดตลอดโครงการ',
+    gif: Checkin,
+  },
+  {
+    text: 'ผู้ปกครองอนุญาตและยินยอมให้นักเรียนเข้าร่วมโครงการ',
+    gif: Approved,
+  },
 ]
 
 const Condition: React.FC = () => {
-  const renderCampCondition = ConditionContents.map((item: string, i: number) => (
+  const renderCampCondition = ConditionContents.map((item, i) => (
     <div key={i} className={styles.conditionInfo}>
       <div className={styles.InfoItems}>
-        <img src={GIF[i % GIF.length]} alt="condition img" />
-        <Text as="p">{item}</Text>
+        <img src={item.gif} alt="condition img" />
+        <Text as="p">{item.text}</Text>
       </div>
     </div>
   ))
