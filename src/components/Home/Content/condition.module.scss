@@ -10,8 +10,8 @@
     border: 2px solid #50505050;
     border-radius: 16px;
     background-color: #1a408d40;
-    height: 300px;
-    padding: 30px;
+    height: 360px;
+    padding: 20px;
     transition: all 200ms;
 
     .InfoItems {
@@ -20,13 +20,19 @@
       align-items: center;
       justify-content: space-between;
       height: 100%;
-    }
 
-    p {
-      flex-grow: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      img {
+        width: 100%;
+        border-radius: 16px;
+      }
+  
+      p {
+        margin-top: 10px;
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
     }
 
     &:hover {
