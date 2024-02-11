@@ -37,7 +37,9 @@ const Hero: React.FC = () => {
         ! <br />
         เพื่อรวมพลังกันกอบกู้โลกใบนี้ให้รอดพ้นจากเหล่าวายร้าย !!
       </Text>
-      {!auth.is_authenticated && isTodayCampDay() && <RegisterButton active>ลงทะเบียน</RegisterButton>}
+      {(auth.is_authenticated == null || !auth.is_authenticated) && isTodayCampDay() && (
+        <RegisterButton active>ลงทะเบียน</RegisterButton>
+      )}
     </div>
   )
 }

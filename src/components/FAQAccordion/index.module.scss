@@ -9,6 +9,11 @@
   background-color: #1a408d40;
   border-radius: 16px;
   border: 1px solid #50505050;
+  transition: all 200ms;
+
+  &:hover {
+    box-shadow: 0 4px 12px 0 #285cc440;
+  }
 
   .AccordionHeader {
     font-size: 18px;

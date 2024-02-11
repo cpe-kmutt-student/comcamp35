@@ -1,6 +1,7 @@
-import React, { ReactNode, useCallback, useEffect, useState } from 'react'
+import React, { ReactNode, useEffect, useState } from 'react'
 import { AuthContext, initialValue } from './auth'
 import { apiInstance } from 'src/lib/axios'
+import LoadingPage from 'src/pages/LoadingPage'
 
 type Props = {
   children: ReactNode
@@ -8,8 +9,9 @@ type Props = {
 
 const AuthProvider: React.FC<Props> = ({ children }: Props): JSX.Element => {
   const [auth, setAuth] = useState(initialValue.auth)
+  const [loading, setLoading] = useState<boolean>(true)
 
-  const getCurrentUserInfo = useCallback(async () => {
+  const getCurrentUserInfo = async () => {
     try {
       const { data: user } = await apiInstance.get('/users/info')
 
@@ -22,17 +24,21 @@ const AuthProvider: React.FC<Props> = ({ children }: Props): JSX.Element => {
           is_registered: user.is_registered,
           is_authenticated: true,
         })
+
+        setLoading(false)
       }, 1000)
     } catch (err) {
       setAuth({ ...initialValue.auth, is_authenticated: false })
+      setLoading(false)
     }
-  }, [setAuth])
+  }
 
   useEffect(() => {
     getCurrentUserInfo()
-  }, [getCurrentUserInfo])
+  }, [])
 
-  return <AuthContext.Provider value={{ auth, setAuth }}>{children}</AuthContext.Provider>
+  if (loading) return <LoadingPage />
+  else return <AuthContext.Provider value={{ auth, setAuth }}>{children}</AuthContext.Provider>
 }
 
 export default AuthProvider

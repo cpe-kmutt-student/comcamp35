@@ -12,6 +12,12 @@
       border-radius: 16px;
       background-color: #1a408d40;
       text-align: center;
+      transition: all 200ms;
+
+      &:hover {
+        transform: scale(1.02);
+        box-shadow: 0 4px 12px 0 #285cc440;
+      }
     }
   }
 

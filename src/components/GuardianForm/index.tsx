@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useCallback, useEffect } from 'react'
 import styles from './index.module.scss'
 import { Button, Flex, Heading, Separator } from '@radix-ui/themes'
 import { useFormik } from 'formik'
 import FormikTextField from '../Form/Formik/Input'
+import { apiInstance } from 'src/lib/axios'
 
 type Props = {
   onSubmit: (values: IGuardianForm) => void
@@ -50,6 +51,28 @@ const GuardianForm: React.FC<Props> = ({ onSubmit, isSubmitting, goBack }: Props
     validate,
     onSubmit,
   })
+
+  const getGuardianInfo = useCallback(async () => {
+    const { data } = await apiInstance.get('/guardian')
+
+    const newValues: IGuardianForm = {
+      name: data.name ?? '',
+      tel: data.tel ?? '',
+      relation: data.relation ?? '',
+      email: data.email ?? '',
+      emergency_name: data.emergency_name ?? '',
+      emergency_tel: data.emergency_tel ?? '',
+      emergency_relation: data.emergency_relation ?? '',
+      emergency_email: data.emergency_email ?? '',
+    }
+
+    formik.setValues(newValues)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  useEffect(() => {
+    getGuardianInfo()
+  }, [getGuardianInfo])
 
   return (
     <div className={styles.GenForm}>
