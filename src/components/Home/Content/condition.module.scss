@@ -1,6 +1,7 @@
 .main {
   min-height: 100dvh;
   padding: 0 10%;
+
   .conditionItems {
     display: flex;
     align-items: center;
@@ -10,8 +11,14 @@
     background-color: #1a408d40;
     height: 200px;
     padding: 30px;
+    transition: all 200ms;
+
+    &:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 12px 0 #285cc440;
+    }
   }
-  
+
   .moreCondition {
     text-align: center;
   }

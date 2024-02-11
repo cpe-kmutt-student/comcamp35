@@ -5,7 +5,11 @@
   .image {
     position: relative;
     user-select: none;
-    pointer-events: none;
+    transition: all 200ms;
+
+    &:hover {
+      transform: scale(1.02);
+    }
 
     .bg {
       position: absolute;
@@ -25,7 +29,7 @@
 
     img {
       isolation: isolate;
-      border-radius: 20px;
+      border-radius: 16px;
     }
   }
 
