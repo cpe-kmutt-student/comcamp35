@@ -14,25 +14,31 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
 
       img {
         width: 100%;
         text-align: center;
         border-radius: 16px;
-
-        @media screen and (max-width: 768px) {
-          width: auto;
-        }
-
-        @media screen and (max-width: 512px) {
-          width: 100%;
-        }
       }
 
       .description {
         margin-top: 24px;
         text-align: center;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .card img {
+        width: auto;
+      }
+    }
+
+    @media screen and (max-width: 512px) {
+      height: auto;
+
+      .card img {
+        width: 100%;
       }
     }
 
