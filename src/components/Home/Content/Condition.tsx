@@ -6,37 +6,37 @@ import Coding from 'src/assets/coding.gif'
 import Checkin from 'src/assets/checkin.gif'
 import Approved from 'src/assets/approved.gif'
 
-const ConditionContents: { text: string; gif: string }[] = [
+const ConditionContents: { text: string; image: string }[] = [
   {
     text: 'น้อง ๆ ที่กำลังศึกษาอยู่ชั้นมัธยมศึกษาปีที่ 4 - 5 ปีการศึกษา 2566 หรือเทียบเท่า (GPAX 3.00 ขึ้นไป)',
-    gif: Regis,
+    image: Regis,
   },
   {
     text: 'มีความสนใจในด้านคอมพิวเตอร์และภาควิชาวิศวกรรมคอมพิวเตอร์ โดยไม่จำเป็นต้องมีพื้นฐานการเขียนโปรแกรม',
-    gif: Coding,
+    image: Coding,
   },
   {
     text: 'สามารถเข้าพักได้ในระยะเวลาและสถานที่ที่กำหนดตลอดโครงการ',
-    gif: Checkin,
+    image: Checkin,
   },
   {
     text: 'ผู้ปกครองอนุญาตและยินยอมให้นักเรียนเข้าร่วมโครงการ',
-    gif: Approved,
+    image: Approved,
   },
 ]
 
 const Condition: React.FC = () => {
   const renderCampCondition = ConditionContents.map((item, i) => (
     <div key={i} className={styles.conditionInfo}>
-      <div className={styles.InfoItems}>
-        <img src={item.gif} alt="condition img" />
-        <Text as="p">{item.text}</Text>
+      <div className={styles.card}>
+        <img src={item.image} alt="condition img" />
+        <Text className={styles.description}>{item.text}</Text>
       </div>
     </div>
   ))
 
   return (
-    <Flex direction="column" justify="center" align="center" className={styles.main}>
+    <Flex direction="column" justify="center" align="center" className={styles.condition}>
       <Heading
         size={{ initial: '8', md: '9' }}
         className="title"
