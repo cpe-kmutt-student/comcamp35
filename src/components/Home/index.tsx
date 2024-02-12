@@ -1,7 +1,8 @@
 import React from 'react'
 import Hero from './Content/Hero'
 import About from './Content/About'
-import Highlight from './Content/Highlight'
+// import Highlight from './Content/Highlight'
+import Learning from './Content/Learning'
 import Condition from './Content/Condition'
 import Timeline from './Content/Timeline'
 import FrequentlyAskedQuestionHome from './Content/Faq'
@@ -13,7 +14,8 @@ const Content: React.FC = () => {
     <div>
       <Hero />
       <About />
-      <Highlight />
+      {/* <Highlight /> */}
+      <Learning />
       <Condition />
       <Timeline />
       <FrequentlyAskedQuestionHome />

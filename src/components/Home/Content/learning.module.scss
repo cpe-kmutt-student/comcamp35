@@ -1,0 +1,57 @@
+.learning {
+  min-height: 100dvh;
+  padding: 0 10%;
+
+  .contents {
+    margin-top: 24px;
+    gap: 24px;
+
+    .content {
+      padding: 24px 45px;
+      border: 1px solid #50505050;
+      border-radius: 16px;
+      background-color: #1a408d40;
+      text-align: start;
+      transition: all 200ms;
+
+      .card {
+        // display: flex;
+        align-items: center;
+        justify-content: start;
+        gap: 10px;
+
+        img {
+          height: auto;
+          min-width: 200px;
+        }
+
+        .cardContent {
+          display: grid;
+          gap: 12px;
+
+          .details {
+            padding-left: 6px;
+          }
+        }
+      }
+
+      &:hover {
+        transform: scale(1.02);
+        box-shadow: 0 4px 12px 0 #285cc440;
+      }
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .card {
+      display: flex;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .card {
+      display: grid;
+      justify-items: center;
+    }
+  }
+}
