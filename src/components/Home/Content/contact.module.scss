@@ -1,0 +1,106 @@
+@import '../../../variable';
+
+.contacttitle {
+  text-align: center;
+  font-size: 6dvh;
+  margin-bottom: 10dvh;
+}
+
+.container {
+  display: flex;
+  margin-bottom: 4dvh;
+  margin-top: 3dvh;
+  justify-content: center;
+  
+
+  .column {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    transition: all 300ms;
+    :hover {
+      box-shadow: 2px 2px 2px 3px #285cc42c;
+      transition: all 300ms;
+    }
+  }
+
+  .topblock {
+    width: 1000px;
+    height: 120px;
+    border-radius: 16px;
+    border: solid 1px #26263f;
+    background-color: #285cc42b;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .bottomblock {
+    width: 1000px;
+    height: 300px;
+    border-radius: 16px;
+    background-color: #285cc42b;
+    border: solid 1px #26263f;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    p {
+      font-size: large;
+    }
+
+    .addresstitle {
+      h1 {
+        font-size: 5dvh;
+      }
+    }
+
+    .addressbutton {
+      color: white;
+      text-decoration: none;
+      width: auto;
+      text-align: center;
+      margin-bottom: 24px;
+      margin-top: 1dvh;
+      padding: 6px 12px;
+      transition: all 300ms;
+      border-radius: 2px;
+      font-size: large;
+      background-color: #2d62cd1c;
+      a {
+        color: white;
+        text-decoration: none;
+      }
+      a:visited {
+        color: white;
+      }
+      &:hover {
+        background-color: #285cc440;
+        a {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+
+  .leftblock {
+    height: full;
+    width: 416px;
+    border-radius: 16px;
+    background-color: #285cc42b;
+    border: solid 1px #26263f;
+    padding: 20px;
+    margin-right: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-size: large;
+    ol {
+      margin-top: 2dvh;
+    }
+  }
+}
