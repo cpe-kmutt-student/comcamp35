@@ -1,11 +1,11 @@
 import React from 'react'
 import styles from './learning.module.scss'
 import { Text, Flex, Grid, Heading } from '@radix-ui/themes'
-import c from 'src/assets/c-hard-stroke-32x32.svg'
-import figma from 'src/assets/figma-soft-stroke-V2-32x32.svg'
-import python from 'src/assets/python-hard-stroke-32x32.svg'
-import react from 'src/assets/react-hard-stroke-32x32.svg'
-import rocket from 'src/assets/rocket-Blue-32x32.svg'
+import c from 'src/assets/c.svg'
+import figma from 'src/assets/figma.svg'
+import python from 'src/assets/python.svg'
+import react from 'src/assets/react.svg'
+import rocket from 'src/assets/rocket.svg'
 
 const LearningContents: { topic: string; details: string; image: string }[] = [
   {
@@ -43,16 +43,16 @@ const Learning: React.FC = () => {
   const renderLearningCondition = LearningContents.map((item, i) => (
     <div key={i} className={styles.content}>
       <div className={styles.card}>
-        <img src={item.image} alt="condition img" />
+        <img src={item.image} alt="condition" />
         <div className={styles.cardContent}>
-          <Text size={{ initial: '4', xs: '6', sm: '8' }} align={{ initial: 'center', xs: 'center', sm: 'left' }}>
+          <Text
+            size={{ initial: '4', xs: '6', sm: '7' }}
+            align={{ initial: 'center', xs: 'center', sm: 'left' }}
+            className={styles.title}
+          >
             {item.topic}
           </Text>
-          <Text
-            size={{ initial: '1', xs: '2', sm: '2' }}
-            align={{ initial: 'center', xs: 'center', sm: 'left' }}
-            className={styles.details}
-          >
+          <Text align={{ initial: 'center', xs: 'center', sm: 'left' }} className={styles.details}>
             {item.details}
           </Text>
         </div>

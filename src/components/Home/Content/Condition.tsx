@@ -3,7 +3,7 @@ import styles from './condition.module.scss'
 import { Flex, Grid, Heading, Text } from '@radix-ui/themes'
 import Regis from 'src/assets/regis.gif'
 import Coding from 'src/assets/coding.gif'
-import Checkin from 'src/assets/checkin.gif'
+import Checking from 'src/assets/checking.gif'
 import Approved from 'src/assets/approved.gif'
 
 const ConditionContents: { text: string; image: string }[] = [
@@ -17,7 +17,7 @@ const ConditionContents: { text: string; image: string }[] = [
   },
   {
     text: 'สามารถเข้าพักได้ในระยะเวลาและสถานที่ที่กำหนดตลอดโครงการ',
-    image: Checkin,
+    image: Checking,
   },
   {
     text: 'ผู้ปกครองอนุญาตและยินยอมให้นักเรียนเข้าร่วมโครงการ',

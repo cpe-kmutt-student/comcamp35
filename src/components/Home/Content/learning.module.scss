@@ -15,14 +15,19 @@
       transition: all 200ms;
 
       .card {
-        // display: flex;
+        display: flex;
         align-items: center;
         justify-content: start;
         gap: 10px;
 
+        .title {
+          font-family: 'Prompt', sans-serif !important;
+          font-weight: bold;
+        }
+
         img {
-          height: auto;
-          min-width: 200px;
+          height: 100px;
+          width: 100px;
         }
 
         .cardContent {
@@ -42,14 +47,8 @@
     }
   }
 
-  @media screen and (min-width: 768px) {
-    .card {
-      display: flex;
-    }
-  }
-
   @media screen and (max-width: 768px) {
-    .card {
+    .contents .content .card {
       display: grid;
       justify-items: center;
     }

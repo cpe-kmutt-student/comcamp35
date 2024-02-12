@@ -6,7 +6,7 @@ import Learning from './Content/Learning'
 import Condition from './Content/Condition'
 import Timeline from './Content/Timeline'
 import FrequentlyAskedQuestionHome from './Content/Faq'
-import Sponsor from './Content/Sponsor'
+// import Sponsor from './Content/Sponsor'
 import Contact from './Content/Contact'
 
 const Content: React.FC = () => {
@@ -19,7 +19,7 @@ const Content: React.FC = () => {
       <Condition />
       <Timeline />
       <FrequentlyAskedQuestionHome />
-      <Sponsor />
+      {/* <Sponsor /> */}
       <Contact />
     </div>
   )
