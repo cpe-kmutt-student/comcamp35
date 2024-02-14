@@ -1,9 +1,9 @@
-const START_DATE = '2024/03/01'
-const END_DATE = '2024/03/10'
+export const REGIS_START_DATE = '2024/03/01'
+export const REGIS_END_DATE = '2024/03/10'
 
 const today = new Date().getTime()
-const startDate = new Date(START_DATE).getTime()
-const endDate = new Date(END_DATE).getTime()
+const startDate = new Date(REGIS_START_DATE).getTime()
+const endDate = new Date(REGIS_END_DATE).getTime()
 
 export const isTodayRegis = (): boolean => {
   return today >= startDate && today <= endDate
