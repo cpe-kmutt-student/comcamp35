@@ -89,7 +89,9 @@ const Navbar: React.FC = (): JSX.Element => {
                 )}
               </div>
             ) : (
-              <Text>{isPast(new Date(REGIS_END_DATE)) ? 'ปิดรับสมัครแล้ว' : 'ยังไม่เปิดรับสมัคร'}</Text>
+              <div className={styles.nav_desktop}>
+                <Text>{isPast(new Date(REGIS_END_DATE)) ? 'ปิดรับสมัครแล้ว' : 'ยังไม่เปิดรับสมัคร'}</Text>
+              </div>
             )}
           </div>
         </Flex>
