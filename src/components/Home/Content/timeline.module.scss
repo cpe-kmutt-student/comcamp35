@@ -47,6 +47,10 @@
         transform: scale(1.02);
         box-shadow: 0 4px 12px 0 #143464;
       }
+
+      @media screen and (max-width: 1024px) {
+        margin-top: 3rem;
+      }
     }
   }
 }
