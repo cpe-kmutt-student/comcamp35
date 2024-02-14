@@ -31,15 +31,15 @@ const contacts: { name: string; phone: string; email: string }[] = [
 const link_contract: { name: string; link: string }[] = [
   {
     name: Facebook,
-    link: 'https://youtu.be/BbeeuzU5Qc8?si=-X0fkAczjYYkUtzz',
+    link: 'https://www.facebook.com/KMUTTcomcamp',
   },
   {
     name: Instagram,
-    link: 'https://youtu.be/BbeeuzU5Qc8?si=-X0fkAczjYYkUtzz',
+    link: 'https://www.instagram.com/comcamp.kmutt/',
   },
   {
     name: Tiktok,
-    link: 'https://youtu.be/BbeeuzU5Qc8?si=-X0fkAczjYYkUtzz',
+    link: 'https://www.tiktok.com/@comcamp.kmutt',
   },
 ]
 
