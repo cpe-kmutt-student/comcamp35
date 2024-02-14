@@ -8,7 +8,7 @@ type Props = {
 }
 const RegisterButton: React.FC<Props> = ({ children, active, to }: Props): JSX.Element => {
   return (
-    <a href={to ?? import.meta.env.VITE_BACKEND_URL + '/auth/google'}>
+    <a href={to ?? import.meta.env.VITE_BACKEND_URL + '/auth/google'} rel="noreferrer">
       <button className={active ? styles.buttonActive : styles.button}>{children}</button>
     </a>
   )

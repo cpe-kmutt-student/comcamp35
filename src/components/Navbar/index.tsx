@@ -28,7 +28,7 @@ const Navbar: React.FC = (): JSX.Element => {
         <Text className={styles.nav}>ไปยังหน้าลงทะเบียน</Text>
       </Link>
     ) : (
-      <a href={import.meta.env.VITE_BACKEND_URL + '/auth/google'} className={styles.nav}>
+      <a href={import.meta.env.VITE_BACKEND_URL + '/auth/google'} rel="noreferrer" className={styles.nav}>
         <Text className={styles.nav}>ลงทะเบียน</Text>
       </a>
     )
