@@ -1,11 +1,22 @@
 import React from 'react'
 import styles from './contact.module.scss'
-import { Heading, Flex } from '@radix-ui/themes'
-import Facebook from 'src/assets/Facebook-Icon.svg'
-import Instagram from 'src/assets/Instagram-Icon.svg'
-import Tiktok from 'src/assets/Tiktok-Icon.svg'
+import { Heading, Flex, Text } from '@radix-ui/themes'
+import Facebook from 'src/assets/facebook.svg'
+import Instagram from 'src/assets/instagram.svg'
+import Tiktok from 'src/assets/tiktok.svg'
 
-const contacts: { name: string; phone: string; email: string }[] = [
+interface IContact {
+  name: string
+  phone: string
+  email: string
+}
+
+interface ISocial {
+  name: string
+  link: string
+}
+
+const contacts: IContact[] = [
   {
     name: 'พี่ฟีฟ่า',
     phone: '080 493 5928',
@@ -28,7 +39,7 @@ const contacts: { name: string; phone: string; email: string }[] = [
   },
 ]
 
-const link_contract: { name: string; link: string }[] = [
+const link_contract: ISocial[] = [
   {
     name: Facebook,
     link: 'https://www.facebook.com/KMUTTcomcamp',
@@ -49,29 +60,33 @@ const Contact: React.FC = () => {
       <Heading size={{ initial: '8', md: '9' }} className="title contacttitle" align="center">
         CONTACT
       </Heading>
-      <div className={styles.container}>
-        <div className={styles.leftblock}>
-          {contacts.map((contact, index) => (
-            <ol key={index}>
-              <h3>{contact.name}</h3>
-              <p>{contact.phone}</p>
-              <p>{contact.email}</p>
-            </ol>
+      <div className={styles.contents}>
+        <div className={styles.person}>
+          {contacts.map((contact: IContact, i: number) => (
+            <div key={i} className={styles.personContact}>
+              <Heading size="3" className={styles.name}>
+                {contact.name}
+              </Heading>
+              <Text as="p">{contact.phone}</Text>
+              <Text as="p">{contact.email}</Text>
+            </div>
           ))}
         </div>
-        <div className={styles.column}>
-          <div className={styles.topblock}>
-            {link_contract.map((link, index) => (
-              <a key={index} href={link.link} rel="noreferrer" target="_blank">
-                <img src={link.name} alt="social media" />
+        <div className={styles.external}>
+          <div className={styles.social}>
+            {link_contract.map((social: ISocial, i: number) => (
+              <a key={i} href={social.link} rel="noreferrer" target="_blank">
+                <img src={social.name} alt="social media" />
               </a>
             ))}
           </div>
-          <div className={styles.bottomblock}>
-            <h1>Address</h1>
-            <p>ภาควิชาวิศวกรรมคอมพิวเตอร์ คณะวิศวกรรมศาสตร์ มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี</p>
-            <p>ชั้น 10 อาคารวิศววัฒนะ เลขที่ 126 ถ.ประชาอุทิศ แขวงบางมด เขตทุ่งครุ กรุงเทพฯ 10140</p>
-            <div className={styles.addressbutton}>
+          <div className={styles.address}>
+            <Heading size={{ initial: '6', md: '7' }} mb="4">
+              Address
+            </Heading>
+            <Text>ภาควิชาวิศวกรรมคอมพิวเตอร์ คณะวิศวกรรมศาสตร์ มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี</Text>
+            <Text>ชั้น 10 อาคารวิศววัฒนะ เลขที่ 126 ถ.ประชาอุทิศ แขวงบางมด เขตทุ่งครุ กรุงเทพฯ 10140</Text>
+            <div className={styles.map}>
               <a href="https://maps.app.goo.gl/Cc5z8Df73J3L62eS6" rel="noreferrer" target="_blank">
                 ดูในแผนที่
               </a>
