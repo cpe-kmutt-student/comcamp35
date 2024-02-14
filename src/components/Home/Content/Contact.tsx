@@ -56,7 +56,7 @@ const link_contract: ISocial[] = [
 
 const Contact: React.FC = () => {
   return (
-    <Flex direction="column" justify="center" align="center" className={styles.contact}>
+    <Flex direction="column" justify="center" align="center" className={styles.contact} mt={{ initial: '9', md: '0' }}>
       <Heading size={{ initial: '8', md: '9' }} className="title contacttitle" align="center">
         CONTACT
       </Heading>

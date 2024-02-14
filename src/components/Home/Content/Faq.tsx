@@ -12,7 +12,7 @@ const FrequentlyAskedQuestionHome: React.FC = () => {
   }, [])
 
   return (
-    <Flex direction="column" justify="center" align="center" className={styles.faq}>
+    <Flex direction="column" justify="center" align="center" className={styles.faq} mt={{ initial: '9', md: '0' }}>
       <Heading size={{ initial: '8', md: '9' }} className="title" align="center">
         FAQ
       </Heading>

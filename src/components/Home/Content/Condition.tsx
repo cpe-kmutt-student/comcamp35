@@ -36,7 +36,13 @@ const Condition: React.FC = () => {
   ))
 
   return (
-    <Flex direction="column" justify="center" align="center" className={styles.condition}>
+    <Flex
+      direction="column"
+      justify="center"
+      align="center"
+      className={styles.condition}
+      mt={{ initial: '9', md: '0' }}
+    >
       <Heading
         size={{ initial: '8', md: '9' }}
         className="title"

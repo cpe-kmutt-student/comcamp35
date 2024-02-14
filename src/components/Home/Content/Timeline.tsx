@@ -74,7 +74,7 @@ const Timeline: React.FC = () => {
     </div>
   ))
   return (
-    <Flex direction="column" justify="center" align="center" className={styles.timeline}>
+    <Flex direction="column" justify="center" align="center" className={styles.timeline} mt={{ initial: '9', md: '0' }}>
       <Heading size={{ initial: '8', md: '9' }} className="title" align="center">
         timeline
       </Heading>
