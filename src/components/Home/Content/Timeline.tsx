@@ -1,50 +1,86 @@
 import React from 'react'
-import { Flex, Heading } from '@radix-ui/themes'
+import { Flex, Grid, Heading, Text } from '@radix-ui/themes'
 import styles from './timeline.module.scss'
-import timeline_logo2 from 'src/assets/Aquack.svg.png'
-import timeline_logo1 from 'src/assets/Candy-Gray.svg.png'
-import timeline_logo3 from 'src/assets/Candy-Pink.svg.png'
-import timeline_logo4 from 'src/assets/Candy-Red.svg.png'
+import candy_1 from 'src/assets/candy-blue.svg'
+import candy_2 from 'src/assets/candy-purple.svg'
+import candy_3 from 'src/assets/candy-pink.svg'
+import candy_4 from 'src/assets/candy-red.svg'
+import Duck from 'src/assets/duck.svg'
+import { isTodayInTimeline } from 'src/lib/date'
+import { isPast } from 'date-fns'
 
-const TimelineContents: { date: string; event: String; image: string }[] = [
+interface ITimeline {
+  title: string
+  date: {
+    from: string
+    until: string
+  }
+  event: String
+  image: string
+}
+
+const TimelineContents: ITimeline[] = [
   {
-    date: '1 - 10 มีนาคม 2567',
+    title: '1 - 10 มีนาคม 2567',
+    date: {
+      from: '2024/03/01',
+      until: '2024/03/10',
+    },
     event: 'รับสมัคร',
-    image: timeline_logo1,
+    image: candy_1,
   },
   {
-    date: '16 มีนาคม 2567',
+    title: '16 มีนาคม 2567',
+    date: {
+      from: '2024/03/16',
+      until: '2024/03/16',
+    },
     event: 'ประกาศผล',
-    image: timeline_logo2,
+    image: candy_2,
   },
   {
-    date: '16 - 18 มีนาคม 2567',
+    title: '16 - 18 มีนาคม 2567',
+    date: {
+      from: '2024/03/16',
+      until: '2024/03/18',
+    },
     event: 'ยืนยันสิทธ์',
-    image: timeline_logo3,
+    image: candy_3,
   },
   {
-    date: '7 - 11 เมษายน 2567',
+    title: '7 - 11 เมษายน 2567',
+    date: {
+      from: '2024/04/07',
+      until: '2024/04/11',
+    },
     event: 'วันค่าย',
-    image: timeline_logo4,
+    image: candy_4,
   },
 ]
 
 const Timeline: React.FC = () => {
   const renderCampCondition = TimelineContents.map((item, i) => (
-    <ol key={i}>
-      <img src={item.image} alt="" style={{ width: '120px', height: '120px', objectFit: 'cover' }} />
-      <p>{item.date}</p>
-      <h2>{item.event}</h2>
-    </ol>
+    <div key={i} className={styles.timeline_contents}>
+      <img
+        src={isTodayInTimeline(item.date.from, item.date.until) ? Duck : item.image}
+        className={isPast(new Date(item.date.until)) ? styles.imgDisabled : undefined}
+        alt="timeline"
+        style={{ width: '120px', height: '120px' }}
+      />
+      <Text>{item.title}</Text>
+      <Heading size="5" className={styles.title}>
+        {item.event}
+      </Heading>
+    </div>
   ))
   return (
     <Flex direction="column" justify="center" align="center" className={styles.timeline}>
       <Heading size={{ initial: '8', md: '9' }} className="title" align="center">
         timeline
       </Heading>
-      <div className="timeline_layout">
-        <div className={styles.item_list_timeline}>{renderCampCondition}</div>
-      </div>
+      <Grid columns={{ initial: '1', sm: '2', md: '4' }} className={styles.contents}>
+        {renderCampCondition}
+      </Grid>
     </Flex>
   )
 }

@@ -4,7 +4,7 @@ import RegisterButton from 'src/components/RegisterButton'
 import Logo from 'src/assets/logo.svg'
 import { useAuth } from 'src/context/auth'
 import { Heading, Text } from '@radix-ui/themes'
-import { isTodayCampDay } from 'src/lib/date'
+import { isTodayRegis } from 'src/lib/date'
 
 const quotes: string[] = [
   'รักเด็ก',
@@ -29,7 +29,7 @@ const Hero: React.FC = () => {
         <div className={styles.subText}>{quotes[quotesIndex]}</div>
       </div>
       <Heading size="9" className={[styles.campDate, 'title'].join(' ')}>
-        {isTodayCampDay() ? '7-11 April 2024' : 'Coming Soon'}
+        {isTodayRegis() ? '7-11 April 2024' : 'Coming Soon'}
       </Heading>
       <Text className={styles.content}>
         เมื่อโลกโปรเเกรมมอนกำลังจะล่มสลาย<br></br>
@@ -37,7 +37,7 @@ const Hero: React.FC = () => {
         ! <br />
         เพื่อรวมพลังกันกอบกู้โลกใบนี้ให้รอดพ้นจากเหล่าวายร้าย !!
       </Text>
-      {(auth.is_authenticated == null || !auth.is_authenticated) && isTodayCampDay() && (
+      {(auth.is_authenticated == null || !auth.is_authenticated) && isTodayRegis() && (
         <RegisterButton active>ลงทะเบียน</RegisterButton>
       )}
     </div>

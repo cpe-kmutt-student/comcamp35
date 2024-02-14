@@ -7,7 +7,7 @@ import { BASE_PATH, REGISTER_PATH } from 'src/constants/router'
 import { Avatar, Flex, IconButton, Text } from '@radix-ui/themes'
 import { HamburgerMenuIcon, Cross1Icon } from '@radix-ui/react-icons'
 import { useState } from 'react'
-import { isTodayCampDay } from 'src/lib/date'
+import { isTodayRegis } from 'src/lib/date'
 
 const Navbar: React.FC = (): JSX.Element => {
   const [isExpand, setExpand] = useState<boolean>(false)
@@ -51,7 +51,7 @@ const Navbar: React.FC = (): JSX.Element => {
             <Text className={styles.nav}>ช่วงเวลา</Text>
             <Text className={styles.nav}>คำถามที่พบบ่อย</Text>
             <Text className={styles.nav}>ช่องทางการติดต่อ</Text>
-            {isTodayCampDay() && <NavRegisMobile />}
+            {isTodayRegis() && <NavRegisMobile />}
           </Flex>
         </div>
       ) : (
@@ -71,7 +71,7 @@ const Navbar: React.FC = (): JSX.Element => {
                 <HamburgerMenuIcon />
               </IconButton>
             </div>
-            {isTodayCampDay() && (
+            {isTodayRegis() ? (
               <div className={styles.nav_desktop}>
                 {auth.is_authenticated ? (
                   <Link to={REGISTER_PATH} className={styles.avatar}>
@@ -81,6 +81,8 @@ const Navbar: React.FC = (): JSX.Element => {
                   <RegisterButton active>ลงทะเบียน</RegisterButton>
                 )}
               </div>
+            ) : (
+              <Text>ปิดรับสมัครแล้ว</Text>
             )}
           </div>
         </Flex>
