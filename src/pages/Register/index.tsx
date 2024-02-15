@@ -7,6 +7,7 @@ import { Avatar, Box, Container, Flex, Heading } from '@radix-ui/themes'
 import SignOutButton from 'src/components/SignOutButton'
 import { errorAlert, savedAlert } from 'src/lib/toast'
 import GuardianForm, { IGuardianForm } from 'src/components/GuardianForm'
+import EducationForm, { IEducationForm } from 'src/components/EducationForm'
 import ReactGA from 'react-ga4'
 import QuestionForm, { IQuestionForm } from 'src/components/QuestionForm'
 import FileUpload, { IFileUpload } from 'src/components/FileUpload'
@@ -57,6 +58,18 @@ const Register: React.FC = (): JSX.Element => {
       savedAlert()
     } catch (err) {
       errorAlert()
+      setSubmit(false)
+    }
+  }
+
+  const onEducationFormSubmit = async (values: IEducationForm) => {
+    setSubmit(true)
+
+    try {
+      await apiInstance.post('/educaiton', values)
+      setCurrentStep(currentStep + 1)
+      setSubmit(false)
+    } catch (err) {
       setSubmit(false)
     }
   }
@@ -129,6 +142,8 @@ const Register: React.FC = (): JSX.Element => {
         return <GeneralForm onSubmit={onGeneralFormSubmit} isSubmitting={isSubmitting} />
       case 1:
         return <GuardianForm onSubmit={onGuardianFormSubmit} goBack={goBack} isSubmitting={isSubmitting} />
+      case 2:
+        return <EducationForm onSubmit={onEducationFormSubmit} goBack={goBack} isSubmitting={isSubmitting} />
       case 2:
         return (
           <FileUpload

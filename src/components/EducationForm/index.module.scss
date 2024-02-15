@@ -1,4 +1,4 @@
-.GenForm {
+.EduForm {
     .inputGroup {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
@@ -11,6 +11,10 @@
         flex-direction: column;
     }
 
+    input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        display: none;
+      }
 
     @media screen and (max-width: 768px) {
         .inputGroup {

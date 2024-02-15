@@ -3,165 +3,110 @@ import styles from './index.module.scss'
 import { Button, Flex, Heading, Separator } from '@radix-ui/themes'
 import { useFormik } from 'formik'
 import FormikTextField from '../Form/Formik/Input'
+import FormikNumber from '../Form/Formik/Input/number'
 import { apiInstance } from 'src/lib/axios'
 
 type Props = {
-  onSubmit: (values: IGuardianForm) => void
+  onSubmit: (values: IEducationForm) => void
   goBack: () => void
   isSubmitting: boolean
 }
 
-export interface IGuardianForm {
-  name: string
-  tel: string
-  relation: string
-  email?: string
-  emergency_name: string
-  emergency_tel: string
-  emergency_relation: string
-  emergency_email?: string
+export interface IEducationForm {
+  school_name: string
+  major: string
+  degree: string
+  gpax: number
 }
 
-const initialValues: IGuardianForm = {
-  name: '',
-  tel: '',
-  relation: '',
-  email: '',
-  emergency_name: '',
-  emergency_tel: '',
-  emergency_relation: '',
-  emergency_email: '',
+const initialValues: IEducationForm = {
+  school_name: '',
+  major: '',
+  degree: '',
+  gpax: 0,
 }
 
-const validate = (values: IGuardianForm) => {
+const validate = (values: IEducationForm) => {
   const errors: Record<string, string> = {}
-  if (!values.name) errors.name = 'กรุณาระบุชื่อ'
-  if (!values.tel) errors.tel = 'กรุณาระบุเบอร์โทรศัพท์'
-  if (!values.relation) errors.relation = 'กรุณาระบุความสัมพันธ์กับผู้สมัคร'
-  if (!values.emergency_name) errors.emergency_name = 'กรุณาระบุชื่อผู้ติดต่อฉุกเฉิน'
-  if (!values.emergency_tel) errors.emergency_tel = 'กรุณาระบุเบอร์โทรผู้ติดต่อฉุกเฉิน'
-  if (!values.emergency_relation) errors.emergency_relation = 'กรุณาระบุความสัมพันธ์ของผู้ติดต่อฉุกเฉิน'
+  if (!values.school_name) errors.school_name = 'กรุณาระบุชื่อโรงเรียนที่กำลังศึกษาอยู่'
+  if (!values.major) errors.major = 'กรุณาระบุสายที่กำลังศึกษา'
+  if (!values.degree) errors.degree = 'กรุณาระบุวุฒิการศึกษา'
+  if (!values.gpax) errors.gpax = 'กรุณาระบุเกรดเฉลี่ยสะสม'
 
   return errors
 }
 
-const GuardianForm: React.FC<Props> = ({ onSubmit, isSubmitting, goBack }: Props) => {
+const EducationForm: React.FC<Props> = ({ onSubmit, isSubmitting, goBack }: Props) => {
   const formik = useFormik({
     initialValues,
     validate,
     onSubmit,
   })
 
-  const getGuardianInfo = useCallback(async () => {
-    const { data } = await apiInstance.get('/guardian')
+  const getEducationInfo = useCallback(async () => {
+    const { data } = await apiInstance.get('/education')
 
-    const newValues: IGuardianForm = {
-      name: data.name ?? '',
-      tel: data.tel ?? '',
-      relation: data.relation ?? '',
-      email: data.email ?? '',
-      emergency_name: data.emergency_name ?? '',
-      emergency_tel: data.emergency_tel ?? '',
-      emergency_relation: data.emergency_relation ?? '',
-      emergency_email: data.emergency_email ?? '',
+    const newValues: IEducationForm = {
+      school_name: data.school_name ?? '',
+      major: data.major ?? '',
+      degree: data.degree ?? '',
+      gpax: data.gpax ?? '',
     }
 
     formik.setValues(newValues)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
-    getGuardianInfo()
-  }, [getGuardianInfo])
+    getEducationInfo()
+  }, [getEducationInfo])
 
   return (
-    <div className={styles.GenForm}>
+    <div className={styles.EduForm}>
       <form onSubmit={formik.handleSubmit}>
         <Heading size="5" mt="3">
-          ข้อมูลผู้ปกครอง
+          ข้อมูลการศึกษา
         </Heading>
         <Separator my="4" size="4" />
         <div className={styles.inputGroup}>
           <FormikTextField
-            label="ชื่อ"
-            name="name"
+            label="ชื่อโรงเรียนที่กำลังศึกษาอยู่"
+            name="school_name"
             required
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
-            errors={formik.errors.name}
-            touched={formik.touched.name}
-            value={formik.values.name}
+            errors={formik.errors.school_name}
+            touched={formik.touched.school_name}
+            value={formik.values.school_name}
           />
           <FormikTextField
-            label="เบอร์โทร"
-            name="tel"
+            label="สายที่กำลังศึกษา"
+            name="major"
             required
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
-            errors={formik.errors.tel}
-            touched={formik.touched.tel}
-            value={formik.values.tel}
+            errors={formik.errors.major}
+            touched={formik.touched.major}
+            value={formik.values.major}
           />
           <FormikTextField
-            label="ความสัมพันธ์"
-            name="relation"
+            label="วุฒิการศึกษา"
+            name="degree"
             required
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
-            errors={formik.errors.relation}
-            touched={formik.touched.relation}
-            value={formik.values.relation}
+            errors={formik.errors.degree}
+            touched={formik.touched.degree}
+            value={formik.values.degree}
           />
-          <FormikTextField
-            label="อีเมลล์ (ถ้ามี)"
-            name="email"
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            value={formik.values.email}
-          />
-        </div>
-
-        <Heading size="5" mt="5">
-          ข้อมูลผู้ปกครองที่ติดต่อได้ในกรณีฉุกเฉิน
-        </Heading>
-        <Separator my="4" size="4" />
-        <div className={styles.inputGroup}>
-          <FormikTextField
-            label="ชื่อผู้ติดต่อฉุกเฉิน"
-            name="emergency_name"
+          <FormikNumber
+            label="เกรดเฉลี่ยสะสม"
+            name="gpax"
             required
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
-            errors={formik.errors.emergency_name}
-            touched={formik.touched.emergency_name}
-            value={formik.values.emergency_name}
-          />
-          <FormikTextField
-            label="เบอร์ติดต่อฉุกเฉิน"
-            name="emergency_tel"
-            required
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            errors={formik.errors.emergency_tel}
-            touched={formik.touched.emergency_tel}
-            value={formik.values.emergency_tel}
-          />
-          <FormikTextField
-            label="ความสัมพันธ์กับผู้ติดต่อฉุกเฉิน"
-            name="emergency_relation"
-            required
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            errors={formik.errors.emergency_relation}
-            touched={formik.touched.emergency_relation}
-            value={formik.values.emergency_relation}
-          />
-          <FormikTextField
-            label="อีเมลล์ของผู้ติดต่อฉุกเฉิน (ถ้ามี)"
-            name="emergency_email"
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            value={formik.values.emergency_email}
+            errors={formik.errors.degree}
+            touched={formik.touched.degree}
+            value={formik.values.gpax}
           />
         </div>
 
@@ -178,4 +123,4 @@ const GuardianForm: React.FC<Props> = ({ onSubmit, isSubmitting, goBack }: Props
   )
 }
 
-export default GuardianForm
+export default EducationForm
