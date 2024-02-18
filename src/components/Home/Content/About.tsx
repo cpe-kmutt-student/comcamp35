@@ -3,7 +3,11 @@ import styles from './about.module.scss'
 import { Flex, Heading } from '@radix-ui/themes'
 import Laptop from 'src/assets/laptop.webp'
 
-const About: React.FC = () => {
+type Props = {
+  id: string
+}
+
+const About: React.FC<Props> = ({ id }: Props): JSX.Element => {
   return (
     <Flex
       direction={{ initial: 'column-reverse', md: 'row' }}
@@ -11,6 +15,7 @@ const About: React.FC = () => {
       gap={{ initial: '5', md: '9' }}
       align="center"
       className={styles.about}
+      id={id}
     >
       <div>
         <Heading size={{ initial: '8', md: '9' }} className="title" align={{ initial: 'center', md: 'left' }}>

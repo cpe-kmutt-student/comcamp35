@@ -25,7 +25,11 @@ const ConditionContents: { text: string; image: string }[] = [
   },
 ]
 
-const Condition: React.FC = () => {
+type Props = {
+  id: string
+}
+
+const Condition: React.FC<Props> = ({ id }: Props): JSX.Element => {
   const renderCampCondition = ConditionContents.map((item, i) => (
     <div key={i} className={styles.conditionInfo}>
       <div className={styles.card}>
@@ -42,6 +46,7 @@ const Condition: React.FC = () => {
       align="center"
       className={styles.condition}
       mt={{ initial: '9', md: '0' }}
+      id={id}
     >
       <Heading
         size={{ initial: '8', md: '9' }}

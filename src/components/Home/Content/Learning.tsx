@@ -39,7 +39,11 @@ const LearningContents: { topic: string; details: string; image: string }[] = [
   },
 ]
 
-const Learning: React.FC = () => {
+type Props = {
+  id: string
+}
+
+const Learning: React.FC<Props> = ({ id }: Props): JSX.Element => {
   const renderLearningCondition = LearningContents.map((item, i) => (
     <div key={i} className={styles.content}>
       <div className={styles.card}>
@@ -61,7 +65,7 @@ const Learning: React.FC = () => {
   ))
 
   return (
-    <Flex direction="column" justify="center" align="center" className={styles.learning}>
+    <Flex direction="column" justify="center" align="center" className={styles.learning} id={id}>
       <Heading size={{ initial: '8', md: '9' }} className="title" align="center">
         Learning
       </Heading>

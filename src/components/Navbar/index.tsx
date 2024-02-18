@@ -9,6 +9,35 @@ import { HamburgerMenuIcon, Cross1Icon } from '@radix-ui/react-icons'
 import { useState } from 'react'
 import { REGIS_END_DATE, isTodayRegis } from 'src/lib/date'
 import { isPast } from 'date-fns'
+import { Link as ScrollLink, animateScroll } from 'react-scroll'
+
+interface INavLink {
+  name: string
+  to: string
+}
+
+const navLinks: INavLink[] = [
+  {
+    name: 'การเรียน',
+    to: 'learning',
+  },
+  {
+    name: 'คุณสมบัติ',
+    to: 'condition',
+  },
+  {
+    name: 'ช่วงเวลา',
+    to: 'timeline',
+  },
+  {
+    name: 'คำถามที่พบบ่อย',
+    to: 'faq',
+  },
+  {
+    name: 'ช่องทางการติดต่อ',
+    to: 'contact',
+  },
+]
 
 const Navbar: React.FC = (): JSX.Element => {
   const [isExpand, setExpand] = useState<boolean>(false)
@@ -17,7 +46,7 @@ const Navbar: React.FC = (): JSX.Element => {
 
   const Image = () => {
     return (
-      <Link to={BASE_PATH}>
+      <Link to={BASE_PATH} onClick={() => animateScroll.scrollToTop()}>
         <img className={styles.navbarLogo} alt="Logo" src={Logo} />
       </Link>
     )
@@ -35,6 +64,14 @@ const Navbar: React.FC = (): JSX.Element => {
     )
   }
 
+  const renderNavLinks = navLinks.map((item: INavLink, i: number) => {
+    return (
+      <ScrollLink to={item.to} key={i} spy smooth>
+        <Text className={styles.nav}>{item.name}</Text>
+      </ScrollLink>
+    )
+  })
+
   return (
     <>
       {isExpand ? (
@@ -46,12 +83,7 @@ const Navbar: React.FC = (): JSX.Element => {
             </IconButton>
           </Flex>
           <Flex gap="5" justify="center" align="center" direction="column" style={{ padding: '20px 0' }}>
-            <Text className={styles.nav}>ไฮไลท์</Text>
-            <Text className={styles.nav}>การเรียน</Text>
-            <Text className={styles.nav}>คุณสมบัติ</Text>
-            <Text className={styles.nav}>ช่วงเวลา</Text>
-            <Text className={styles.nav}>คำถามที่พบบ่อย</Text>
-            <Text className={styles.nav}>ช่องทางการติดต่อ</Text>
+            {renderNavLinks}
             {isTodayRegis() ? (
               <NavRegisMobile />
             ) : (
@@ -65,12 +97,7 @@ const Navbar: React.FC = (): JSX.Element => {
         <Flex justify="between" align="center" className={styles.navbar}>
           <Image />
           <Flex gap="5" className={styles.nav_desktop}>
-            <Text className={styles.nav}>ไฮไลท์</Text>
-            <Text className={styles.nav}>การเรียน</Text>
-            <Text className={styles.nav}>คุณสมบัติ</Text>
-            <Text className={styles.nav}>ช่วงเวลา</Text>
-            <Text className={styles.nav}>คำถามที่พบบ่อย</Text>
-            <Text className={styles.nav}>ช่องทางการติดต่อ</Text>
+            {renderNavLinks}
           </Flex>
           <div>
             <div className={styles.nav_mobile}>

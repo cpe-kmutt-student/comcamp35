@@ -13,14 +13,14 @@ const Content: React.FC = () => {
   return (
     <div>
       <Hero />
-      <About />
+      <About id="about" />
       {/* <Highlight /> */}
-      <Learning />
-      <Condition />
-      <Timeline />
-      <FrequentlyAskedQuestionHome />
+      <Learning id="learning" />
+      <Condition id="condition" />
+      <Timeline id="timeline" />
+      <FrequentlyAskedQuestionHome id="faq" />
       {/* <Sponsor /> */}
-      <Contact />
+      <Contact id="contact" />
     </div>
   )
 }

@@ -54,9 +54,20 @@ const link_contract: ISocial[] = [
   },
 ]
 
-const Contact: React.FC = () => {
+type Props = {
+  id: string
+}
+
+const Contact: React.FC<Props> = ({ id }: Props): JSX.Element => {
   return (
-    <Flex direction="column" justify="center" align="center" className={styles.contact} mt={{ initial: '9', md: '0' }}>
+    <Flex
+      direction="column"
+      justify="center"
+      align="center"
+      className={styles.contact}
+      mt={{ initial: '9', md: '0' }}
+      id={id}
+    >
       <Heading size={{ initial: '8', md: '9' }} className="title contacttitle" align="center">
         CONTACT
       </Heading>

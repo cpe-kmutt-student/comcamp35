@@ -1,9 +1,328 @@
-<svg width="201" height="200" viewBox="0 0 201 200" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<rect width="200.803" height="200" transform="matrix(-1 0 0 1 201 0)" fill="url(#pattern0)"/>
-<defs>
-<pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
-<use xlink:href="#image0_1322_901" transform="scale(0.015625)"/>
-</pattern>
-<image id="image0_1322_901" width="64" height="64" xlink:href="data:image/png;base64,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"/>
-</defs>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 28.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" shape-rendering="crispEdges"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 64 64"
+	 style="enable-background:new 0 0 64 64;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#28385A;}
+	.st1{fill:#387D9E;}
+	.st2{fill:#2F608C;}
+	.st3{fill:#1C9FC8;}
+	.st4{fill:#FDFEFD;}
+	.st5{fill:#D2DFDB;}
+	.st6{fill:#205CA5;}
+	.st7{fill:#0F3379;}
+	.st8{fill:#F5B428;}
+	.st9{fill:#F67C0E;}
+	.st10{fill:#FCE25A;}
+	.st11{fill:#F8D699;}
+	.st12{fill:#A6B9B6;}
+	.st13{fill:#3B5378;}
+</style>
+<g>
+	<rect x="34" y="31" class="st0" width="2" height="1"/>
+	<rect x="32" y="30" class="st0" width="2" height="1"/>
+	<rect x="20" y="58" class="st0" width="1" height="1"/>
+	<polygon class="st0" points="32,5 29,5 29,4 28,4 28,5 25,5 25,6 32,6 	"/>
+	<rect x="23" y="56" class="st0" width="2" height="1"/>
+	<rect x="21" y="57" class="st0" width="2" height="1"/>
+	<rect x="25" y="55" class="st0" width="1" height="1"/>
+	<rect x="26" y="53" class="st0" width="1" height="2"/>
+	<polygon class="st0" points="32,5 33,5 33,2 30,2 30,3 32,3 	"/>
+	<rect x="18" y="23" class="st0" width="5" height="1"/>
+	<rect x="29" y="3" class="st0" width="1" height="1"/>
+	<rect x="40" y="8" class="st0" width="1" height="1"/>
+	<rect x="39" y="9" class="st0" width="1" height="1"/>
+	<rect x="38" y="10" class="st0" width="1" height="2"/>
+	<rect x="39" y="12" class="st0" width="1" height="2"/>
+	<rect x="34" y="5" class="st0" width="2" height="1"/>
+	<rect x="36" y="4" class="st0" width="2" height="1"/>
+	<polygon class="st0" points="37,13 36,13 36,19 37,19 37,15 39,15 39,14 37,14 	"/>
+	<rect x="32" y="24" class="st0" width="1" height="2"/>
+	<rect x="31" y="26" class="st0" width="1" height="4"/>
+	<rect x="33" y="23" class="st0" width="1" height="1"/>
+	<rect x="34" y="21" class="st0" width="1" height="2"/>
+	<rect x="35" y="19" class="st0" width="1" height="2"/>
+	<rect x="41" y="29" class="st0" width="2" height="1"/>
+	<rect x="48" y="25" class="st0" width="1" height="1"/>
+	<rect x="47" y="26" class="st0" width="1" height="2"/>
+	<rect x="46" y="28" class="st0" width="1" height="1"/>
+	<rect x="45" y="26" class="st0" width="1" height="1"/>
+	<rect x="43" y="28" class="st0" width="1" height="1"/>
+	<rect x="44" y="27" class="st0" width="1" height="1"/>
+	<polygon class="st0" points="51,27 52,27 52,23 50,23 50,24 51,24 	"/>
+	<rect x="48" y="31" class="st0" width="1" height="1"/>
+	<rect x="46" y="25" class="st0" width="1" height="1"/>
+	<rect x="19" y="59" class="st0" width="1" height="1"/>
+	<rect x="37" y="31" class="st0" width="2" height="1"/>
+	<rect x="49" y="24" class="st0" width="1" height="1"/>
+	<rect x="50" y="27" class="st0" width="1" height="2"/>
+	<rect x="49" y="29" class="st0" width="1" height="2"/>
+	<rect x="27" y="59" class="st0" width="1" height="1"/>
+	<rect x="30" y="56" class="st0" width="1" height="1"/>
+	<rect x="29" y="57" class="st0" width="1" height="1"/>
+	<rect x="28" y="58" class="st0" width="1" height="1"/>
+	<rect x="20" y="60" class="st0" width="2" height="1"/>
+	<rect x="24" y="60" class="st0" width="3" height="1"/>
+	<rect x="32" y="6" class="st0" width="2" height="1"/>
+	<rect x="35" y="61" class="st0" width="4" height="1"/>
+	<rect x="39" y="30" class="st0" width="2" height="1"/>
+	<rect x="22" y="59" class="st0" width="2" height="1"/>
+	<rect x="28" y="54" class="st0" width="1" height="2"/>
+	<rect x="31" y="61" class="st0" width="2" height="1"/>
+	<polygon class="st0" points="41,8 42,8 42,3 38,3 38,4 41,4 	"/>
+	<rect x="33" y="60" class="st0" width="2" height="1"/>
+	<rect x="24" y="6" class="st0" width="1" height="1"/>
+	<rect x="33" y="58" class="st0" width="2" height="1"/>
+	<rect x="31" y="59" class="st0" width="2" height="1"/>
+	<rect x="40" y="59" class="st0" width="2" height="1"/>
+	<rect x="39" y="60" class="st0" width="1" height="1"/>
+	<rect x="42" y="58" class="st0" width="1" height="1"/>
+	<rect x="22" y="49" class="st0" width="1" height="1"/>
+	<rect x="25" y="51" class="st0" width="2" height="1"/>
+	<polygon class="st0" points="39,52 27,52 27,53 29,53 29,54 30,54 30,53 38,53 38,55 39,55 	"/>
+	<rect x="35" y="57" class="st0" width="2" height="1"/>
+	<rect x="37" y="55" class="st0" width="1" height="2"/>
+	<rect x="23" y="50" class="st0" width="2" height="1"/>
+	<rect x="49" y="45" class="st0" width="1" height="1"/>
+	<polygon class="st0" points="44,48 45,48 45,49 46,49 46,48 47,48 47,47 44,47 	"/>
+	<rect x="47" y="46" class="st0" width="2" height="1"/>
+	<rect x="50" y="44" class="st0" width="1" height="1"/>
+	<rect x="51" y="42" class="st0" width="1" height="2"/>
+	<rect x="52" y="39" class="st0" width="1" height="3"/>
+	<rect x="41" y="56" class="st0" width="2" height="1"/>
+	<rect x="40" y="54" class="st0" width="1" height="2"/>
+	<rect x="43" y="57" class="st0" width="1" height="1"/>
+	<rect x="43" y="50" class="st0" width="1" height="1"/>
+	<polygon class="st0" points="39,52 41,52 41,54 42,54 42,52 43,52 43,51 39,51 	"/>
+	<rect x="44" y="49" class="st0" width="1" height="1"/>
+	<rect x="30" y="60" class="st0" width="1" height="1"/>
+	<rect x="23" y="22" class="st0" width="2" height="1"/>
+	<rect x="16" y="19" class="st0" width="1" height="3"/>
+	<rect x="17" y="18" class="st0" width="1" height="1"/>
+	<rect x="21" y="48" class="st0" width="1" height="1"/>
+	<rect x="18" y="17" class="st0" width="1" height="1"/>
+	<polygon class="st0" points="26,23 27,23 27,21 25,21 25,22 26,22 	"/>
+	<rect x="17" y="22" class="st0" width="1" height="1"/>
+	<rect x="23" y="7" class="st0" width="1" height="1"/>
+	<rect x="19" y="16" class="st0" width="1" height="1"/>
+	<rect x="22" y="8" class="st0" width="1" height="2"/>
+	<rect x="21" y="10" class="st0" width="1" height="4"/>
+	<rect x="20" y="14" class="st0" width="1" height="2"/>
+	<rect x="27" y="20" class="st0" width="1" height="1"/>
+	<rect x="25" y="23" class="st0" width="1" height="1"/>
+	<rect x="17" y="36" class="st0" width="1" height="8"/>
+	<rect x="18" y="33" class="st0" width="1" height="3"/>
+	<rect x="18" y="44" class="st0" width="1" height="1"/>
+	<rect x="20" y="46" class="st0" width="1" height="2"/>
+	<rect x="19" y="45" class="st0" width="1" height="1"/>
+	<rect x="19" y="31" class="st0" width="1" height="2"/>
+	<rect x="23" y="25" class="st0" width="1" height="1"/>
+	<rect x="20" y="29" class="st0" width="1" height="2"/>
+	<rect x="24" y="24" class="st0" width="1" height="1"/>
+	<rect x="22" y="26" class="st0" width="1" height="1"/>
+	<rect x="21" y="27" class="st0" width="1" height="2"/>
+</g>
+<g>
+	<rect x="25" y="6" class="st1" width="1" height="1"/>
+	<rect x="23" y="8" class="st1" width="1" height="1"/>
+	<rect x="22" y="10" class="st1" width="1" height="1"/>
+	<rect x="37" y="32" class="st1" width="1" height="1"/>
+	<rect x="35" y="37" class="st1" width="1" height="1"/>
+	<rect x="34" y="6" class="st1" width="1" height="1"/>
+	<rect x="36" y="5" class="st1" width="1" height="1"/>
+	<polygon class="st1" points="38,14 39,14 39,12 38,12 38,11 37,11 37,10 36,10 36,12 37,12 37,13 38,13 	"/>
+	<rect x="38" y="4" class="st1" width="1" height="1"/>
+	<rect x="29" y="4" class="st1" width="1" height="1"/>
+	<rect x="33" y="35" class="st1" width="1" height="1"/>
+	<rect x="30" y="3" class="st1" width="2" height="1"/>
+	<polygon class="st1" points="35,41 34,41 34,40 30,40 30,39 29,39 29,42 28,42 28,43 27,43 27,45 24,45 24,44 23,44 23,43 22,43 
+		22,44 21,44 21,47 22,47 22,49 24,49 24,50 29,50 29,49 31,49 31,48 33,48 33,47 34,47 34,46 35,46 35,45 36,45 36,43 35,43 	"/>
+	<rect x="49" y="28" class="st1" width="1" height="1"/>
+	<rect x="46" y="32" class="st1" width="1" height="1"/>
+	<rect x="48" y="30" class="st1" width="1" height="1"/>
+	<rect x="48" y="26" class="st1" width="1" height="1"/>
+	<rect x="50" y="26" class="st1" width="1" height="1"/>
+	<rect x="49" y="25" class="st1" width="1" height="1"/>
+	<rect x="39" y="31" class="st1" width="1" height="1"/>
+	<rect x="39" y="33" class="st1" width="1" height="1"/>
+	<rect x="45" y="29" class="st1" width="1" height="1"/>
+	<rect x="38" y="9" class="st1" width="1" height="1"/>
+	<rect x="39" y="8" class="st1" width="1" height="1"/>
+	<rect x="41" y="30" class="st1" width="1" height="1"/>
+</g>
+<g>
+	<rect x="28" y="41" class="st2" width="1" height="1"/>
+	<rect x="29" y="49" class="st2" width="1" height="1"/>
+	<rect x="31" y="48" class="st2" width="1" height="1"/>
+	<rect x="30" y="4" class="st2" width="2" height="1"/>
+	<rect x="20" y="45" class="st2" width="1" height="1"/>
+	<rect x="21" y="47" class="st2" width="1" height="1"/>
+	<rect x="26" y="44" class="st2" width="1" height="1"/>
+	<rect x="23" y="49" class="st2" width="1" height="1"/>
+	<rect x="36" y="12" class="st2" width="1" height="1"/>
+	<polygon class="st2" points="46,26 46,27 45,27 45,28 44,28 44,29 43,29 43,30 45,30 45,29 46,29 46,28 47,28 47,26 	"/>
+	<rect x="37" y="13" class="st2" width="1" height="1"/>
+	<rect x="35" y="42" class="st2" width="1" height="1"/>
+	<rect x="33" y="47" class="st2" width="1" height="1"/>
+	<rect x="34" y="46" class="st2" width="1" height="1"/>
+	<rect x="35" y="45" class="st2" width="1" height="1"/>
+</g>
+<g>
+	<rect x="29" y="12" class="st3" width="1" height="1"/>
+	<polygon class="st3" points="29,8 33,8 33,9 34,9 34,10 35,10 35,11 36,11 36,10 37,10 37,11 38,11 38,9 39,9 39,8 41,8 41,4 39,4 
+		39,5 37,5 37,6 35,6 35,7 32,7 32,6 26,6 26,7 24,7 24,9 23,9 23,11 22,11 22,13 25,13 25,14 26,14 26,12 27,12 27,10 28,10 28,9 
+		29,9 	"/>
+	<rect x="50" y="24" class="st3" width="1" height="2"/>
+	<polygon class="st3" points="49,27 48,27 48,28 47,28 47,29 46,29 46,30 42,30 42,31 40,31 40,32 38,32 38,33 36,33 36,34 35,34 
+		35,35 34,35 34,36 33,36 33,37 34,37 34,39 33,39 33,40 34,40 34,41 35,41 35,37 36,37 36,36 37,36 37,35 38,35 38,34 39,34 39,33 
+		46,33 46,32 48,32 48,30 49,30 49,28 50,28 50,26 49,26 	"/>
+	<rect x="30" y="11" class="st3" width="1" height="1"/>
+</g>
+<g>
+	<polygon class="st4" points="52,32 52,33 48,33 48,34 41,34 41,35 39,35 39,36 38,36 38,37 37,37 37,38 36,38 36,42 37,42 37,44 
+		39,44 39,45 43,45 43,44 44,44 44,43 42,43 42,42 41,42 41,38 42,38 42,37 45,37 45,38 46,38 46,40 45,40 45,41 43,41 43,39 44,39 
+		44,40 45,40 45,38 42,38 42,42 44,42 44,43 46,43 46,42 48,42 48,41 49,41 49,40 50,40 50,38 51,38 51,37 52,37 52,36 53,36 53,35 
+		54,35 54,32 	"/>
+	<path class="st4" d="M36,11h-1v-1h-1V9h-1V8h-4v1h-1v2h-1v2h-1v1h1v1h1v6h1v1h3v1h-1v2h-1v1h-1v1h-2v1h-4v-1h-1v2h-1v2h-1v3h-1v3
+		h-1v6h1v1h2v-1h1v-1h1v1h1v1h1v-1h1v-1h1v-1h1v-2h1v-1h1v1h2v-1h1v-1h-1v-2h1v-1h1v-1h1v-1h-1v-1h-3v-5h1v-2h1v-1h1v-1h-1v-1h1v-1
+		h1v-2h1V11z M29,16v-4h1v-1h1v1h1v-1h1v1h-1v4h2v1h-2v-1h-1v1h-1v-1H29z"/>
+</g>
+<g>
+	<rect x="34" y="33" class="st5" width="1" height="1"/>
+	<rect x="37" y="36" class="st5" width="1" height="1"/>
+	<rect x="35" y="18" class="st5" width="1" height="1"/>
+	<rect x="40" y="34" class="st5" width="1" height="1"/>
+	<rect x="34" y="20" class="st5" width="1" height="1"/>
+	<rect x="35" y="32" class="st5" width="1" height="1"/>
+	<rect x="33" y="21" class="st5" width="1" height="1"/>
+	<rect x="32" y="38" class="st5" width="1" height="1"/>
+	<rect x="43" y="39" class="st5" width="1" height="1"/>
+	<rect x="44" y="40" class="st5" width="1" height="1"/>
+	<rect x="47" y="33" class="st5" width="1" height="1"/>
+	<rect x="42" y="37" class="st5" width="3" height="1"/>
+	<rect x="51" y="32" class="st5" width="1" height="1"/>
+	<rect x="43" y="42" class="st5" width="1" height="1"/>
+	<rect x="41" y="38" class="st5" width="1" height="3"/>
+	<rect x="45" y="38" class="st5" width="1" height="2"/>
+	<rect x="31" y="30" class="st5" width="1" height="1"/>
+	<rect x="38" y="35" class="st5" width="1" height="1"/>
+	<rect x="46" y="42" class="st5" width="1" height="1"/>
+	<rect x="49" y="40" class="st5" width="1" height="1"/>
+	<rect x="38" y="44" class="st5" width="1" height="1"/>
+	<rect x="48" y="41" class="st5" width="1" height="1"/>
+	<polygon class="st5" points="52,37 51,37 51,38 50,38 50,40 51,40 51,39 52,39 52,38 53,38 53,36 52,36 	"/>
+	<rect x="53" y="35" class="st5" width="1" height="1"/>
+	<polygon class="st5" points="36,46 35,46 35,47 34,47 34,48 32,48 32,49 30,49 30,50 26,50 26,51 27,51 27,52 38,52 38,51 42,51 
+		42,50 44,50 44,48 40,48 40,47 38,47 38,45 36,45 	"/>
+	<polygon class="st5" points="51,41 50,41 50,42 49,42 49,43 47,43 47,44 43,44 43,45 39,45 39,46 41,46 41,47 46,47 46,46 48,46 
+		48,45 50,45 50,43 51,43 51,42 52,42 52,40 51,40 	"/>
+	<rect x="25" y="43" class="st5" width="1" height="1"/>
+	<rect x="27" y="10" class="st5" width="1" height="1"/>
+	<rect x="18" y="43" class="st5" width="1" height="1"/>
+	<rect x="18" y="36" class="st5" width="1" height="1"/>
+	<rect x="26" y="12" class="st5" width="1" height="1"/>
+	<rect x="19" y="44" class="st5" width="1" height="1"/>
+	<rect x="26" y="42" class="st5" width="1" height="1"/>
+	<polygon class="st5" points="27,27 29,27 29,26 30,26 30,25 31,25 31,23 32,23 32,22 29,22 29,21 28,21 28,22 27,22 27,23 26,23 
+		26,25 24,25 24,26 23,26 23,28 27,28 	"/>
+	<rect x="19" y="33" class="st5" width="1" height="1"/>
+</g>
+<g>
+	<path d="M32,11.5h1"/>
+	<rect x="32" y="11" class="st6" width="1" height="1"/>
+</g>
+<polygon class="st7" points="30,12 30,13 29,13 29,16 30,16 30,17 31,17 31,16 32,16 32,12 "/>
+<g>
+	<polygon class="st8" points="40,57 40,56 38,56 38,57 37,57 37,58 35,58 35,60 36,60 36,61 38,61 38,60 40,60 40,59 41,59 41,58 
+		42,58 42,57 	"/>
+	<polygon class="st8" points="28,56 25,56 25,57 23,57 23,59 25,59 25,60 27,60 27,58 29,58 29,57 28,57 	"/>
+	<path class="st8" d="M19,23h4v-1h2v-1h1v-1h1v-1h1v-4h-1v-1h-2v-1h-3v2h-1v2h-1v1h-1v1h-2v2h1v1h1V23z M24,17h1v-1h1v1h-1v1h-1V17z
+		"/>
+</g>
+<g>
+	<polygon class="st9" points="21,59 20,59 20,60 22,60 22,59 23,59 23,58 21,58 	"/>
+	<rect x="27" y="19" class="st9" width="1" height="1"/>
+	<rect x="18" y="18" class="st9" width="1" height="1"/>
+	<rect x="24" y="17" class="st9" width="1" height="1"/>
+	<rect x="24" y="59" class="st9" width="1" height="1"/>
+	<rect x="25" y="16" class="st9" width="1" height="1"/>
+	<rect x="26" y="20" class="st9" width="1" height="1"/>
+	<rect x="21" y="14" class="st9" width="1" height="1"/>
+	<rect x="18" y="22" class="st9" width="1" height="1"/>
+	<rect x="17" y="21" class="st9" width="1" height="1"/>
+	<rect x="33" y="59" class="st9" width="2" height="1"/>
+	<rect x="38" y="60" class="st9" width="1" height="1"/>
+	<rect x="40" y="56" class="st9" width="1" height="1"/>
+	<polygon class="st9" points="40,54 41,54 41,52 39,52 39,55 38,55 38,56 40,56 	"/>
+	<rect x="42" y="57" class="st9" width="1" height="1"/>
+	<rect x="41" y="58" class="st9" width="1" height="1"/>
+	<rect x="35" y="60" class="st9" width="1" height="1"/>
+	<polygon class="st9" points="28,54 29,54 29,53 27,53 27,55 26,55 26,56 28,56 	"/>
+	<rect x="28" y="56" class="st9" width="2" height="1"/>
+	<rect x="27" y="58" class="st9" width="1" height="1"/>
+	<rect x="31" y="60" class="st9" width="2" height="1"/>
+</g>
+<g>
+	<rect x="19" y="17" class="st10" width="1" height="1"/>
+	<rect x="20" y="16" class="st10" width="1" height="1"/>
+</g>
+<rect x="32" y="16" class="st11" width="2" height="1"/>
+<g>
+	<rect x="29" y="38" class="st12" width="1" height="1"/>
+	<rect x="32" y="35" class="st12" width="1" height="1"/>
+	<rect x="36" y="44" class="st12" width="1" height="1"/>
+	<rect x="33" y="34" class="st12" width="1" height="1"/>
+	<rect x="27" y="21" class="st12" width="1" height="1"/>
+	<rect x="23" y="43" class="st12" width="1" height="1"/>
+	<rect x="38" y="51" class="st12" width="1" height="1"/>
+	<rect x="22" y="42" class="st12" width="1" height="1"/>
+	<rect x="25" y="50" class="st12" width="1" height="1"/>
+	<rect x="25" y="24" class="st12" width="1" height="1"/>
+	<rect x="28" y="39" class="st12" width="1" height="1"/>
+	<rect x="44" y="48" class="st12" width="1" height="1"/>
+	<rect x="43" y="40" class="st12" width="1" height="1"/>
+	<rect x="46" y="46" class="st12" width="1" height="1"/>
+	<rect x="50" y="43" class="st12" width="1" height="1"/>
+	<rect x="48" y="45" class="st12" width="1" height="1"/>
+	<rect x="41" y="41" class="st12" width="1" height="1"/>
+	<rect x="40" y="47" class="st12" width="1" height="1"/>
+	<rect x="38" y="46" class="st12" width="1" height="1"/>
+	<rect x="42" y="50" class="st12" width="1" height="1"/>
+	<rect x="42" y="42" class="st12" width="1" height="1"/>
+</g>
+<g>
+	<rect x="36" y="32" class="st13" width="1" height="1"/>
+	<rect x="32" y="36" class="st13" width="1" height="1"/>
+	<rect x="35" y="33" class="st13" width="1" height="1"/>
+	<rect x="47" y="42" class="st13" width="2" height="1"/>
+	<rect x="34" y="34" class="st13" width="1" height="1"/>
+	<rect x="49" y="41" class="st13" width="1" height="1"/>
+	<rect x="44" y="43" class="st13" width="3" height="1"/>
+	<rect x="50" y="40" class="st13" width="1" height="1"/>
+	<rect x="24" y="44" class="st13" width="2" height="1"/>
+	<rect x="26" y="43" class="st13" width="1" height="1"/>
+	<rect x="21" y="43" class="st13" width="1" height="1"/>
+	<rect x="20" y="44" class="st13" width="1" height="1"/>
+	<rect x="30" y="39" class="st13" width="3" height="1"/>
+	<rect x="33" y="37" class="st13" width="1" height="2"/>
+	<rect x="28" y="40" class="st13" width="1" height="1"/>
+	<rect x="27" y="41" class="st13" width="1" height="2"/>
+	<rect x="36" y="42" class="st13" width="1" height="2"/>
+	<rect x="40" y="33" class="st13" width="7" height="1"/>
+	<rect x="38" y="34" class="st13" width="2" height="1"/>
+	<rect x="37" y="35" class="st13" width="1" height="1"/>
+	<rect x="36" y="36" class="st13" width="1" height="2"/>
+	<rect x="47" y="32" class="st13" width="4" height="1"/>
+	<rect x="51" y="39" class="st13" width="1" height="1"/>
+	<rect x="51" y="31" class="st13" width="3" height="1"/>
+	<rect x="54" y="32" class="st13" width="1" height="4"/>
+	<rect x="53" y="36" class="st13" width="1" height="2"/>
+	<rect x="35" y="38" class="st13" width="1" height="4"/>
+	<rect x="41" y="47" class="st13" width="3" height="1"/>
+	<rect x="52" y="38" class="st13" width="1" height="1"/>
+	<rect x="37" y="44" class="st13" width="1" height="1"/>
+	<rect x="39" y="46" class="st13" width="2" height="1"/>
+	<rect x="38" y="45" class="st13" width="1" height="1"/>
+</g>
 </svg>

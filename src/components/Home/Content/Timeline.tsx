@@ -58,7 +58,11 @@ const TimelineContents: ITimeline[] = [
   },
 ]
 
-const Timeline: React.FC = () => {
+type Props = {
+  id: string
+}
+
+const Timeline: React.FC<Props> = ({ id }: Props): JSX.Element => {
   const renderCampCondition = TimelineContents.map((item, i) => (
     <div key={i} className={styles.timeline_contents}>
       <img
@@ -73,8 +77,16 @@ const Timeline: React.FC = () => {
       </Heading>
     </div>
   ))
+
   return (
-    <Flex direction="column" justify="center" align="center" className={styles.timeline} mt={{ initial: '9', md: '0' }}>
+    <Flex
+      direction="column"
+      justify="center"
+      align="center"
+      className={styles.timeline}
+      mt={{ initial: '9', md: '0' }}
+      id={id}
+    >
       <Heading size={{ initial: '8', md: '9' }} className="title" align="center">
         timeline
       </Heading>
