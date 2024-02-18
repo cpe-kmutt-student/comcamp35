@@ -29,7 +29,7 @@ const Hero: React.FC = () => {
         <div className={styles.subText}>{quotes[quotesIndex]}</div>
       </div>
       <Heading size="9" className={[styles.campDate, 'title'].join(' ')}>
-        {isTodayRegis() ? '7-11 April 2024' : 'Coming Soon'}
+        7-11 April 2024
       </Heading>
       <Text className={styles.content}>
         เมื่อโลกโปรเเกรมมอนกำลังจะล่มสลาย<br></br>
