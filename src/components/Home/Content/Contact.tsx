@@ -28,7 +28,7 @@ const contacts: IContact[] = [
     email: 'pimpisa.sods@mail.kmutt.ac.th',
   },
   {
-    name: 'พี่พลอย',
+    name: 'พี่น้ำขิง',
     phone: '061 506 6249',
     email: 'wipada.kasi@mail.kmutt.ac.th',
   },
