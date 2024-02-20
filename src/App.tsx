@@ -16,7 +16,7 @@ import ReactGA from 'react-ga4'
 const App: React.FC = (): JSX.Element => {
   const location = useLocation()
 
-  import.meta.env.VITE_GA_MEASUREMENT_ID && ReactGA.initialize(import.meta.env.VITE_GA_MEASUREMENT_ID)
+  ReactGA.initialize(import.meta.env.VITE_GA_MEASUREMENT_ID)
 
   const navbarFilter = () => {
     switch (location.pathname) {
