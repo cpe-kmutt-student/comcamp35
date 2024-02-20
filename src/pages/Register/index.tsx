@@ -7,11 +7,14 @@ import { Avatar, Box, Container, Flex, Heading } from '@radix-ui/themes'
 import SignOutButton from 'src/components/SignOutButton'
 import { errorAlert, savedAlert } from 'src/lib/toast'
 import GuardianForm, { IGuardianForm } from 'src/components/GuardianForm'
+import ReactGA from 'react-ga4'
 
 const Register: React.FC = (): JSX.Element => {
   const [currentStep, setCurrentStep] = useState<number>(0)
   const [isSubmitting, setSubmit] = useState<boolean>(false)
   const { auth } = useAuth()
+
+  ReactGA.send({ hitType: 'pageview', page: '/', title: 'Registration page' })
 
   const onGeneralFormSubmit = async (values: IGeneralForm) => {
     setSubmit(true)
