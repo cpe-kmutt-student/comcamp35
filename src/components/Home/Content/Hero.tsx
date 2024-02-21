@@ -6,7 +6,7 @@ import { useAuth } from 'src/context/auth'
 import { Heading, Text } from '@radix-ui/themes'
 import { isTodayRegis } from 'src/lib/date'
 
-const quotes: string[] = ['CPE37', 'มั่วสุมแข็งแกร่ง', 'บางมด', 'KMUTT']
+const quotes: string[] = ['CPE37', 'บางมด', 'KMUTT']
 
 const quotesIndex = Math.floor(Math.random() * quotes.length)
 
