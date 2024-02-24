@@ -6,8 +6,15 @@ import figma from 'src/assets/figma.svg'
 import python from 'src/assets/python.svg'
 import react from 'src/assets/react.svg'
 import rocket from 'src/assets/rocket.svg'
+import codetag from 'src/assets/codetag.svg'
 
 const LearningContents: { topic: string; details: string; image: string }[] = [
+  {
+    topic: 'เริ่มต้นด้วยการทำความรู้จักกับวิศวกรรมคอมพิวเตอร์ (Introduction to Computer Engineering)',
+    details:
+      'เริ่มต้นด้วยการทำความรู้จักกับวิศวกรรมคอมพิวเตอร์และเรียนรู้พื้นฐานของ Computer Programming ที่จะทำให้น้อง ๆ มีความเข้าใจการเขียนโปรแกรมมากขึ้น บอกเลยว่า “แม้ไม่มีพื้นฐานก็สามารถเข้าใจได้ง่าย ๆ”',
+    image: codetag,
+  },
   {
     topic: 'เรียนรู้การเขียนโปรแกรมด้วยภาษา C (C Programming) ',
     details:
