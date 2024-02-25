@@ -6,7 +6,7 @@ export const degreeChoices: IDegree[] = [
     value: DegreeEnum.G9,
   },
   {
-    label: 'ปวส',
+    label: 'ปวช',
     value: DegreeEnum.VC,
   },
 ]
