@@ -4,7 +4,9 @@ import { Button, Flex, Heading, Separator } from '@radix-ui/themes'
 import { useFormik } from 'formik'
 import FormikTextField from '../Form/Formik/Input'
 import FormikNumber from '../Form/Formik/Input/number'
+import FormikSelect from '../Form/Formik/Select'
 import { apiInstance } from 'src/lib/axios'
+import { degreeChoices } from './utils/data'
 
 type Props = {
   onSubmit: (values: IEducationForm) => void
@@ -31,7 +33,7 @@ const validate = (values: IEducationForm) => {
   if (!values.school_name) errors.school_name = 'กรุณาระบุชื่อโรงเรียนที่กำลังศึกษาอยู่'
   if (!values.major) errors.major = 'กรุณาระบุสายที่กำลังศึกษา'
   if (!values.degree) errors.degree = 'กรุณาระบุวุฒิการศึกษา'
-  if (!values.gpax) errors.gpax = 'กรุณาระบุเกรดเฉลี่ยสะสม'
+  if (values.gpax === 0) errors.gpax = 'กรุณาระบุเกรดเฉลี่ยสะสม'
 
   return errors
 }
@@ -50,7 +52,7 @@ const EducationForm: React.FC<Props> = ({ onSubmit, isSubmitting, goBack }: Prop
       school_name: data.school_name ?? '',
       major: data.major ?? '',
       degree: data.degree ?? '',
-      gpax: data.gpax ?? '',
+      gpax: data.gpax ?? 0,
     }
 
     formik.setValues(newValues)
@@ -88,16 +90,18 @@ const EducationForm: React.FC<Props> = ({ onSubmit, isSubmitting, goBack }: Prop
             touched={formik.touched.major}
             value={formik.values.major}
           />
-          <FormikTextField
-            label="วุฒิการศึกษา"
-            name="degree"
-            required
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            errors={formik.errors.degree}
-            touched={formik.touched.degree}
-            value={formik.values.degree}
-          />
+          <div className={styles.inputGroup}>
+            <FormikSelect
+              label="วุฒิการศึกษา"
+              items={degreeChoices}
+              placeholder="กรุณาเลือกคำนำหน้าชื่อ"
+              value={formik.values.degree}
+              required
+              errors={formik.errors.degree}
+              touched={formik.touched.degree}
+              onSelect={(value: string) => formik.setFieldValue('degree', value)}
+            />
+          </div>
           <FormikNumber
             label="เกรดเฉลี่ยสะสม"
             name="gpax"
