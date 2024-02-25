@@ -1,8 +1,11 @@
 import { ISelectItem } from '../../Form/Select'
 
 export enum DegreeEnum {
-  G9 = 'ม.3',
-  VC = 'ปวช',
+  G10 = 'ม.4',
+  G11 = 'ม.5',
+  G12 = 'ม.6',
+  VC1 = 'ปวช',
+  VC2 = 'ปวส',
 }
 
 export interface IDegree extends ISelectItem {
