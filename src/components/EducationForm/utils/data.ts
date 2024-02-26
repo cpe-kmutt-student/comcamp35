@@ -10,10 +10,6 @@ export const degreeChoices: IDegree[] = [
     value: DegreeEnum.G11,
   },
   {
-    label: 'ม.6',
-    value: DegreeEnum.G12,
-  },
-  {
     label: 'ปวช',
     value: DegreeEnum.VC1,
   },

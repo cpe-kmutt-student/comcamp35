@@ -3,7 +3,6 @@ import styles from './index.module.scss'
 import { Button, Flex, Heading, Separator } from '@radix-ui/themes'
 import { useFormik } from 'formik'
 import FormikTextField from '../Form/Formik/Input'
-import FormikNumber from '../Form/Formik/Input/number'
 import FormikSelect from '../Form/Formik/Select'
 import { apiInstance } from 'src/lib/axios'
 import { degreeChoices } from './utils/data'
@@ -18,14 +17,14 @@ export interface IEducationForm {
   school_name: string
   major: string
   degree: string
-  gpax: number
+  gpax: string
 }
 
 const initialValues: IEducationForm = {
   school_name: '',
   major: '',
   degree: '',
-  gpax: 0,
+  gpax: '',
 }
 
 const validate = (values: IEducationForm) => {
@@ -33,7 +32,7 @@ const validate = (values: IEducationForm) => {
   if (!values.school_name) errors.school_name = 'กรุณาระบุชื่อโรงเรียนที่กำลังศึกษาอยู่'
   if (!values.major) errors.major = 'กรุณาระบุสายที่กำลังศึกษา'
   if (!values.degree) errors.degree = 'กรุณาระบุวุฒิการศึกษา'
-  if (values.gpax === 0) errors.gpax = 'กรุณาระบุเกรดเฉลี่ยสะสม'
+  if (!values.gpax) errors.gpax = 'กรุณาระบุเกรดเฉลี่ยสะสม'
 
   return errors
 }
@@ -90,19 +89,17 @@ const EducationForm: React.FC<Props> = ({ onSubmit, isSubmitting, goBack }: Prop
             touched={formik.touched.major}
             value={formik.values.major}
           />
-          <div className={styles.inputGroup}>
-            <FormikSelect
-              label="วุฒิการศึกษา"
-              items={degreeChoices}
-              placeholder="กรุณาเลือกคำนำหน้าชื่อ"
-              value={formik.values.degree}
-              required
-              errors={formik.errors.degree}
-              touched={formik.touched.degree}
-              onSelect={(value: string) => formik.setFieldValue('degree', value)}
-            />
-          </div>
-          <FormikNumber
+          <FormikSelect
+            label="วุฒิการศึกษา"
+            items={degreeChoices}
+            placeholder="กรุณาเลือกคำนำหน้าชื่อ"
+            value={formik.values.degree}
+            required
+            errors={formik.errors.degree}
+            touched={formik.touched.degree}
+            onSelect={(value: string) => formik.setFieldValue('degree', value)}
+          />
+          <FormikTextField
             label="เกรดเฉลี่ยสะสม"
             name="gpax"
             required
