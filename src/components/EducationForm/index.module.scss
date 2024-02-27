@@ -1,0 +1,14 @@
+.EduForm {
+    .inputGroup {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 15px;
+        margin-bottom: 10px;
+    }
+
+    @media screen and (max-width: 768px) {
+        .inputGroup {
+            grid-template-columns: 1fr;
+        }
+    }
+}
