@@ -41,7 +41,10 @@ const validate = (values: IGuardianForm) => {
   if (!values.emergency_name) errors.emergency_name = 'กรุณาระบุชื่อผู้ติดต่อฉุกเฉิน'
   if (!values.emergency_tel) errors.emergency_tel = 'กรุณาระบุเบอร์โทรผู้ติดต่อฉุกเฉิน'
   if (!values.emergency_relation) errors.emergency_relation = 'กรุณาระบุความสัมพันธ์ของผู้ติดต่อฉุกเฉิน'
-
+  if (values.email && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email))
+    errors.email = 'ที่อยู่อีเมลที่ไม่ถูกต้อง'
+  if (values.emergency_email && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.emergency_email))
+    errors.emergency_email = 'ที่อยู่อีเมลที่ไม่ถูกต้อง'
   return errors
 }
 
@@ -117,6 +120,8 @@ const GuardianForm: React.FC<Props> = ({ onSubmit, isSubmitting, goBack }: Props
             name="email"
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
+            errors={formik.errors.email}
+            touched={formik.touched.email}
             value={formik.values.email}
           />
         </div>
@@ -162,6 +167,8 @@ const GuardianForm: React.FC<Props> = ({ onSubmit, isSubmitting, goBack }: Props
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
             value={formik.values.emergency_email}
+            errors={formik.errors.emergency_email}
+            touched={formik.touched.emergency_email}
           />
         </div>
 

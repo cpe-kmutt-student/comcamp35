@@ -21,7 +21,7 @@ export interface IGeneralForm {
   middle_name?: string
   last_name: string
   nickname: string
-  birth_date: string | Date
+  birth_date: Date | undefined
   tel: string
   address: string
   travel: string
@@ -41,7 +41,7 @@ const initialValues: IGeneralForm = {
   middle_name: '',
   last_name: '',
   nickname: '',
-  birth_date: new Date(),
+  birth_date: undefined,
   tel: '',
   address: '',
   travel: '',
@@ -88,7 +88,7 @@ const GeneralForm: React.FC<Props> = ({ onSubmit, isSubmitting }: Props) => {
       middle_name: userInfo.middle_name ?? '',
       last_name: userInfo.last_name ?? '',
       nickname: userInfo.nickname ?? '',
-      birth_date: generalInfo.birth_date ? new Date(generalInfo.birth_date) : new Date(),
+      birth_date: generalInfo.birth_date ? new Date(generalInfo.birth_date) : undefined,
       tel: generalInfo.tel ?? '',
       address: generalInfo.address ?? '',
       travel: generalInfo.travel ?? '',
@@ -174,7 +174,7 @@ const GeneralForm: React.FC<Props> = ({ onSubmit, isSubmitting }: Props) => {
               name="birth_date"
               onBlur={formik.handleBlur}
               onChange={(date: Date) => formik.setFieldValue('birth_date', date)}
-              value={new Date(formik.values.birth_date)}
+              value={formik.values.birth_date}
             />
             <ErrorMessage>
               {formik.errors.birth_date && formik.touched.birth_date && formik.errors.birth_date}
@@ -278,14 +278,25 @@ const GeneralForm: React.FC<Props> = ({ onSubmit, isSubmitting }: Props) => {
         </div>
 
         <div style={{ margin: '20px 0' }}>
-          <Flex gap="2" align={'center'}>
-            <Checkbox
-              name="can_bring_laptop"
-              id="can_bring_laptop"
-              checked={!!formik.values.can_bring_laptop}
-              onCheckedChange={(checked: boolean) => formik.setFieldValue('can_bring_laptop', checked)}
-            />
-            สามารถนำโน๊ตบุ๊คมาได้
+          <Flex gap="3" align={'center'}>
+            <Flex gap="2" align={'center'}>
+              <Checkbox
+                name="can_bring_laptop"
+                id="can_bring_laptop"
+                checked={formik.values.can_bring_laptop === true}
+                onCheckedChange={() => formik.setFieldValue('can_bring_laptop', true)}
+              />
+              สามารถนำโน๊ตบุ๊คมาได้
+            </Flex>
+            <Flex gap="2" align={'center'}>
+              <Checkbox
+                name="can_bring_laptop"
+                id="can_bring_laptop"
+                checked={formik.values.can_bring_laptop === false}
+                onCheckedChange={() => formik.setFieldValue('can_bring_laptop', false)}
+              />
+              ไม่สามารถนำโน๊ตบุ๊คมาได้
+            </Flex>
           </Flex>
         </div>
         <div style={{ textAlign: 'right' }}>

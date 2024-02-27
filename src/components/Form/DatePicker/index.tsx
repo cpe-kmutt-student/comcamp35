@@ -16,7 +16,7 @@ type Props = {
     (e: React.FocusEvent<any, Element>): void
     <T = any>(fieldOrEvent: T): T extends string ? (e: any) => void : void
   }
-  value: Date
+  value: Date | undefined
 }
 
 const CustomDatePicker: React.FC<Props> = ({ onChange, value, onBlur, name, id }: Props): JSX.Element => {
@@ -32,6 +32,7 @@ const CustomDatePicker: React.FC<Props> = ({ onChange, value, onBlur, name, id }
       onBlur={onBlur}
       className={styles.datePicker}
       dateFormat="dd/MM/yyyy"
+      placeholderText="วัน/เดือน/ปี"
     />
   )
 }

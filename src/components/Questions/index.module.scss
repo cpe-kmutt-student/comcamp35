@@ -1,0 +1,19 @@
+.questionForm {
+  .input {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 2rem;
+
+    .textArea {
+      height: 200px;
+    }
+
+    .question {
+      ol {
+        margin-left: 2rem;
+        margin-top: 10px;
+      }
+    }
+  }
+}

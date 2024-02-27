@@ -8,6 +8,7 @@ import SignOutButton from 'src/components/SignOutButton'
 import { errorAlert, savedAlert } from 'src/lib/toast'
 import GuardianForm, { IGuardianForm } from 'src/components/GuardianForm'
 import ReactGA from 'react-ga4'
+import QuestionForm, { IQuestionForm } from 'src/components/Questions'
 
 const Register: React.FC = (): JSX.Element => {
   const [currentStep, setCurrentStep] = useState<number>(0)
@@ -37,6 +38,21 @@ const Register: React.FC = (): JSX.Element => {
       await apiInstance.post('/guardian', values)
       setCurrentStep(currentStep + 1)
       setSubmit(false)
+      savedAlert()
+    } catch (err) {
+      errorAlert()
+      setSubmit(false)
+    }
+  }
+
+  const onQuestionFormSubmit = async (values: IQuestionForm) => {
+    setSubmit(true)
+
+    try {
+      await apiInstance.post('/question', values)
+      setCurrentStep(currentStep + 1)
+      setSubmit(false)
+      savedAlert()
     } catch (err) {
       setSubmit(false)
     }
@@ -52,6 +68,8 @@ const Register: React.FC = (): JSX.Element => {
         return <GeneralForm onSubmit={onGeneralFormSubmit} isSubmitting={isSubmitting} />
       case 1:
         return <GuardianForm onSubmit={onGuardianFormSubmit} goBack={goBack} isSubmitting={isSubmitting} />
+      case 2:
+        return <QuestionForm onSubmit={onQuestionFormSubmit} goBack={goBack} isSubmitting={isSubmitting} />
     }
   }
 
@@ -73,7 +91,6 @@ const Register: React.FC = (): JSX.Element => {
       <div className={styles.header}>
         <Heading size="7">ฟอร์มสมัคร Com Camp 35</Heading>
       </div>
-      {/* <Steps current={currentStep} items={stepsInfo} style={{ margin: '30px 0' }} /> */}
       <Box style={{ background: 'var(--gray-a2)', borderRadius: 'var(--radius-3)' }} className={styles.form}>
         <Container size="4">{stepFilter()}</Container>
       </Box>
