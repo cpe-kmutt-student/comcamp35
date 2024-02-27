@@ -98,11 +98,7 @@ const FileUpload: React.FC<Props> = ({ onSubmit, isSubmitting, currentStep, setC
           <div className={styles.input}>
             <Label required name="หนังสือขออนุญาตผู้ปกครอง" />
             <div className={styles.fileUploadGroup}>
-              <a
-                href="https://api-s3.kronos.moe/comcamp/Nigga%20Twerk%20_%20BrooklynBloodPop.mp4"
-                target="_blank"
-                rel="noreferrer"
-              >
+              <a href="https://api-s3.kronos.moe/comcamp/approval.pdf" target="_blank" rel="noreferrer">
                 <button type="button" className={styles.uploadBtn}>
                   ดาวน์โหลดแบบฟอร์ม
                 </button>
