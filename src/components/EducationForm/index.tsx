@@ -6,6 +6,7 @@ import FormikTextField from '../Form/Formik/Input'
 import FormikSelect from '../Form/Formik/Select'
 import { apiInstance } from 'src/lib/axios'
 import { degreeChoices, majorChoices } from './utils/data'
+import { MajorEnum } from './utils/type'
 
 type Props = {
   onSubmit: (values: IEducationForm) => void
@@ -18,7 +19,7 @@ export interface IEducationForm {
   major: string
   degree: string
   gpax: string
-  otherMajor?: string
+  otherMajor: string
 }
 
 const initialValues: IEducationForm = {
@@ -35,7 +36,7 @@ const validate = (values: IEducationForm) => {
   if (!values.major) errors.major = 'กรุณาระบุสายที่กำลังศึกษา'
   if (!values.degree) errors.degree = 'กรุณาระบุวุฒิการศึกษา'
   if (!values.gpax) errors.gpax = 'กรุณาระบุเกรดเฉลี่ยสะสม'
-  if (!values.otherMajor) errors.otherMajor = 'กรุณาระบุสาขาที่กำลังศึกษา'
+  if (values.major === MajorEnum.ouou && !values.otherMajor) errors.otherMajor = 'กรุณาระบุสาขาที่กำลังศึกษา'
 
   return errors
 }
@@ -54,17 +55,24 @@ const EducationForm: React.FC<Props> = ({ onSubmit, isSubmitting, goBack }: Prop
 
     const newValues: IEducationForm = {
       school_name: data.school_name ?? '',
-      major: data.major ?? '',
+      major: Object.values(MajorEnum).includes(data.major) ? data.major : '',
       degree: data.degree ?? '',
       gpax: data.gpax ?? '',
+      otherMajor: Object.values(MajorEnum).includes(data.major) ? '' : data.major,
     }
 
     formik.setValues(newValues)
+
+    if (!Object.values(MajorEnum).includes(data.major)) {
+      formik.setFieldValue('major', MajorEnum.ouou)
+      setShowAdditionalField(true)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const handleMajorSelect = (value: string) => {
     formik.setFieldValue('major', value)
-    setShowAdditionalField(value === 'สายอื่น ๆ ที่ เกี่ยวข้องกับคอมพิวเตอร์และเทคโนโลยี') // Show additional field if a major is selected
+    setShowAdditionalField(value === MajorEnum.ouou) // Show additional field if a major is selected
   }
 
   useEffect(() => {
@@ -90,29 +98,6 @@ const EducationForm: React.FC<Props> = ({ onSubmit, isSubmitting, goBack }: Prop
             value={formik.values.school_name}
           />
           <FormikSelect
-            label="สายที่กำลังศึกษา"
-            items={majorChoices}
-            placeholder="กรุณาเลือกสายที่กำลังศึกษา"
-            value={formik.values.major}
-            required
-            errors={formik.errors.major}
-            touched={formik.touched.major}
-            onSelect={handleMajorSelect}
-            // onSelect={(value: string) => formik.setFieldValue('major', value)}
-          />
-          {showAdditionalField && (
-            <FormikTextField
-              label="กรุณาระบุชื่อสาขาที่กำลังศึกษา"
-              name="othermajor"
-              required
-              onBlur={formik.handleBlur}
-              onChange={formik.handleChange}
-              errors={formik.errors.otherMajor}
-              touched={formik.touched.otherMajor}
-              value={formik.values.otherMajor}
-            />
-          )}
-          <FormikSelect
             label="วุฒิการศึกษา"
             items={degreeChoices}
             placeholder="กรุณาเลือกวุฒิการศึกษา"
@@ -128,10 +113,35 @@ const EducationForm: React.FC<Props> = ({ onSubmit, isSubmitting, goBack }: Prop
             required
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
-            errors={formik.errors.degree}
-            touched={formik.touched.degree}
+            errors={formik.errors.gpax}
+            touched={formik.touched.gpax}
             value={formik.values.gpax}
           />
+        </div>
+
+        <div className={styles.inputGroup}>
+          <FormikSelect
+            label="สายที่กำลังศึกษา"
+            items={majorChoices}
+            placeholder="กรุณาเลือกสายที่กำลังศึกษา"
+            value={formik.values.major}
+            required
+            errors={formik.errors.major}
+            touched={formik.touched.major}
+            onSelect={handleMajorSelect}
+          />
+          {showAdditionalField && (
+            <FormikTextField
+              label="กรุณาระบุชื่อสาขาที่กำลังศึกษา"
+              name="otherMajor"
+              required
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              errors={formik.errors.otherMajor}
+              touched={formik.touched.otherMajor}
+              value={formik.values.otherMajor}
+            />
+          )}
         </div>
 
         <Flex justify="end" align="center" gap="4">

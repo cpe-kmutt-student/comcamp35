@@ -5,16 +5,14 @@ import { useState } from 'react'
 import { apiInstance } from 'src/lib/axios'
 import { Avatar, Box, Container, Flex, Heading } from '@radix-ui/themes'
 import SignOutButton from 'src/components/SignOutButton'
-// import { errorAlert, savedAlert } from 'src/lib/toast'
-// import GuardianForm, { IGuardianForm } from 'src/components/GuardianForm'
 import { errorAlert, savedAlert } from 'src/lib/toast'
 import GuardianForm, { IGuardianForm } from 'src/components/GuardianForm'
 import ReactGA from 'react-ga4'
 import EducationForm, { IEducationForm } from 'src/components/EducationForm'
-import ReactGA from 'react-ga4'
 import QuestionForm, { IQuestionForm } from 'src/components/QuestionForm'
 import FileUpload, { IFileUpload } from 'src/components/FileUpload'
 import RegisComplete from 'src/components/RegisComplete'
+import { MajorEnum } from 'src/components/EducationForm/utils/type'
 
 const Register: React.FC = (): JSX.Element => {
   const [currentStep, setCurrentStep] = useState<number>(0)
@@ -40,10 +38,10 @@ const Register: React.FC = (): JSX.Element => {
   const onGuardianFormSubmit = async (values: IGuardianForm) => {
     setSubmit(true)
 
-  //   try {
-  //     await apiInstance.post('/guardian', values)
-  //     setCurrentStep(currentStep + 1)
-  //     setSubmit(false)
+    try {
+      await apiInstance.post('/guardian', values)
+      setCurrentStep(currentStep + 1)
+      setSubmit(false)
       savedAlert()
     } catch (err) {
       errorAlert()
@@ -59,28 +57,29 @@ const Register: React.FC = (): JSX.Element => {
       setCurrentStep(currentStep + 1)
       setSubmit(false)
       savedAlert()
-  //   } catch (err) {
-      errorAlert()
-  //     setSubmit(false)
-  //   }
-  // }
-    try {
-      await apiInstance.post('/guardian', values)
-      setCurrentStep(currentStep + 1)
-      setSubmit(false)
     } catch (err) {
+      errorAlert()
       setSubmit(false)
     }
   }
 
   const onEducationFormSubmit = async (values: IEducationForm) => {
+    const { school_name, major, degree, gpax, otherMajor } = values
+    const newValues = {
+      school_name,
+      major: major === MajorEnum.ouou ? otherMajor : major,
+      gpax,
+      degree,
+    }
     setSubmit(true)
 
     try {
-      await apiInstance.post('/educaiton', values)
-      setCurrentStep(currentStep + 1)
+      await apiInstance.post('/education', newValues)
+      savedAlert()
       setSubmit(false)
+      setCurrentStep(currentStep + 1)
     } catch (err) {
+      errorAlert()
       setSubmit(false)
     }
   }
@@ -150,12 +149,12 @@ const Register: React.FC = (): JSX.Element => {
   const stepFilter = () => {
     switch (currentStep) {
       case 0:
-          return <GeneralForm onSubmit={onGeneralFormSubmit} isSubmitting={isSubmitting} />
-        case 1:
-          return <GuardianForm onSubmit={onGuardianFormSubmit} goBack={goBack} isSubmitting={isSubmitting} />
-        case 2:
-        return <EducationForm onSubmit={onEducationFormSubmit} goBack={goBack} isSubmitting={isSubmitting} />
+        return <GeneralForm onSubmit={onGeneralFormSubmit} isSubmitting={isSubmitting} />
+      case 1:
+        return <GuardianForm onSubmit={onGuardianFormSubmit} goBack={goBack} isSubmitting={isSubmitting} />
       case 2:
+        return <EducationForm onSubmit={onEducationFormSubmit} goBack={goBack} isSubmitting={isSubmitting} />
+      case 3:
         return (
           <FileUpload
             onSubmit={onFileUploadSubmit}
@@ -164,9 +163,9 @@ const Register: React.FC = (): JSX.Element => {
             setCurrentStep={setCurrentStep}
           />
         )
-      case 3:
-        return <QuestionForm onSubmit={onQuestionFormSubmit} goBack={goBack} isSubmitting={isSubmitting} />
       case 4:
+        return <QuestionForm onSubmit={onQuestionFormSubmit} goBack={goBack} isSubmitting={isSubmitting} />
+      case 5:
         return <RegisComplete />
     }
   }
