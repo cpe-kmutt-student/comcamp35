@@ -1,28 +1,27 @@
 import { Flex, Heading, Grid } from '@radix-ui/themes'
 import React from 'react'
 import styles from './sponsor.module.scss'
-import LDA_logo from 'src/assets/LDA_Logo_PNG-Main.png'
-import THAIDATA_logo from 'src/assets/Thaidata_logo.png'
-import CPE_logo from 'src/assets/CPE_logo.png'
-import ADVICE_logo from 'src/assets/Advice_logo.png'
+import LDA from 'src/assets/lda.webp'
+import ThaiData from 'src/assets/thaidata.webp'
+import CPE from 'src/assets/cpe.webp'
+import Advice from 'src/assets/advice.webp'
 
 interface ISponsor {
   img: string
-  level?: string
 }
 
 const Sponsors: ISponsor[] = [
   {
-    img: ADVICE_logo,
+    img: Advice,
   },
   {
-    img: LDA_logo,
+    img: LDA,
   },
   {
-    img: THAIDATA_logo,
+    img: ThaiData,
   },
   {
-    img: CPE_logo,
+    img: CPE,
   },
 ]
 
