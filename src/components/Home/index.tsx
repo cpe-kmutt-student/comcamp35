@@ -7,7 +7,6 @@ import Condition from './Content/Condition'
 import Timeline from './Content/Timeline'
 import FrequentlyAskedQuestionHome from './Content/Faq'
 import Sponsor from './Content/Sponsor'
-// import Sponsor from './Content/Sponsor'
 import Contact from './Content/Contact'
 
 const Content: React.FC = () => {

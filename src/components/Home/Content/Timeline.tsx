@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, Heading, Text } from '@radix-ui/themes'
+import { Flex, Grid, Heading, Text } from '@radix-ui/themes'
 import styles from './timeline.module.scss'
 import candy_1 from 'src/assets/candy-blue.svg'
 import candy_2 from 'src/assets/candy-purple.svg'
@@ -90,7 +90,9 @@ const Timeline: React.FC<Props> = ({ id }: Props): JSX.Element => {
       <Heading size={{ initial: '8', md: '9' }} className="title" align="center">
         timeline
       </Heading>
-      <div className={styles.contents}>{renderCampCondition}</div>
+      <Grid columns={{ initial: '1', sm: '2', md: '4' }} className={styles.contents}>
+        {renderCampCondition}
+      </Grid>
     </Flex>
   )
 }
