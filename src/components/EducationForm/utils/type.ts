@@ -4,7 +4,8 @@ export enum DegreeEnum {
   G10 = 'ม.4',
   G11 = 'ม.5',
   G12 = 'ม.6',
-  VC = 'ปวช.',
+  VC1 = 'ปวช. ปี 1',
+  VC2 = 'ปวช. ปี 2',
 }
 
 export enum MajorEnum {
