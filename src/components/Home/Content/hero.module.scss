@@ -70,13 +70,14 @@
       }
 
       .logo {
-        width: 100%;
+        width: 300px;
       }
     }
 
     .content {
       width: 100%;
       padding-inline: 25px;
+      font-size: 16px;
     }
 
     .campDate {
@@ -86,6 +87,16 @@
   }
 
   @media screen and (max-width: 350px) {
+    .image {
+      .subText {
+        display: none;
+      }
+
+      .logo {
+        width: 100%;
+      }
+    }
+    
     .campDate {
       font-size: 32px;
       margin-block: 0;

@@ -1,0 +1,60 @@
+.fileUpload {
+  .input {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+
+    a {
+      color: #3079ffff;
+      text-decoration: none;
+      transition: all 200ms;
+
+      &:hover {
+        color: #1e57c2;
+      }
+    }
+
+    .fileUploadGroup {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 20px;
+
+      .uploadBtn {
+        text-decoration: none;
+        width: auto;
+        border: none;
+        cursor: pointer;
+        text-align: center;
+        padding: 6px 12px;
+        transition: all 300ms;
+        border-radius: 2px;
+        background: #143464;
+        color: #ffffff;
+
+        &:hover {
+          color: #ffd541;
+          background: #14346440;
+        }
+      }
+    }
+  }
+
+  .content {
+    div {
+      margin-bottom: 2rem;
+    }
+
+    a {
+      color: #3079ffff;
+      text-decoration: none;
+      transition: all 200ms;
+
+      &:hover {
+        color: #1e57c2;
+      }
+    }
+  }
+}
