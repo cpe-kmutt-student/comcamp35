@@ -1,4 +1,4 @@
-import { AlertDialog, Button, Flex, Heading, Separator, Text, TextArea } from '@radix-ui/themes'
+import { AlertDialog, Button, Flex, Text, TextArea } from '@radix-ui/themes'
 import styles from './index.module.scss'
 import { useFormik } from 'formik'
 import { IQuestion, questions } from './utils/questions'
@@ -77,13 +77,7 @@ const QuestionForm: React.FC<Props> = ({ onSubmit, goBack, isSubmitting }: Props
   return (
     <div className={styles.questionForm}>
       <form>
-        <Heading size="5" mt="3">
-          คำถามจากพี่ๆ
-        </Heading>
-        <Separator my="4" size="4" />
-
         {renderQuestions}
-
         <Flex justify="end" align="center" gap="4">
           <Button onClick={goBack} variant="outline">
             ย้อนกลับ

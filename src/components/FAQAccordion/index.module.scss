@@ -29,9 +29,9 @@
     background-color: transparent;
     color: #ffffff;
 
-    @media screen and (max-width: 512px) {
-      flex-direction: column;
-      gap: 16px;
+    @media screen and (max-width: 768px) {
+      align-items: flex-start;
+      text-align: left;
     }
   }
 
@@ -42,6 +42,8 @@
   .AccordionChevron {
     color: #ffffff;
     transition: transform 300ms;
+    margin-left: 20px;
+    width: 40px;
   }
 
   .AccordionContent {

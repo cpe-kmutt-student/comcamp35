@@ -9,10 +9,10 @@ const options: ToastOptions = {
   },
 }
 
-export const savedAlert = () => {
-  return toast.success('บันทึกสำเร็จ', options)
+export const savedAlert = (text?: string) => {
+  return toast.success(text ?? 'บันทึกสำเร็จ', options)
 }
 
-export const errorAlert = () => {
-  return toast.error('เกิดข้อผิดพลาด', options)
+export const errorAlert = (text?: string) => {
+  return toast.error(text ?? 'เกิดข้อผิดพลาด', options)
 }

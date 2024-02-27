@@ -8,7 +8,9 @@ import SignOutButton from 'src/components/SignOutButton'
 import { errorAlert, savedAlert } from 'src/lib/toast'
 import GuardianForm, { IGuardianForm } from 'src/components/GuardianForm'
 import ReactGA from 'react-ga4'
-import QuestionForm, { IQuestionForm } from 'src/components/Questions'
+import QuestionForm, { IQuestionForm } from 'src/components/QuestionForm'
+import FileUpload, { IFileUpload } from 'src/components/FileUpload'
+import RegisComplete from 'src/components/RegisComplete'
 
 const Register: React.FC = (): JSX.Element => {
   const [currentStep, setCurrentStep] = useState<number>(0)
@@ -54,8 +56,67 @@ const Register: React.FC = (): JSX.Element => {
       setSubmit(false)
       savedAlert()
     } catch (err) {
+      errorAlert()
       setSubmit(false)
     }
+  }
+
+  const fileUpload = async (file: File, type: string) => {
+    const body = new FormData()
+
+    body.append('file', file)
+    body.append('type', type)
+
+    return await apiInstance
+      .post('/file/upload', body, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      })
+      .then(() => {
+        savedAlert('อัพโหลดเอกสารสำเร็จ')
+      })
+      .catch((err) => {
+        errorAlert(err.message)
+      })
+  }
+
+  const onFileUploadSubmit = async (values: IFileUpload) => {
+    setSubmit(true)
+
+    const newFile: { type: string; file: File }[] = [
+      {
+        type: 'certificate',
+        file: values.certificate as File,
+      },
+      {
+        type: 'citizenship',
+        file: values.citizenship as File,
+      },
+      {
+        type: 'image',
+        file: values.image as File,
+      },
+      {
+        type: 'parents',
+        file: values.parents as File,
+      },
+      {
+        type: 'transcript',
+        file: values.transcript as File,
+      },
+    ]
+
+    return await Promise.all(newFile.map((form: { type: string; file: File }) => fileUpload(form.file, form.type)))
+      .then(() => {
+        savedAlert()
+        setSubmit(false)
+        setCurrentStep(currentStep + 1)
+      })
+      .catch(() => {
+        errorAlert()
+        setSubmit(false)
+      })
   }
 
   const goBack = () => {
@@ -64,12 +125,23 @@ const Register: React.FC = (): JSX.Element => {
 
   const stepFilter = () => {
     switch (currentStep) {
-      case 0:
+      case 2:
         return <GeneralForm onSubmit={onGeneralFormSubmit} isSubmitting={isSubmitting} />
       case 1:
         return <GuardianForm onSubmit={onGuardianFormSubmit} goBack={goBack} isSubmitting={isSubmitting} />
-      case 2:
+      case 0:
+        return (
+          <FileUpload
+            onSubmit={onFileUploadSubmit}
+            currentStep={currentStep}
+            isSubmitting={isSubmitting}
+            setCurrentStep={setCurrentStep}
+          />
+        )
+      case 3:
         return <QuestionForm onSubmit={onQuestionFormSubmit} goBack={goBack} isSubmitting={isSubmitting} />
+      case 4:
+        return <RegisComplete />
     }
   }
 
@@ -92,8 +164,13 @@ const Register: React.FC = (): JSX.Element => {
         <Heading size="7">ฟอร์มสมัคร Com Camp 35</Heading>
       </div>
       <Box style={{ background: 'var(--gray-a2)', borderRadius: 'var(--radius-3)' }} className={styles.form}>
-        <Container size="4">{stepFilter()}</Container>
+        <Container size="4">{auth.is_registered ? <RegisComplete /> : stepFilter()}</Container>
       </Box>
+      {!auth.is_registered && (
+        <Heading size="5" align="center">
+          {currentStep + 1} of 4
+        </Heading>
+      )}
     </div>
   )
 }

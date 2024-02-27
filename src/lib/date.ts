@@ -1,4 +1,4 @@
-export const REGIS_START_DATE = '2024/03/01'
+export const REGIS_START_DATE = '2024/02/01'
 export const REGIS_END_DATE = '2024/03/10'
 
 const today = new Date().getTime()

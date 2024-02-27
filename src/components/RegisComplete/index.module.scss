@@ -1,0 +1,36 @@
+@import '../../variable';
+
+.regisComplete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 50dvh;
+  gap: 30px;
+
+  .text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+
+    .back {
+      text-decoration: none;
+      width: auto;
+      text-align: center;
+      margin-bottom: 24px;
+      padding: 6px 12px;
+      transition: all 300ms;
+      border-radius: 2px;
+      background: #143464;
+      color: #ffffff;
+
+      &:hover {
+        color: #ffd541;
+        background: #14346440;
+      }
+    }
+  }
+}
