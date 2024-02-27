@@ -11,30 +11,26 @@ interface ISponsor {
   level?: string
 }
 
-const Sponsorimg: ISponsor[] = [
+const Sponsors: ISponsor[] = [
   {
     img: ADVICE_logo,
-    level: '140px',
   },
   {
     img: LDA_logo,
-    level: '120px',
   },
   {
     img: THAIDATA_logo,
-    level: '120px',
   },
   {
     img: CPE_logo,
-    level: '100px',
   },
 ]
 
 const Sponsor: React.FC = () => {
-  const renderSponsor = Sponsorimg.map((sponsor, index) => {
+  const renderSponsor = Sponsors.map((sponsor: ISponsor, i: number) => {
     return (
-      <div key={index} className={styles.bg}>
-        <img src={sponsor.img} alt="sponsor" style={{ height: sponsor.level }} />
+      <div key={i} className={styles.sponsorLogo}>
+        <img src={sponsor.img} alt="sponsor" width={200} loading="lazy" />
       </div>
     )
   })
@@ -44,7 +40,14 @@ const Sponsor: React.FC = () => {
       <Heading size={{ initial: '8', md: '9' }} className="title">
         SPONSOR
       </Heading>
-      <Grid columns={{ initial: '1', sm: '2', md: '4' }} className={styles.contents}>
+      <Grid
+        columns={{ initial: '1', sm: '2', md: '4' }}
+        gap="5"
+        width="auto"
+        justify="center"
+        align="center"
+        className={styles.contents}
+      >
         {renderSponsor}
       </Grid>
     </Flex>
