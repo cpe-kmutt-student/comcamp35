@@ -1,11 +1,11 @@
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import styles from './index.module.scss'
 import { Button, Flex, Heading, Separator } from '@radix-ui/themes'
 import { useFormik } from 'formik'
 import FormikTextField from '../Form/Formik/Input'
 import FormikSelect from '../Form/Formik/Select'
 import { apiInstance } from 'src/lib/axios'
-import { degreeChoices } from './utils/data'
+import { degreeChoices, majorChoices } from './utils/data'
 
 type Props = {
   onSubmit: (values: IEducationForm) => void
@@ -18,6 +18,7 @@ export interface IEducationForm {
   major: string
   degree: string
   gpax: string
+  otherMajor?: string
 }
 
 const initialValues: IEducationForm = {
@@ -25,6 +26,7 @@ const initialValues: IEducationForm = {
   major: '',
   degree: '',
   gpax: '',
+  otherMajor: '',
 }
 
 const validate = (values: IEducationForm) => {
@@ -33,6 +35,7 @@ const validate = (values: IEducationForm) => {
   if (!values.major) errors.major = 'กรุณาระบุสายที่กำลังศึกษา'
   if (!values.degree) errors.degree = 'กรุณาระบุวุฒิการศึกษา'
   if (!values.gpax) errors.gpax = 'กรุณาระบุเกรดเฉลี่ยสะสม'
+  if (!values.otherMajor) errors.otherMajor = 'กรุณาระบุสาขาที่กำลังศึกษา'
 
   return errors
 }
@@ -44,6 +47,8 @@ const EducationForm: React.FC<Props> = ({ onSubmit, isSubmitting, goBack }: Prop
     onSubmit,
   })
 
+  const [showAdditionalField, setShowAdditionalField] = useState(false)
+
   const getEducationInfo = useCallback(async () => {
     const { data } = await apiInstance.get('/education')
 
@@ -51,11 +56,16 @@ const EducationForm: React.FC<Props> = ({ onSubmit, isSubmitting, goBack }: Prop
       school_name: data.school_name ?? '',
       major: data.major ?? '',
       degree: data.degree ?? '',
-      gpax: data.gpax ?? 0,
+      gpax: data.gpax ?? '',
     }
 
     formik.setValues(newValues)
   }, [])
+
+  const handleMajorSelect = (value: string) => {
+    formik.setFieldValue('major', value)
+    setShowAdditionalField(value === 'สายอื่น ๆ ที่ เกี่ยวข้องกับคอมพิวเตอร์และเทคโนโลยี') // Show additional field if a major is selected
+  }
 
   useEffect(() => {
     getEducationInfo()
@@ -79,20 +89,33 @@ const EducationForm: React.FC<Props> = ({ onSubmit, isSubmitting, goBack }: Prop
             touched={formik.touched.school_name}
             value={formik.values.school_name}
           />
-          <FormikTextField
+          <FormikSelect
             label="สายที่กำลังศึกษา"
-            name="major"
+            items={majorChoices}
+            placeholder="กรุณาเลือกสายที่กำลังศึกษา"
+            value={formik.values.major}
             required
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
             errors={formik.errors.major}
             touched={formik.touched.major}
-            value={formik.values.major}
+            onSelect={handleMajorSelect}
+            // onSelect={(value: string) => formik.setFieldValue('major', value)}
           />
+          {showAdditionalField && (
+            <FormikTextField
+              label="กรุณาระบุชื่อสาขาที่กำลังศึกษา"
+              name="othermajor"
+              required
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              errors={formik.errors.otherMajor}
+              touched={formik.touched.otherMajor}
+              value={formik.values.otherMajor}
+            />
+          )}
           <FormikSelect
             label="วุฒิการศึกษา"
             items={degreeChoices}
-            placeholder="กรุณาเลือกคำนำหน้าชื่อ"
+            placeholder="กรุณาเลือกวุฒิการศึกษา"
             value={formik.values.degree}
             required
             errors={formik.errors.degree}
