@@ -10,8 +10,8 @@ const RegisComplete: React.FC = (): JSX.Element => {
       <img src={Check} alt="image" width={200} height={200} />
       <div className={styles.text}>
         <Heading size="8">บันทึกการสมัครสำเร็จ</Heading>
-        <Text>โปรดติดตามการประกาศผลทางอีเมล</Text>
-        <Link to={BASE_PATH} className={styles.back}>
+        <Text>โปรดติดตามการประกาศผลทางอีเมล และ Social media</Text>
+        <Link to={BASE_PATH} replace className={styles.back}>
           กลับสู่หน้าเว็บ
         </Link>
       </div>

@@ -125,11 +125,11 @@ const Register: React.FC = (): JSX.Element => {
 
   const stepFilter = () => {
     switch (currentStep) {
-      case 2:
+      case 0:
         return <GeneralForm onSubmit={onGeneralFormSubmit} isSubmitting={isSubmitting} />
       case 1:
         return <GuardianForm onSubmit={onGuardianFormSubmit} goBack={goBack} isSubmitting={isSubmitting} />
-      case 0:
+      case 2:
         return (
           <FileUpload
             onSubmit={onFileUploadSubmit}
@@ -168,7 +168,7 @@ const Register: React.FC = (): JSX.Element => {
       </Box>
       {!auth.is_registered && (
         <Heading size="5" align="center">
-          {currentStep + 1} of 4
+          {currentStep + 1} of 6
         </Heading>
       )}
     </div>

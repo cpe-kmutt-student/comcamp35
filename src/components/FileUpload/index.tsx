@@ -96,16 +96,7 @@ const FileUpload: React.FC<Props> = ({ onSubmit, isSubmitting, currentStep, setC
       {file.length === 0 ? (
         <form onSubmit={formik.handleSubmit}>
           <div className={styles.input}>
-            <span>
-              <Label required name="หนังสือขออนุญาตผู้ปกครอง" />
-              <a
-                href="https://api-s3.kronos.moe/comcamp/Nigga%20Twerk%20_%20BrooklynBloodPop.mp4"
-                target="_blank"
-                rel="noreferrer"
-              >
-                ดาวน์โหลดแบบฟอร์ม
-              </a>
-            </span>
+            <Label required name="หนังสือขออนุญาตผู้ปกครอง" />
             <div className={styles.fileUploadGroup}>
               <a
                 href="https://api-s3.kronos.moe/comcamp/Nigga%20Twerk%20_%20BrooklynBloodPop.mp4"
