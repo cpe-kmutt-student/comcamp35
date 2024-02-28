@@ -1,8 +1,10 @@
-import { AlertDialog, Button, Flex, Text, TextArea } from '@radix-ui/themes'
+import { Button, Flex, Text, TextArea } from '@radix-ui/themes'
 import styles from './index.module.scss'
 import { useFormik } from 'formik'
 import { IQuestion, questions } from './utils/questions'
 import ErrorMessage from '../Form/ErrorMessage'
+import { apiInstance } from 'src/lib/axios'
+import { useCallback, useEffect } from 'react'
 
 type Props = {
   onSubmit: (values: IQuestionForm) => void
@@ -47,6 +49,26 @@ const QuestionForm: React.FC<Props> = ({ onSubmit, goBack, isSubmitting }: Props
     onSubmit,
   })
 
+  const getQuestionAnswers = useCallback(async () => {
+    const { data } = await apiInstance.get('/question')
+
+    const newValues: IQuestionForm = {
+      answer_1: data.answer_1 ?? '',
+      answer_2: data.answer_2 ?? '',
+      answer_3: data.answer_3 ?? '',
+      answer_4: data.answer_4 ?? '',
+      answer_5: data.answer_5 ?? '',
+      answer_6: data.answer_6 ?? '',
+    }
+
+    formik.setValues(newValues)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  useEffect(() => {
+    getQuestionAnswers()
+  }, [getQuestionAnswers])
+
   const renderQuestions = questions.map((question: IQuestion, i: number) => {
     return (
       <div key={i} className={styles.input}>
@@ -76,34 +98,15 @@ const QuestionForm: React.FC<Props> = ({ onSubmit, goBack, isSubmitting }: Props
 
   return (
     <div className={styles.questionForm}>
-      <form>
+      <form onSubmit={formik.handleSubmit}>
         {renderQuestions}
         <Flex justify="end" align="center" gap="4">
           <Button onClick={goBack} variant="outline">
             ย้อนกลับ
           </Button>
-          <AlertDialog.Root>
-            <AlertDialog.Trigger>
-              <Button disabled={isSubmitting}>ยืนยัน</Button>
-            </AlertDialog.Trigger>
-            <AlertDialog.Content style={{ maxWidth: 450 }}>
-              <AlertDialog.Title>ต้องการยืนยัน?</AlertDialog.Title>
-              <AlertDialog.Description size="2">เมื่อยืนยันแล้วข้อมูลจะไม่สามารถแก้ไขได้อีก</AlertDialog.Description>
-
-              <Flex gap="3" mt="4" justify="end">
-                <AlertDialog.Cancel>
-                  <Button variant="soft" color="gray">
-                    ยกเลิก
-                  </Button>
-                </AlertDialog.Cancel>
-                <AlertDialog.Action>
-                  <Button variant="solid" onClick={() => formik.handleSubmit()} disabled={isSubmitting}>
-                    ยืนยัน
-                  </Button>
-                </AlertDialog.Action>
-              </Flex>
-            </AlertDialog.Content>
-          </AlertDialog.Root>
+          <Button variant="solid" type="submit" disabled={isSubmitting}>
+            ถัดไป
+          </Button>
         </Flex>
       </form>
     </div>

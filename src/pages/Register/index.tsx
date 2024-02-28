@@ -13,6 +13,8 @@ import QuestionForm, { IQuestionForm } from 'src/components/QuestionForm'
 import FileUpload, { IFileUpload } from 'src/components/FileUpload'
 import RegisComplete from 'src/components/RegisComplete'
 import { MajorEnum } from 'src/components/EducationForm/utils/type'
+import { uploadToMirai } from 'src/lib/mirai'
+import AcademicForm, { IAcademic } from 'src/components/AcademicQuestion'
 import axios from 'axios'
 import { UPLOAD_ENDPOINT } from 'src/constants/path'
 import Policy from 'src/components/Policy'
@@ -88,17 +90,7 @@ const Register: React.FC = (): JSX.Element => {
   }
 
   const fileUpload = async (file: File, type: string): Promise<boolean> => {
-    const form = new FormData()
-
-    form.append('uploadType', '0')
-    form.append('file', file)
-
-    const { data } = await axios.post(UPLOAD_ENDPOINT, form)
-
-    const body = {
-      url: data.url,
-      type: type,
-    }
+    const body = await uploadToMirai(file, type)
 
     return await apiInstance
       .post('/file/upload', body)
@@ -155,6 +147,27 @@ const Register: React.FC = (): JSX.Element => {
       })
   }
 
+  const onAcademicUpload = async (values: IAcademic) => {
+    setSubmit(true)
+
+    try {
+      const res = await fileUpload(values.answer as File, 'academic-answer')
+
+      if (res) {
+        await apiInstance.patch('/users/register')
+        setCurrentStep(currentStep + 1)
+        savedAlert()
+        setSubmit(false)
+      } else {
+        errorAlert()
+        setSubmit(false)
+      }
+    } catch (err) {
+      errorAlert(err as string)
+      setSubmit(false)
+    }
+  }
+
   const goBack = () => {
     setCurrentStep(currentStep - 1)
   }
@@ -179,6 +192,7 @@ const Register: React.FC = (): JSX.Element => {
           />
         )
       case 5:
+        return <AcademicForm onSubmit={onAcademicUpload} goBack={goBack} isSubmitting={isSubmitting} />
         return <QuestionForm onSubmit={onQuestionFormSubmit} goBack={goBack} isSubmitting={isSubmitting} />
       case 6:
         return <RegisComplete />
@@ -208,7 +222,7 @@ const Register: React.FC = (): JSX.Element => {
       </Box>
       {!auth.is_registered && (
         <Heading size="5" align="center" my="5">
-          {currentStep + 1} of 6
+          {currentStep + 1} of 7
         </Heading>
       )}
     </div>
