@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 import styles from './index.module.scss'
 import { Button, Checkbox, Flex } from '@radix-ui/themes'
 import { useFormik } from 'formik'
@@ -9,6 +9,7 @@ import { insuranceChoices, prefixChoices, shirtSizeChoices } from './utils/data'
 import FormikSelect from '../Form/Formik/Select'
 import FormikTextField from '../Form/Formik/Input'
 import { apiInstance } from 'src/lib/axios'
+// import PrivacyPolicy from '../Form/PrivacyPolicy'
 
 type Props = {
   onSubmit: (values: IGeneralForm) => void
@@ -80,6 +81,20 @@ const GeneralForm: React.FC<Props> = ({ onSubmit, isSubmitting }: Props) => {
     onSubmit,
   })
 
+  const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(false)
+
+  const handlePrivacyPolicyClick = useCallback(() => {
+    setShowPrivacyPolicy(true)
+  }, [])
+
+  const handleClosePrivacyPolicy = useCallback(() => {
+    setShowPrivacyPolicy(false)
+  }, [])
+
+  const handleAcceptPolicy = () => {
+    handleClosePrivacyPolicy()
+  }
+
   const getGeneralInfo = useCallback(async () => {
     const { data: userInfo } = await apiInstance.get('/users/info')
     const { data: generalInfo } = await apiInstance.get('/form')
@@ -127,7 +142,6 @@ const GeneralForm: React.FC<Props> = ({ onSubmit, isSubmitting }: Props) => {
             onSelect={(value: string) => formik.setFieldValue('prefix', value)}
           />
         </div>
-
         <div className={styles.inputGroup}>
           <FormikTextField
             label="ชื่อจริง"
@@ -157,7 +171,6 @@ const GeneralForm: React.FC<Props> = ({ onSubmit, isSubmitting }: Props) => {
             value={formik.values.last_name}
           />
         </div>
-
         <div className={styles.inputGroup}>
           <FormikTextField
             label="ชื่อเล่น"
@@ -193,7 +206,6 @@ const GeneralForm: React.FC<Props> = ({ onSubmit, isSubmitting }: Props) => {
             value={formik.values.tel}
           />
         </div>
-
         <div className={styles.inputGroup}>
           <FormikTextField
             label="ที่อยู่"
@@ -226,7 +238,6 @@ const GeneralForm: React.FC<Props> = ({ onSubmit, isSubmitting }: Props) => {
             onSelect={(value: string) => formik.setFieldValue('shirt_size', value)}
           />
         </div>
-
         <div className={styles.inputGroup}>
           <FormikTextField
             label="อาหารที่แพ้ (ถ้ามี)"
@@ -251,7 +262,6 @@ const GeneralForm: React.FC<Props> = ({ onSubmit, isSubmitting }: Props) => {
             value={formik.values.disease}
           />
         </div>
-
         <div className={styles.inputGroup}>
           <FormikTextField
             label="ยาประจำตัว (ถ้ามี)"
@@ -278,7 +288,6 @@ const GeneralForm: React.FC<Props> = ({ onSubmit, isSubmitting }: Props) => {
             onSelect={(value: string) => formik.setFieldValue('insurance', value)}
           />
         </div>
-
         <div style={{ margin: '20px 0' }}>
           <Flex gap="3" align={'center'}>
             <Flex gap="2" align={'center'}>
@@ -301,6 +310,17 @@ const GeneralForm: React.FC<Props> = ({ onSubmit, isSubmitting }: Props) => {
             </Flex>
           </Flex>
         </div>
+        <div style={{ marginBottom: '20px' }}>
+          <Checkbox checked={showPrivacyPolicy} onCheckedChange={handlePrivacyPolicyClick} />
+          <label onClick={handlePrivacyPolicyClick}>นโยบายความเป็นส่วนตัว</label>
+        </div>
+        {showPrivacyPolicy && (
+          <div>
+            <h1>นโยบายความเป็นส่วนตัว</h1>
+            <p>เราใส่ใจความเป็นส่วนตัวของคุณและการปกป้องข้อมูลของคุณอย่างยิ่ง</p>
+            <button onClick={handleAcceptPolicy}>ยอมรับนโยบายส่วนบุคคล</button>
+          </div>
+        )}
         <div style={{ textAlign: 'right' }}>
           <Button type="submit" disabled={isSubmitting}>
             ถัดไป
