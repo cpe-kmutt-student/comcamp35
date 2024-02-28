@@ -1,10 +1,10 @@
 import { Flex, Heading, Grid } from '@radix-ui/themes'
 import React from 'react'
 import styles from './sponsor.module.scss'
-import LDA from 'src/assets/lda.webp'
-import ThaiData from 'src/assets/thaidata.webp'
-import CPE from 'src/assets/cpe.webp'
-import Advice from 'src/assets/advice.webp'
+import LDA from 'src/assets/lda_logo.webp'
+import ThaiData from 'src/assets/thaidata_logo.webp'
+import CPE from 'src/assets/cpe_logo.webp'
+import Advice from 'src/assets/advice_logo.webp'
 
 interface ISponsor {
   img: string
@@ -29,7 +29,7 @@ const Sponsor: React.FC = () => {
   const renderSponsor = Sponsors.map((sponsor: ISponsor, i: number) => {
     return (
       <div key={i} className={styles.logo}>
-        <img src={sponsor.img} alt="sponsor" width={200} loading="lazy" />
+        <img src={sponsor.img} alt="sponsor" width="auto" loading="lazy" />
       </div>
     )
   })
