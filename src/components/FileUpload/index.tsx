@@ -5,6 +5,7 @@ import { Button, Flex, Text } from '@radix-ui/themes'
 import ErrorMessage from '../Form/ErrorMessage'
 import { apiInstance } from 'src/lib/axios'
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { PARENTS_APPROVEMENT } from 'src/constants/path'
 
 type Props = {
   onSubmit: (values: IFileUpload) => void
@@ -70,9 +71,9 @@ const FileUpload: React.FC<Props> = ({ onSubmit, isSubmitting, currentStep, setC
   }
 
   const uploadFile = (name: string, files: FileList | null) => {
-    const sellectFile = files ? files[0] : null
+    const selectedFile = files ? files[0] : null
 
-    formik.setFieldValue(name, sellectFile)
+    formik.setFieldValue(name, selectedFile)
   }
 
   const getFileInfo = useCallback(async () => {
@@ -98,7 +99,7 @@ const FileUpload: React.FC<Props> = ({ onSubmit, isSubmitting, currentStep, setC
           <div className={styles.input}>
             <Label required name="หนังสือขออนุญาตผู้ปกครอง" />
             <div className={styles.fileUploadGroup}>
-              <a href="https://api-s3.kronos.moe/comcamp/approval.pdf" target="_blank" rel="noreferrer">
+              <a href={PARENTS_APPROVEMENT} target="_blank" rel="noreferrer">
                 <button type="button" className={styles.uploadBtn}>
                   ดาวน์โหลดแบบฟอร์ม
                 </button>
