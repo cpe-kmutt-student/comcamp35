@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import styles from './index.module.scss'
 import { Button, Checkbox, Flex } from '@radix-ui/themes'
 import { useFormik } from 'formik'
@@ -9,7 +9,6 @@ import { insuranceChoices, prefixChoices, shirtSizeChoices } from './utils/data'
 import FormikSelect from '../Form/Formik/Select'
 import FormikTextField from '../Form/Formik/Input'
 import { apiInstance } from 'src/lib/axios'
-// import PrivacyPolicy from '../Form/PrivacyPolicy'
 
 type Props = {
   onSubmit: (values: IGeneralForm) => void
@@ -80,20 +79,6 @@ const GeneralForm: React.FC<Props> = ({ onSubmit, isSubmitting }: Props) => {
     validate,
     onSubmit,
   })
-
-  const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(false)
-
-  const handlePrivacyPolicyClick = useCallback(() => {
-    setShowPrivacyPolicy(true)
-  }, [])
-
-  const handleClosePrivacyPolicy = useCallback(() => {
-    setShowPrivacyPolicy(false)
-  }, [])
-
-  const handleAcceptPolicy = () => {
-    handleClosePrivacyPolicy()
-  }
 
   const getGeneralInfo = useCallback(async () => {
     const { data: userInfo } = await apiInstance.get('/users/info')
@@ -310,17 +295,6 @@ const GeneralForm: React.FC<Props> = ({ onSubmit, isSubmitting }: Props) => {
             </Flex>
           </Flex>
         </div>
-        <div style={{ marginBottom: '20px' }}>
-          <Checkbox checked={showPrivacyPolicy} onCheckedChange={handlePrivacyPolicyClick} />
-          <label onClick={handlePrivacyPolicyClick}>นโยบายความเป็นส่วนตัว</label>
-        </div>
-        {showPrivacyPolicy && (
-          <div>
-            <h1>นโยบายความเป็นส่วนตัว</h1>
-            <p>เราใส่ใจความเป็นส่วนตัวของคุณและการปกป้องข้อมูลของคุณอย่างยิ่ง</p>
-            <button onClick={handleAcceptPolicy}>ยอมรับนโยบายส่วนบุคคล</button>
-          </div>
-        )}
         <div style={{ textAlign: 'right' }}>
           <Button type="submit" disabled={isSubmitting}>
             ถัดไป
