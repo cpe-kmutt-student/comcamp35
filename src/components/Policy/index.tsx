@@ -82,7 +82,7 @@ const Policy: React.FC<Props> = ({ currentStep, setCurrentStep }: Props): JSX.El
               <ul style={{ marginLeft: '30px', marginTop: '10px' }}>
                 <li>เพื่อยืนยันว่าผู้สมัครมีตัวตนจริง</li>
                 <li>เพื่อใช้ประกอบการพิจารณาคุณสมบัติของผู้สมัครตามที่โครงการกำหนด</li>
-                <li>พื่อปฏิบัติตามกฎหมายและกฎระเบียบของหน่วยงานราชการ</li>
+                <li>เพื่อปฏิบัติตามกฎหมายและกฎระเบียบของหน่วยงานราชการ</li>
               </ul>
             </li>
             <li style={{ marginTop: '20px' }}>
