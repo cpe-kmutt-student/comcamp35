@@ -28,7 +28,7 @@ const Sponsors: ISponsor[] = [
 const Sponsor: React.FC = () => {
   const renderSponsor = Sponsors.map((sponsor: ISponsor, i: number) => {
     return (
-      <div key={i} className={styles.sponsorLogo}>
+      <div key={i} className={styles.logo}>
         <img src={sponsor.img} alt="sponsor" width={200} loading="lazy" />
       </div>
     )

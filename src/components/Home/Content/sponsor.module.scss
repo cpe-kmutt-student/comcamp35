@@ -5,7 +5,7 @@
   .contents {
     margin-top: 24px;
 
-    .sponsorLogo {
+    .logo {
       background-color: #1a408d40;
       border: 1px solid #50505050;
       border-radius: 10px;
@@ -15,16 +15,14 @@
       padding: 24px;
       height: 100%;
       transition: all 200ms;
-      
+
+      img {
+        width: 150px;
+      }
+
       &:hover {
         transform: scale(1.02);
         box-shadow: 0 4px 12px 0 #285cc440;
-      }
-
-      @media screen and (max-width: 1023px) {
-        img {
-          height: 100%;
-        }
       }
 
       @media screen and (max-width: 318px) {
