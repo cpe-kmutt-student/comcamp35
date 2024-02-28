@@ -105,11 +105,9 @@ const Policy: React.FC<Props> = ({ currentStep, setCurrentStep }: Props): JSX.El
         <span className={styles.agreementText}>รับทราบและให้ความยินยอมตามนโยบายความเป็นส่วนตัว</span>
       </Flex>
       <Flex justify="end" align="center" gap="4">
-        {check && (
-          <Button onClick={() => setCurrentStep(currentStep + 1)} className={styles.button}>
-            ถัดไป
-          </Button>
-        )}
+        <Button onClick={() => setCurrentStep(currentStep + 1)} disabled={!check} className={styles.button}>
+          ถัดไป
+        </Button>
       </Flex>
     </div>
   )
