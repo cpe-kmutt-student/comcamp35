@@ -15,6 +15,7 @@ import RegisComplete from 'src/components/RegisComplete'
 import { MajorEnum } from 'src/components/EducationForm/utils/type'
 import { uploadToMirai } from 'src/lib/mirai'
 import AcademicForm, { IAcademic } from 'src/components/AcademicQuestion'
+import Policy from 'src/components/Policy'
 
 const Register: React.FC = (): JSX.Element => {
   const [currentStep, setCurrentStep] = useState<number>(0)
@@ -172,12 +173,14 @@ const Register: React.FC = (): JSX.Element => {
   const stepFilter = () => {
     switch (currentStep) {
       case 0:
-        return <GeneralForm onSubmit={onGeneralFormSubmit} isSubmitting={isSubmitting} />
+        return <Policy currentStep={currentStep} setCurrentStep={setCurrentStep} />
       case 1:
-        return <GuardianForm onSubmit={onGuardianFormSubmit} goBack={goBack} isSubmitting={isSubmitting} />
+        return <GeneralForm onSubmit={onGeneralFormSubmit} isSubmitting={isSubmitting} />
       case 2:
-        return <EducationForm onSubmit={onEducationFormSubmit} goBack={goBack} isSubmitting={isSubmitting} />
+        return <GuardianForm onSubmit={onGuardianFormSubmit} goBack={goBack} isSubmitting={isSubmitting} />
       case 3:
+        return <EducationForm onSubmit={onEducationFormSubmit} goBack={goBack} isSubmitting={isSubmitting} />
+      case 4:
         return (
           <FileUpload
             onSubmit={onFileUploadSubmit}
@@ -186,11 +189,11 @@ const Register: React.FC = (): JSX.Element => {
             setCurrentStep={setCurrentStep}
           />
         )
-      case 4:
-        return <QuestionForm onSubmit={onQuestionFormSubmit} goBack={goBack} isSubmitting={isSubmitting} />
       case 5:
-        return <AcademicForm onSubmit={onAcademicUpload} goBack={goBack} isSubmitting={isSubmitting} />
+        return <QuestionForm onSubmit={onQuestionFormSubmit} goBack={goBack} isSubmitting={isSubmitting} />
       case 6:
+        return <AcademicForm onSubmit={onAcademicUpload} goBack={goBack} isSubmitting={isSubmitting} />
+      case 7:
         return <RegisComplete />
     }
   }
@@ -218,7 +221,7 @@ const Register: React.FC = (): JSX.Element => {
       </Box>
       {!auth.is_registered && (
         <Heading size="5" align="center" my="5">
-          {currentStep + 1} of 7
+          {currentStep + 1} of 8
         </Heading>
       )}
     </div>

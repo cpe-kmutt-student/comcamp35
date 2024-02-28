@@ -127,7 +127,6 @@ const GeneralForm: React.FC<Props> = ({ onSubmit, isSubmitting }: Props) => {
             onSelect={(value: string) => formik.setFieldValue('prefix', value)}
           />
         </div>
-
         <div className={styles.inputGroup}>
           <FormikTextField
             label="ชื่อจริง"
@@ -157,7 +156,6 @@ const GeneralForm: React.FC<Props> = ({ onSubmit, isSubmitting }: Props) => {
             value={formik.values.last_name}
           />
         </div>
-
         <div className={styles.inputGroup}>
           <FormikTextField
             label="ชื่อเล่น"
@@ -193,7 +191,6 @@ const GeneralForm: React.FC<Props> = ({ onSubmit, isSubmitting }: Props) => {
             value={formik.values.tel}
           />
         </div>
-
         <div className={styles.inputGroup}>
           <FormikTextField
             label="ที่อยู่"
@@ -226,7 +223,6 @@ const GeneralForm: React.FC<Props> = ({ onSubmit, isSubmitting }: Props) => {
             onSelect={(value: string) => formik.setFieldValue('shirt_size', value)}
           />
         </div>
-
         <div className={styles.inputGroup}>
           <FormikTextField
             label="อาหารที่แพ้ (ถ้ามี)"
@@ -251,7 +247,6 @@ const GeneralForm: React.FC<Props> = ({ onSubmit, isSubmitting }: Props) => {
             value={formik.values.disease}
           />
         </div>
-
         <div className={styles.inputGroup}>
           <FormikTextField
             label="ยาประจำตัว (ถ้ามี)"
@@ -278,7 +273,6 @@ const GeneralForm: React.FC<Props> = ({ onSubmit, isSubmitting }: Props) => {
             onSelect={(value: string) => formik.setFieldValue('insurance', value)}
           />
         </div>
-
         <div style={{ margin: '20px 0' }}>
           <Flex gap="3" align={'center'}>
             <Flex gap="2" align={'center'}>
