@@ -1,5 +1,5 @@
+import React, { useState } from 'react'
 import { Button, Checkbox, Flex, Heading, Text } from '@radix-ui/themes'
-import { useState } from 'react'
 import styles from './index.module.scss'
 
 type Props = {
@@ -12,74 +12,103 @@ const Policy: React.FC<Props> = ({ currentStep, setCurrentStep }: Props): JSX.El
 
   return (
     <div className={styles.policy}>
-      <Heading size="7" align="center">
+      <Heading size="7" align="center" className={styles.heading}>
         นโยบายความเป็นส่วนตัว
       </Heading>
       <div className={styles.content}>
-        <Text as="p">เราใส่ใจความเป็นส่วนตัวของคุณและการปกป้องข้อมูลของคุณอย่างยิ่ง</Text>
-        <Text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-          est laborum.
+        <Text as="p" className={styles.paragraph}>
+          เราใส่ใจความเป็นส่วนตัวของคุณและการปกป้องข้อมูลของคุณอย่างยิ่ง
         </Text>
-        <Text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-          est laborum.
-        </Text>
-        <Text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-          est laborum.
-        </Text>
-        <Text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-          est laborum.
-        </Text>
-        <Text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-          est laborum.
-        </Text>
-        <Text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-          est laborum.
-        </Text>
-        <Text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-          est laborum.
-        </Text>
-        <Text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-          est laborum.
+        {/* นโยบายข้อมูลส่วนบุคคล */}
+        <Text className={styles.text}>
+          นโยบายส่วนบุคคล
+          <ol>
+            <li>
+              <strong>ข้อมูลเกี่ยวกับโครงการ</strong>
+              <br />
+              โครงการฝึกอบรมเชิงปฏิบัติการคอมพิวเตอร์เบื้องต้น ครั้งที่ 35 หรือ Comcamp35 (ซึ่งต่อไปนี้จะเรียกว่า
+              “โครงการ”) เป็นผู้จัดการดำเนินการเว็บไซต์ comcamp.io และเว็บไซต์อื่นที่เกี่ยวข้อง (ซึ่งต่อไปนี้จะเรียกว่า
+              “เว็บไซต์”) นโยบายความเป็นส่วนตัวนี้มีเพื่อกำหนดความมุ่งมั่นของโครงการต่อความเป็นส่วนตัวของผู้ใช้งาน
+              (ซึ่งต่อไปจะเรียกว่า “ผู้สมัคร” หรือ “ท่าน”)
+            </li>
+            <li>
+              <strong>ข้อมูลที่ให้ความยินยอมในการเก็บรวบรวมใช้ประมวลผล</strong>
+              <br />
+              โครงการขอเก็บรวบรวมข้อมูลส่วนบุคคลของท่านและใช้ประมวลผล ภายใต้สิทธิและเงื่อนไขตามนโยบายส่วนบุคคลฉบับนี้
+              ได้แก่ ข้อมูลส่วนบุคคล ดังต่อไปนี้
+              <ul>
+                <li>ชื่อ (ชื่อต้น หรือ ชื่อกลาง หรือ ทั้งหมด)</li>
+                <li>นามสกุล</li>
+                <li>หมายเลขประจำตัวประชาชน</li>
+                <li>หมายเลขโทรศัพท์ติดต่อ</li>
+                <li>อีเมล</li>
+              </ul>
+            </li>
+            <li>
+              <strong>ข้อมูลส่วนบุคคลที่มีความอ่อนไหว</strong>
+              <br />
+              โครงการขอเก็บข้อมูลส่วนบุคคลที่มีความอ่อนไหวดังต่อไปนี้
+              <ul>
+                <li>สำเนาบัตรประจำตัวประชาชน หรือ สำเนาบัตรนักเรียน</li>
+                <li>เอกสารรับรองการเป็นนักเรียนของสถานศึกษา หรือ เอกสารรับรองผลการศึกษา (ปพ.7) อย่างใดอย่างหนึ่ง</li>
+                <li>
+                  ระเบียนแสดงผลการศึกษาของระดับมัธยมศึกษาตอนปลาย (ปพ.1)
+                  หรือแบบรายงานประจำตัวนักเรียนภาคเรียนล่าสุดอย่างใดอย่างหนึ่ง
+                </li>
+                <li>เอกสารขออนุญาตผู้ปกครอง</li>
+                <li>ภาพถ่ายอิสระของผู้สมัครที่เห็นใบหน้าชัดเจน</li>
+              </ul>
+              โดยการเก็บข้อมูลที่มีความอ่อนไหวข้างต้น มีวัตถุประสงค์ในการเก็บข้อมูลดังนี้
+              <ul>
+                <li>เพื่อยืนยันว่าผู้สมัครมีตัวตนจริง</li>
+                <li>เพื่อใช้ประกอบการพิจารณาคุณสมบัติของผู้สมัครตามที่ค่ายกำหนด</li>
+              </ul>
+            </li>
+            <li>
+              <strong>การประมวลผลข้อมูล</strong>
+              <br />
+              ให้หัวหน้าและเจ้าหน้าที่ฝ่ายทะเบียนจำนวน 8 คน
+              ทำการตรวจสอบความถูกต้องของข้อมูลผู้สมัครทั้งหมดว่าข้อมูลนั้นถูกต้องและผ่านเกณฑ์คุณสมบัติตามที่ค่ายกำหนด
+            </li>
+            <li>
+              <strong>ระยะการเก็บรักษาข้อมูลส่วนบุคคล</strong>
+              <br />
+              โครงการจะไม่เก็บรักษาข้อมูลส่วนบุคคลของผู้สมัครเกินกว่าระยะเวลาที่กฎหมายกำหนดและระยะเวลาการเรียกร้องสิทธิหรืออายุความฟ้องร้องดำเนินคดีในทางแพ่ง
+              (10 ปี ) กรณีข้อมูลส่วนบุคคลที่มีความอ่อนไหวทางโครงการจะทำลายและลบข้อมูลภายในระยะเวลา 1
+              เดือนหรือเร็วกว่านั้นนับตั้งแต่วันจบโครงการ
+            </li>
+            <li>
+              <strong>การคุ้มครองข้อมูลส่วนบุคคล</strong>
+              <br />
+              โครงการจะเก็บรักษาข้อมูลของผู้สมัครไว้เป็นอย่างดี โดยเก็บไว้ในรูปแบบข้อมูลอิเล็กทรอนิกส์
+              ซึ่งโครงการมีมาตรการรักษาความปลอดภัยของระบบอิเล็กทรอนิกส์ที่ใช้ในการเก็บรักษาและประมวลผลข้อมูลอย่างเหมาะสม
+              มีมาตรการในการป้องกันการละเมิดข้อมูลส่วนบุคคล โดยโครงการได้กำหนดนโยบาย วิธีปฏิบัติ เช่น
+              มาตรการป้องกันมิให้เจ้าหน้าที่นำข้อมูลผู้สมัครออกจากระบบของโครงการ
+              มาตรการรักษาความปลอดภัยของระบบฐานข้อมูลอิเล็กทรอนิกส์ของโครงการ
+              กำหนดข้อตกลงอย่างเคร่งครัดกับคู่สัญญาเกี่ยวกับการคุ้มครองข้อมูลส่วนบุคคลของผู้สมัคร
+              และข้อบังคับสำหรับเจ้าหน้าที่และบุคลากรในการรักษาความเป็นส่วนตัวของข้อมูลส่วนบุคคลของผู้สมัคร
+            </li>
+            <li>
+              <strong>การติดต่อเจ้าหน้าที่คุ้มครองข้อมูลส่วนบุคคล</strong>
+              <br />
+              หากท่านมีข้อสงสัย หรือต้องการสอบถามเกี่ยวกับ นโยบายและการคุ้มครองข้อมูลส่วนบุคคลของโครงการ
+              หรือประสงค์จะสอบถามเกี่ยวกับการใช้สิทธิของเจ้าของข้อมูลในการดำเนินการอย่างหนึ่งอย่างใดกับข้อมูลส่วนบุคคลของท่าน
+              ซึ่งโครงการได้เก็บรวบรวม ท่านสามารถติดต่อได้ที่เจ้าหน้าที่คุ้มครองข้อมูลส่วนบุคคล สถานที่ติดต่อ อีเมล
+              (คุณว่าน) phonteera.puny@kmutt.ac.th (หัวหน้าฝ่ายการรับสมัคร)
+            </li>
+          </ol>
         </Text>
       </div>
       <Flex justify="start" align="center" gap="4" my="5">
-        <Checkbox checked={check} onCheckedChange={() => setCheck(!check)} />
-        ยินยอมข้อตกลงส่วนบุคคล
+        <Checkbox checked={check} onCheckedChange={() => setCheck(!check)} className={styles.checkbox} />
+        <span className={styles.agreementText}>ยินยอมข้อตกลงส่วนบุคคล</span>
       </Flex>
       <Flex justify="end" align="center" gap="4">
-        {check && <Button onClick={() => setCurrentStep(currentStep + 1)}>ถัดไป</Button>}
+        {check && (
+          <Button onClick={() => setCurrentStep(currentStep + 1)} className={styles.button}>
+            ถัดไป
+          </Button>
+        )}
       </Flex>
     </div>
   )
