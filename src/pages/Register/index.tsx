@@ -13,7 +13,8 @@ import QuestionForm, { IQuestionForm } from 'src/components/QuestionForm'
 import FileUpload, { IFileUpload } from 'src/components/FileUpload'
 import RegisComplete from 'src/components/RegisComplete'
 import { MajorEnum } from 'src/components/EducationForm/utils/type'
-import { upload } from 'node-mirai'
+import axios from 'axios'
+import { UPLOAD_ENDPOINT } from 'src/constants/path'
 
 const Register: React.FC = (): JSX.Element => {
   const [currentStep, setCurrentStep] = useState<number>(0)
@@ -86,10 +87,15 @@ const Register: React.FC = (): JSX.Element => {
   }
 
   const fileUpload = async (file: File, type: string): Promise<boolean> => {
-    const { url } = await upload(file, { headers: { Random: 'comcamp', CustomHeader: 'nanahoshi' } })
+    const form = new FormData()
+
+    form.append('uploadType', '0')
+    form.append('file', file)
+
+    const { data } = await axios.post(UPLOAD_ENDPOINT, form)
 
     const body = {
-      url: url,
+      url: data.url,
       type: type,
     }
 

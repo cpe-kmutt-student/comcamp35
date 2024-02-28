@@ -8,6 +8,15 @@ export default defineConfig(({ mode }) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) }
 
   return {
+    optimizeDeps: {
+      include: ['node-mirai'],
+    },
+    build: {
+      commonjsOptions: {
+        exclude: [],
+        include: [/node_modules/],
+      },
+    },
     base: '/',
     plugins: [react(), eslint(), tsconfigPaths()],
     resolve: {
