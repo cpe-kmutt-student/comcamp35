@@ -13,7 +13,7 @@ const Policy: React.FC<Props> = ({ currentStep, setCurrentStep }: Props): JSX.El
   return (
     <div className={styles.policy}>
       <Heading size="7" align="center" className={styles.heading}>
-        นโยบายความเป็นส่วนตัว
+        นโยบายข้อมูลส่วนบุคคล
       </Heading>
       <div className={styles.content}>
         {/* นโยบายข้อมูลส่วนบุคคล */}

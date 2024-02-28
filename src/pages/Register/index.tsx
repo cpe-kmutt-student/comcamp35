@@ -195,6 +195,8 @@ const Register: React.FC = (): JSX.Element => {
         return <AcademicForm onSubmit={onAcademicUpload} goBack={goBack} isSubmitting={isSubmitting} />
         return <QuestionForm onSubmit={onQuestionFormSubmit} goBack={goBack} isSubmitting={isSubmitting} />
       case 6:
+        return <AcademicForm onSubmit={onAcademicUpload} goBack={goBack} isSubmitting={isSubmitting} />
+      case 7:
         return <RegisComplete />
     }
   }
@@ -222,7 +224,7 @@ const Register: React.FC = (): JSX.Element => {
       </Box>
       {!auth.is_registered && (
         <Heading size="5" align="center" my="5">
-          {currentStep + 1} of 7
+          {currentStep + 1} of 8
         </Heading>
       )}
     </div>
