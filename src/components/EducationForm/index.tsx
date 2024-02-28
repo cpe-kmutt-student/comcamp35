@@ -34,7 +34,7 @@ const validate = (values: IEducationForm) => {
   const errors: Record<string, string> = {}
   if (!values.school_name) errors.school_name = 'กรุณาระบุชื่อโรงเรียนที่กำลังศึกษาอยู่'
   if (!values.major) errors.major = 'กรุณาระบุสายที่กำลังศึกษา'
-  if (!values.degree) errors.degree = 'กรุณาระบุวุฒิการศึกษา'
+  if (!values.degree) errors.degree = 'กรุณาระบุระดับการศึกษาการศึกษา'
   if (!values.gpax) errors.gpax = 'กรุณาระบุเกรดเฉลี่ยสะสม'
   if (values.gpax && isNaN(parseInt(values.gpax))) errors.gpax = 'กรุณากรอกตัวเลขเท่านั้น'
   if (values.gpax && !isNaN(parseInt(values.gpax)) && parseInt(values.gpax) > 4.0)
@@ -103,9 +103,9 @@ const EducationForm: React.FC<Props> = ({ onSubmit, isSubmitting, goBack }: Prop
             value={formik.values.school_name}
           />
           <FormikSelect
-            label="วุฒิการศึกษา"
+            label="ระดับการศึกษา"
             items={degreeChoices}
-            placeholder="กรุณาเลือกวุฒิการศึกษา"
+            placeholder="กรุณาเลือกระดับการศึกษา"
             value={formik.values.degree}
             required
             errors={formik.errors.degree}
