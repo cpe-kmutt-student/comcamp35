@@ -193,7 +193,7 @@ const Register: React.FC = (): JSX.Element => {
         return <QuestionForm onSubmit={onQuestionFormSubmit} goBack={goBack} isSubmitting={isSubmitting} />
       case 6:
         return <AcademicForm onSubmit={onAcademicUpload} goBack={goBack} isSubmitting={isSubmitting} />
-      case 7
+      case 7:
         return <RegisComplete />
     }
   }
