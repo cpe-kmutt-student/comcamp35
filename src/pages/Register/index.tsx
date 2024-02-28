@@ -134,7 +134,7 @@ const Register: React.FC = (): JSX.Element => {
 
     return await Promise.all(newFile.map((form: { type: string; file: File }) => fileUpload(form.file, form.type)))
       .then((res) => {
-        if (res.map((res) => res === true)) {
+        if (res[0] === true) {
           setCurrentStep(currentStep + 1)
           savedAlert()
           setSubmit(false)
