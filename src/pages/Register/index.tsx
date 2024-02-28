@@ -13,6 +13,7 @@ import QuestionForm, { IQuestionForm } from 'src/components/QuestionForm'
 import FileUpload, { IFileUpload } from 'src/components/FileUpload'
 import RegisComplete from 'src/components/RegisComplete'
 import { MajorEnum } from 'src/components/EducationForm/utils/type'
+import { upload } from 'node-mirai'
 
 const Register: React.FC = (): JSX.Element => {
   const [currentStep, setCurrentStep] = useState<number>(0)
@@ -85,23 +86,21 @@ const Register: React.FC = (): JSX.Element => {
   }
 
   const fileUpload = async (file: File, type: string): Promise<boolean> => {
-    const body = new FormData()
+    const { url } = await upload(file, { headers: { Random: 'comcamp', CustomHeader: 'nanahoshi' } })
 
-    body.append('file', file)
-    body.append('type', type)
+    const body = {
+      url: url,
+      type: type,
+    }
 
     return await apiInstance
-      .post('/file/upload', body, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      })
+      .post('/file/upload', body)
       .then(() => {
         savedAlert('อัพโหลดเอกสารสำเร็จ')
         return true
       })
-      .catch((err) => {
-        errorAlert(err.message)
+      .catch(({ message }) => {
+        errorAlert(message)
         return false
       })
   }
@@ -199,7 +198,7 @@ const Register: React.FC = (): JSX.Element => {
         <Container size="4">{auth.is_registered ? <RegisComplete /> : stepFilter()}</Container>
       </Box>
       {!auth.is_registered && (
-        <Heading size="5" align="center">
+        <Heading size="5" align="center" my="5">
           {currentStep + 1} of 6
         </Heading>
       )}
