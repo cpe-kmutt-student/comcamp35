@@ -28,6 +28,8 @@
         height: 50px;
         position: absolute;
         top: -90px;
+        user-select: none;
+        pointer-events: none;
       }
 
       .imgDisabled {

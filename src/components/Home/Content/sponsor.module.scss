@@ -4,20 +4,24 @@
 
   .contents {
     margin-top: 24px;
+    gap: 24px;
 
     .logo {
       background-color: #1a408d40;
       border: 1px solid #50505050;
       border-radius: 10px;
+      transition: all 200ms;
       display: flex;
-      align-items: center;
+      flex-direction: column;
       justify-content: center;
+      align-items: center;
       padding: 24px;
       height: 100%;
-      transition: all 200ms;
 
       img {
-        width: 150px;
+        width: 100px;
+        user-select: none;
+        pointer-events: none;
       }
 
       &:hover {

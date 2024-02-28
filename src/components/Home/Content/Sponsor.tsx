@@ -41,7 +41,6 @@ const Sponsor: React.FC = () => {
       </Heading>
       <Grid
         columns={{ initial: '1', sm: '2', md: '4' }}
-        gap="5"
         width="auto"
         justify="center"
         align="center"

@@ -28,6 +28,8 @@
         img {
           height: 100px;
           width: 100px;
+          user-select: none;
+          pointer-events: none;
         }
 
         .cardContent {

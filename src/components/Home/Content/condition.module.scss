@@ -21,6 +21,8 @@
         max-width: 100%;
         text-align: center;
         border-radius: 16px;
+        user-select: none;
+        pointer-events: none;
       }
 
       .description {

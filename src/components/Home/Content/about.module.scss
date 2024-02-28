@@ -30,6 +30,8 @@
     img {
       isolation: isolate;
       border-radius: 16px;
+      user-select: none;
+      pointer-events: none;
     }
   }
 
