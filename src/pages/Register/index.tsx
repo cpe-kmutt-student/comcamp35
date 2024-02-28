@@ -293,7 +293,7 @@ const Register: React.FC = (): JSX.Element => {
         <SignOutButton active>ออกจากระบบ</SignOutButton>
       </Flex>
       <div className={styles.header}>
-        <Heading size="7">ฟอร์มสมัคร ComCamp 35</Heading>
+        <Heading size="7">ฟอร์มสมัคร Comcamp 35</Heading>
       </div>
       <Box style={{ background: 'var(--gray-a2)', borderRadius: 'var(--radius-3)' }} className={styles.form}>
         <Container size="4">{auth.is_registered ? <RegisComplete /> : stepFilter()}</Container>
