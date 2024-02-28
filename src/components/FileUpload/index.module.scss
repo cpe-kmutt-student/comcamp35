@@ -11,7 +11,7 @@
       text-decoration: none;
       transition: all 200ms;
       cursor: pointer;
-      
+
       &:hover {
         color: #1e57c2;
       }
@@ -38,6 +38,18 @@
         &:hover {
           color: #ffd541;
           background: #14346440;
+        }
+      }
+
+      .downloadBtn {
+        @extend .uploadBtn;
+        background: transparent;
+        border: 1px solid #143464;
+        color: #FFFFFF;
+
+        &:hover {
+          color: #ffffff;
+          background: #3079ff40;
         }
       }
     }

@@ -107,7 +107,7 @@ const FileUpload: React.FC<Props> = ({ onSubmit, isSubmitting, currentStep, setC
           {file.length >= 5 && <a href={getFileInfoByType('parents')?.url}>ดาวน์โหลด</a>}
           <div className={styles.fileUploadGroup}>
             <a href={PARENTS_APPROVEMENT} target="_blank" rel="noreferrer">
-              <button type="button" className={styles.uploadBtn}>
+              <button type="button" className={styles.downloadBtn}>
                 ดาวน์โหลดแบบฟอร์ม
               </button>
             </a>
