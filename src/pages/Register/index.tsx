@@ -15,8 +15,6 @@ import RegisComplete from 'src/components/RegisComplete'
 import { MajorEnum } from 'src/components/EducationForm/utils/type'
 import { uploadToMirai } from 'src/lib/mirai'
 import AcademicForm, { IAcademic } from 'src/components/AcademicQuestion'
-import axios from 'axios'
-import { UPLOAD_ENDPOINT } from 'src/constants/path'
 import Policy from 'src/components/Policy'
 
 const Register: React.FC = (): JSX.Element => {
@@ -192,7 +190,6 @@ const Register: React.FC = (): JSX.Element => {
           />
         )
       case 5:
-        return <AcademicForm onSubmit={onAcademicUpload} goBack={goBack} isSubmitting={isSubmitting} />
         return <QuestionForm onSubmit={onQuestionFormSubmit} goBack={goBack} isSubmitting={isSubmitting} />
       case 6:
         return <AcademicForm onSubmit={onAcademicUpload} goBack={goBack} isSubmitting={isSubmitting} />

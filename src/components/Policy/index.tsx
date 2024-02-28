@@ -16,7 +16,6 @@ const Policy: React.FC<Props> = ({ currentStep, setCurrentStep }: Props): JSX.El
         นโยบายข้อมูลส่วนบุคคล
       </Heading>
       <div className={styles.content}>
-        {/* นโยบายข้อมูลส่วนบุคคล */}
         <Text className={styles.text}>
           <ol>
             <li style={{ marginBottom: '10px' }}>
