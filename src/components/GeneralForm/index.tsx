@@ -62,6 +62,7 @@ const validate = (values: IGeneralForm) => {
   if (!values.last_name) errors.last_name = 'กรุณาระบุนามสกุล'
   if (!values.nickname) errors.nickname = 'กรุณาระบุชื่อเล่น'
   if (!values.tel) errors.tel = 'กรุณาระบุเบอร์โทรศัพท์'
+  if (values.tel && isNaN(parseInt(values.tel))) errors.tel = 'หมายเลขโทรศัพท์ต้องเป็นตัวเลขเท่านั้น'
   if (/^(\+?\d{1,3}|\d{1,4})$/.test(values.tel)) errors.tel = 'ไม่ต้องใส่รหัสประเทศ'
   if (values.tel.length > 10) errors.tel = 'เบอโทรศัพท์ต้องเท่ากับ 10 หลัก'
   if (!values.birth_date) errors.birth_date = 'กรุณาระบุวันเกิด'
