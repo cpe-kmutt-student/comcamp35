@@ -37,17 +37,19 @@ const validate = (values: IGuardianForm) => {
   const errors: Record<string, string> = {}
   if (!values.name) errors.name = 'กรุณาระบุชื่อ'
   if (!values.tel) errors.tel = 'กรุณาระบุเบอร์โทรศัพท์'
-  if (values.tel && isNaN(parseInt(values.tel))) errors.tel = 'หมายเลขโทรศัพท์ต้องเป็นตัวเลขเท่านั้น'
+  if (values.tel && Number.isNaN(Number(values.tel))) errors.tel = 'หมายเลขโทรศัพท์ต้องเป็นตัวเลขเท่านั้น'
   if (/^(\+?\d{1,3}|\d{1,4})$/.test(values.tel)) errors.tel = 'ไม่ต้องใส่รหัสประเทศ'
-  if (values.tel.length > 10) errors.tel = 'เบอโทรศัพท์ต้องเท่ากับ 10 หลัก'
+  if (values.tel.length != 10) errors.tel = 'เบอร์โทรศัพท์ต้องเท่ากับ 10 หลัก'
 
   if (!values.relation) errors.relation = 'กรุณาระบุความสัมพันธ์กับผู้สมัคร'
+
   if (!values.emergency_name) errors.emergency_name = 'กรุณาระบุชื่อผู้ติดต่อฉุกเฉิน'
   if (!values.emergency_tel) errors.emergency_tel = 'กรุณาระบุเบอร์โทรผู้ติดต่อฉุกเฉิน'
-  if (values.emergency_tel && isNaN(parseInt(values.emergency_tel)))
+  if (values.emergency_tel && Number.isNaN(Number(values.emergency_tel)))
     errors.emergency_tel = 'หมายเลขโทรศัพท์ต้องเป็นตัวเลขเท่านั้น'
   if (/^(\+?\d{1,3}|\d{1,4})$/.test(values.emergency_tel)) errors.emergency_tel = 'ไม่ต้องใส่รหัสประเทศ'
-  if (values.emergency_tel.length > 10) errors.emergency_tel = 'เบอโทรศัพท์ต้องเท่ากับ 10 หลัก'
+  if (values.emergency_tel.length != 10) errors.emergency_tel = 'เบอร์โทรศัพท์ต้องเท่ากับ 10 หลัก'
+
   if (!values.emergency_relation) errors.emergency_relation = 'กรุณาระบุความสัมพันธ์ของผู้ติดต่อฉุกเฉิน'
   if (values.email && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email))
     errors.email = 'ที่อยู่อีเมลที่ไม่ถูกต้อง'

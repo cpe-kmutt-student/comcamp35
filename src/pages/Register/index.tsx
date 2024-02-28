@@ -10,12 +10,13 @@ import GuardianForm, { IGuardianForm } from 'src/components/GuardianForm'
 import ReactGA from 'react-ga4'
 import EducationForm, { IEducationForm } from 'src/components/EducationForm'
 import QuestionForm, { IQuestionForm } from 'src/components/QuestionForm'
-import FileUpload, { IFileUpload } from 'src/components/FileUpload'
+import FileUpload, { IFileData, IFileUpload } from 'src/components/FileUpload'
 import RegisComplete from 'src/components/RegisComplete'
 import { MajorEnum } from 'src/components/EducationForm/utils/type'
 import { uploadToMirai } from 'src/lib/mirai'
 import AcademicForm, { IAcademic } from 'src/components/AcademicQuestion'
 import Policy from 'src/components/Policy'
+import { InsuranceEnum } from 'src/components/GeneralForm/utils/type'
 
 const Register: React.FC = (): JSX.Element => {
   const [currentStep, setCurrentStep] = useState<number>(0)
@@ -25,10 +26,51 @@ const Register: React.FC = (): JSX.Element => {
   ReactGA.send({ hitType: 'pageview', page: '/', title: 'Registration page' })
 
   const onGeneralFormSubmit = async (values: IGeneralForm) => {
+    const {
+      prefix,
+      first_name,
+      middle_name,
+      last_name,
+      nickname,
+      birth_date,
+      tel,
+      address,
+      travel,
+      shirt_size,
+      can_bring_laptop,
+      food_allergy,
+      special_food_needs,
+      disease,
+      personal_drug,
+      drug_allergy,
+      insurance,
+      insuranceName,
+    } = values
+
+    const newValues = {
+      prefix,
+      first_name,
+      middle_name,
+      last_name,
+      nickname,
+      birth_date,
+      tel,
+      address,
+      travel,
+      shirt_size,
+      can_bring_laptop,
+      food_allergy,
+      special_food_needs,
+      disease,
+      personal_drug,
+      drug_allergy,
+      insurance: insurance === InsuranceEnum.OTHER ? insuranceName : insurance,
+    }
+
     setSubmit(true)
 
     try {
-      await apiInstance.post('/form', values)
+      await apiInstance.post('/form', newValues)
       setCurrentStep(currentStep + 1)
       setSubmit(false)
       savedAlert()
@@ -87,48 +129,85 @@ const Register: React.FC = (): JSX.Element => {
     }
   }
 
-  const fileUpload = async (file: File, type: string): Promise<boolean> => {
-    const body = await uploadToMirai(file, type)
+  const fileUpload = async (file: string | File | undefined, type: string, isFile: boolean): Promise<boolean> => {
+    if (isFile) {
+      const body = await uploadToMirai(file as File, type)
 
-    return await apiInstance
-      .post('/file/upload', body)
-      .then(() => {
-        savedAlert('อัพโหลดเอกสารสำเร็จ')
-        return true
-      })
-      .catch(({ message }) => {
-        errorAlert(message)
-        return false
-      })
+      return await apiInstance
+        .post('/file/upload', body)
+        .then(() => {
+          savedAlert('อัพโหลดเอกสารสำเร็จ')
+          return true
+        })
+        .catch(({ message }) => {
+          errorAlert(message)
+          return false
+        })
+    } else {
+      return await apiInstance
+        .post('/file/upload', { type, url: file as string })
+        .then(() => {
+          savedAlert('อัพโหลดเอกสารสำเร็จ')
+          return true
+        })
+        .catch(({ message }) => {
+          errorAlert(message)
+          return false
+        })
+    }
   }
 
   const onFileUploadSubmit = async (values: IFileUpload) => {
     setSubmit(true)
 
-    const newFile: { type: string; file: File }[] = [
+    const newFile: { type: string; file: string | File | undefined; isFile: boolean }[] = [
       {
         type: 'certificate',
-        file: values.certificate as File,
+        file:
+          values.certificate === null
+            ? values.currentFiles.find((item: IFileData) => item.type === 'certificate')?.url
+            : values.certificate,
+        isFile: values.certificate === null ? false : true,
       },
       {
         type: 'citizenship',
-        file: values.citizenship as File,
+        file:
+          values.citizenship === null
+            ? values.currentFiles.find((item: IFileData) => item.type === 'citizenship')?.url
+            : values.citizenship,
+        isFile: values.citizenship === null ? false : true,
       },
       {
         type: 'image',
-        file: values.image as File,
+        file:
+          values.image === null
+            ? values.currentFiles.find((item: IFileData) => item.type === 'image')?.url
+            : values.image,
+        isFile: values.image === null ? false : true,
       },
       {
         type: 'parents',
-        file: values.parents as File,
+        file:
+          values.parents === null
+            ? values.currentFiles.find((item: IFileData) => item.type === 'parents')?.url
+            : values.parents,
+        isFile: values.parents === null ? false : true,
       },
       {
         type: 'transcript',
-        file: values.transcript as File,
+        file:
+          values.transcript === null
+            ? values.currentFiles.find((item: IFileData) => item.type === 'transcript')?.url
+            : values.transcript,
+        isFile: values.transcript === null ? false : true,
       },
     ]
 
-    return await Promise.all(newFile.map((form: { type: string; file: File }) => fileUpload(form.file, form.type)))
+    return await Promise.all(
+      newFile.map((form: { type: string; file: string | File | undefined; isFile: boolean }) =>
+        fileUpload(form.file, form.type, form.isFile),
+      ),
+    )
       .then((res) => {
         if (res[0] === true) {
           setCurrentStep(currentStep + 1)
@@ -149,7 +228,7 @@ const Register: React.FC = (): JSX.Element => {
     setSubmit(true)
 
     try {
-      const res = await fileUpload(values.answer as File, 'academic-answer')
+      const res = await fileUpload(values.answer as File, 'academic-answer', true)
 
       if (res) {
         await apiInstance.patch('/users/register')

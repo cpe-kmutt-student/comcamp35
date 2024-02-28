@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import styles from './index.module.scss'
 import { Button, Checkbox, Flex } from '@radix-ui/themes'
 import { useFormik } from 'formik'
@@ -9,6 +9,7 @@ import { insuranceChoices, prefixChoices, shirtSizeChoices } from './utils/data'
 import FormikSelect from '../Form/Formik/Select'
 import FormikTextField from '../Form/Formik/Input'
 import { apiInstance } from 'src/lib/axios'
+import { InsuranceEnum } from './utils/type'
 
 type Props = {
   onSubmit: (values: IGeneralForm) => void
@@ -33,6 +34,7 @@ export interface IGeneralForm {
   personal_drug?: string
   drug_allergy?: string
   insurance: string
+  insuranceName: string
 }
 
 const initialValues: IGeneralForm = {
@@ -53,6 +55,7 @@ const initialValues: IGeneralForm = {
   personal_drug: '',
   drug_allergy: '',
   insurance: '',
+  insuranceName: '',
 }
 
 const validate = (values: IGeneralForm) => {
@@ -75,6 +78,8 @@ const validate = (values: IGeneralForm) => {
 }
 
 const GeneralForm: React.FC<Props> = ({ onSubmit, isSubmitting }: Props) => {
+  const [showAdditionalField, setShowAdditionalField] = useState<boolean>(false)
+
   const formik = useFormik({
     initialValues,
     validate,
@@ -103,11 +108,22 @@ const GeneralForm: React.FC<Props> = ({ onSubmit, isSubmitting }: Props) => {
       personal_drug: generalInfo.personal_drug ?? '',
       drug_allergy: generalInfo.drug_allergy ?? '',
       insurance: generalInfo.insurance ?? '',
+      insuranceName: Object.values(InsuranceEnum).includes(generalInfo.insurance) ? '' : generalInfo.insurance,
     }
 
     formik.setValues(newValues)
+
+    if (!Object.values(InsuranceEnum).includes(generalInfo.insurance)) {
+      formik.setFieldValue('insurance', InsuranceEnum.OTHER)
+      setShowAdditionalField(true)
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  const handleInsuranceSelect = (value: string) => {
+    formik.setFieldValue('insurance', value)
+    setShowAdditionalField(value === InsuranceEnum.OTHER)
+  }
 
   useEffect(() => {
     getGeneralInfo()
@@ -271,9 +287,21 @@ const GeneralForm: React.FC<Props> = ({ onSubmit, isSubmitting }: Props) => {
             required
             errors={formik.errors.insurance}
             touched={formik.touched.insurance}
-            onSelect={(value: string) => formik.setFieldValue('insurance', value)}
+            onSelect={handleInsuranceSelect}
           />
         </div>
+        {showAdditionalField && (
+          <FormikTextField
+            label="กรุณาระบุสิทธิการรักษา"
+            name="insuranceName"
+            required
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+            errors={formik.errors.insuranceName}
+            touched={formik.touched.insuranceName}
+            value={formik.values.insuranceName}
+          />
+        )}
         <div style={{ margin: '20px 0' }}>
           <Flex gap="3" align={'center'}>
             <Flex gap="2" align={'center'}>

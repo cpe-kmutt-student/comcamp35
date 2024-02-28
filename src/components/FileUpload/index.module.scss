@@ -10,7 +10,8 @@
       color: #3079ffff;
       text-decoration: none;
       transition: all 200ms;
-
+      cursor: pointer;
+      
       &:hover {
         color: #1e57c2;
       }
@@ -38,22 +39,6 @@
           color: #ffd541;
           background: #14346440;
         }
-      }
-    }
-  }
-
-  .content {
-    div {
-      margin-bottom: 2rem;
-    }
-
-    a {
-      color: #3079ffff;
-      text-decoration: none;
-      transition: all 200ms;
-
-      &:hover {
-        color: #1e57c2;
       }
     }
   }

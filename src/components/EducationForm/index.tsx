@@ -35,11 +35,12 @@ const validate = (values: IEducationForm) => {
   if (!values.school_name) errors.school_name = 'กรุณาระบุชื่อโรงเรียนที่กำลังศึกษาอยู่'
   if (!values.major) errors.major = 'กรุณาระบุสายที่กำลังศึกษา'
   if (!values.degree) errors.degree = 'กรุณาระบุระดับการศึกษาการศึกษา'
+
   if (!values.gpax) errors.gpax = 'กรุณาระบุเกรดเฉลี่ยสะสม'
-  if (values.gpax && isNaN(parseInt(values.gpax))) errors.gpax = 'กรุณากรอกตัวเลขเท่านั้น'
-  if (values.gpax && !isNaN(parseInt(values.gpax)) && parseInt(values.gpax) > 4.0)
+  if (values.gpax && Number.isNaN(Number(values.gpax))) errors.gpax = 'กรุณากรอกตัวเลขเท่านั้น'
+  if (values.gpax && !isNaN(parseFloat(values.gpax)) && parseFloat(values.gpax) > 4.0)
     errors.gpax = 'เกรดเฉลี่ยต้องไม่เกิน 4.00'
-  if (values.gpax && !isNaN(parseInt(values.gpax)) && parseInt(values.gpax) <= 0.0)
+  if (values.gpax && !isNaN(parseFloat(values.gpax)) && parseFloat(values.gpax) <= 0.0)
     errors.gpax = 'เกรดเฉลี่ยต้องมากกว่า 0.00'
   if (values.major === MajorEnum.ouou && !values.otherMajor) errors.otherMajor = 'กรุณาระบุสาขาที่กำลังศึกษา'
 

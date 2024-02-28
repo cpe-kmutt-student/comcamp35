@@ -2,7 +2,7 @@ import styles from './index.module.scss'
 import { useAuth } from 'src/context/auth'
 import RegisterButton from '../RegisterButton'
 import Logo from 'src/assets/logo.svg'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { BASE_PATH, REGISTER_PATH } from 'src/constants/router'
 import { Avatar, Flex, IconButton, Text } from '@radix-ui/themes'
 import { HamburgerMenuIcon, Cross1Icon } from '@radix-ui/react-icons'
@@ -43,6 +43,7 @@ const Navbar: React.FC = (): JSX.Element => {
   const [isExpand, setExpand] = useState<boolean>(false)
 
   const { auth } = useAuth()
+  const location = useLocation()
 
   const Image = () => {
     return (
@@ -83,7 +84,7 @@ const Navbar: React.FC = (): JSX.Element => {
             </IconButton>
           </Flex>
           <Flex gap="5" justify="center" align="center" direction="column" style={{ padding: '20px 0' }}>
-            {renderNavLinks}
+            {location.pathname === REGISTER_PATH ? null : renderNavLinks}
             {isTodayRegis() ? (
               <NavRegisMobile />
             ) : (
@@ -97,7 +98,7 @@ const Navbar: React.FC = (): JSX.Element => {
         <Flex justify="between" align="center" className={styles.navbar}>
           <Image />
           <Flex gap="5" className={styles.nav_desktop}>
-            {renderNavLinks}
+            {location.pathname === REGISTER_PATH ? null : renderNavLinks}
           </Flex>
           <div>
             <div className={styles.nav_mobile}>
