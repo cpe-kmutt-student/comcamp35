@@ -84,7 +84,7 @@ const Register: React.FC = (): JSX.Element => {
     }
   }
 
-  const fileUpload = async (file: File, type: string) => {
+  const fileUpload = async (file: File, type: string): Promise<boolean> => {
     const body = new FormData()
 
     body.append('file', file)
@@ -98,9 +98,11 @@ const Register: React.FC = (): JSX.Element => {
       })
       .then(() => {
         savedAlert('อัพโหลดเอกสารสำเร็จ')
+        return true
       })
       .catch((err) => {
         errorAlert(err.message)
+        return false
       })
   }
 
@@ -131,10 +133,15 @@ const Register: React.FC = (): JSX.Element => {
     ]
 
     return await Promise.all(newFile.map((form: { type: string; file: File }) => fileUpload(form.file, form.type)))
-      .then(() => {
-        savedAlert()
-        setSubmit(false)
-        setCurrentStep(currentStep + 1)
+      .then((res) => {
+        if (res.map((res) => res === true)) {
+          setCurrentStep(currentStep + 1)
+          savedAlert()
+          setSubmit(false)
+        } else {
+          errorAlert()
+          setSubmit(false)
+        }
       })
       .catch(() => {
         errorAlert()
