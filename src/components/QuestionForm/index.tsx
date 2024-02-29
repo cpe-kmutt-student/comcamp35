@@ -99,7 +99,7 @@ const QuestionForm: React.FC<Props> = ({ onSubmit, goBack, isSubmitting }: Props
   return (
     <div className={styles.questionForm}>
       <form onSubmit={formik.handleSubmit}>
-        <Heading size="5" mt="3">
+        <Heading size="6" className={styles.Heading}>
           คำถามในการคัดเลือก
         </Heading>
         <Separator my="4" size="4" />
