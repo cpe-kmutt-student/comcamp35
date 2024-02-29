@@ -6,7 +6,7 @@ import Label from '../../Label'
 // Synchronous validation function
 const validate = (value: string) => {
   let errorMessage
-  if (/[-!@#$%^&*(),.?":{}|<>'/"]/.test(value)) {
+  if (/[!@#$%^&*(),.?":{}|<>'"]/.test(value)) {
     errorMessage = 'กรุณาไม่ใช้ตัวอักษรพิเศษ'
   }
   return errorMessage
