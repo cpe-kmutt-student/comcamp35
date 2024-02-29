@@ -62,6 +62,8 @@ const validate = (values: IGeneralForm) => {
   const errors: Record<string, string> = {}
   if (!values.prefix) errors.prefix = 'กรุณาระบุคำนำหน้าชื่อ'
   if (!values.first_name) errors.first_name = 'กรุณาระบุชื่อจริง'
+  // if (!values.middle_name) errors.first_name = 'กรุณาระบุชื่อจริง'
+  if (/[!@#$%^&*(),.?":{}|<>'"]/.test(String(values.middle_name))) errors.middle_name = 'กรุณาระบุชื่อจริง'
   if (!values.last_name) errors.last_name = 'กรุณาระบุนามสกุล'
   if (!values.nickname) errors.nickname = 'กรุณาระบุชื่อเล่น'
   if (!values.tel) errors.tel = 'กรุณาระบุเบอร์โทรศัพท์'
@@ -160,6 +162,8 @@ const GeneralForm: React.FC<Props> = ({ onSubmit, isSubmitting }: Props) => {
             name="middle_name"
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
+            errors={formik.errors.middle_name}
+            touched={formik.touched.middle_name}
             value={formik.values.middle_name}
           />
           <FormikTextField
