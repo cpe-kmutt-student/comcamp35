@@ -3,9 +3,8 @@
   margin-bottom: 10rem;
 
   .contents {
-    margin-top: 24px;
+    margin-top: 34px;
     gap: 24px;
-
     .logo {
       background-color: #1a408d40;
       border: 1px solid #50505050;
@@ -16,7 +15,6 @@
       justify-content: center;
       align-items: center;
       padding: 24px;
-      height: 200px !important;
 
       img {
         max-width: 100%;
@@ -29,11 +27,7 @@
         transform: scale(1.02);
         box-shadow: 0 4px 12px 0 #285cc440;
       }
-      @media screen and (max-width: 1100px) {
-        height: 150px !important;
-        max-width: 200px;
-      }
-      @media screen and (max-width: 318px) {
+      @media screen and (max-width: 500px) {
         height: 100%;
         width: 100%;
 
