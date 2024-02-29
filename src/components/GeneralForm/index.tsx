@@ -160,6 +160,8 @@ const GeneralForm: React.FC<Props> = ({ onSubmit, isSubmitting }: Props) => {
             name="middle_name"
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
+            errors={formik.errors.middle_name}
+            touched={formik.touched.middle_name}
             value={formik.values.middle_name}
           />
           <FormikTextField
