@@ -111,7 +111,7 @@ const FileUpload: React.FC<Props> = ({ onSubmit, isSubmitting, currentStep, setC
 
   return (
     <div className={styles.fileUpload}>
-      <Heading size="5" mt="3">
+      <Heading size="6" className={styles.Heading}>
         เอกสารที่ต้องอัพโหลด
       </Heading>
       <Separator my="4" size="4" />

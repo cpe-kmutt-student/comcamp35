@@ -88,7 +88,7 @@ const EducationForm: React.FC<Props> = ({ onSubmit, isSubmitting, goBack }: Prop
   return (
     <div className={styles.EduForm}>
       <form onSubmit={formik.handleSubmit}>
-        <Heading size="5" mt="3">
+        <Heading size="6" className={styles.Heading}>
           ข้อมูลการศึกษา
         </Heading>
         <Separator my="4" size="4" />

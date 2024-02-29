@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import styles from './index.module.scss'
-import { Button, Checkbox, Flex } from '@radix-ui/themes'
+import { Button, Checkbox, Flex, Heading, Separator } from '@radix-ui/themes'
 import { useFormik } from 'formik'
 import Label from '../Form/Label'
 import ErrorMessage from '../Form/ErrorMessage'
@@ -134,6 +134,10 @@ const GeneralForm: React.FC<Props> = ({ onSubmit, isSubmitting }: Props) => {
   return (
     <div className={styles.GenForm}>
       <form onSubmit={formik.handleSubmit}>
+        <Heading size="6" className={styles.Heading}>
+          ข้อมูลผู้สมัคร
+        </Heading>
+        <Separator my="4" size="4" />
         <div className={styles.inputGroup}>
           <FormikSelect
             label="คำนำหน้าชื่อ"

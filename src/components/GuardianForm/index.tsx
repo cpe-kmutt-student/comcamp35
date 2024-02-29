@@ -90,7 +90,7 @@ const GuardianForm: React.FC<Props> = ({ onSubmit, isSubmitting, goBack }: Props
   return (
     <div className={styles.GenForm}>
       <form onSubmit={formik.handleSubmit}>
-        <Heading size="5" mt="3">
+        <Heading size="6" className={styles.Heading}>
           ข้อมูลผู้ปกครอง
         </Heading>
         <Separator my="4" size="4" />
@@ -136,7 +136,7 @@ const GuardianForm: React.FC<Props> = ({ onSubmit, isSubmitting, goBack }: Props
           />
         </div>
 
-        <Heading size="5" mt="5">
+        <Heading size="6" className={styles.Heading2}>
           ข้อมูลผู้ปกครองที่ติดต่อได้ในกรณีฉุกเฉิน
         </Heading>
         <Separator my="4" size="4" />
