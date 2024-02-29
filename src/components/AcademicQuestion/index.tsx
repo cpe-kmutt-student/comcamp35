@@ -109,9 +109,9 @@ const AcademicForm: React.FC<Props> = ({ onSubmit, goBack, isSubmitting }: Props
             style={{ display: 'none' }}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => uploadFile('answer', e.target.files)}
           />
-          {formik.values.currentAnswer && <a href={formik.values.currentAnswer}>ดาวน์โหลดคำตอบ</a>}
           <Flex direction="column" justify="center" gap="3" mt="5">
             <Label name={`ส่งคำตอบ (ขนาดไฟล์ไม่เกิน ${LIMIT_FILE_SIZE_MB} MB)`} required />
+            {formik.values.currentAnswer && <a href={formik.values.currentAnswer}>ดาวน์โหลดคำตอบ</a>}
             <button type="button" className={styles.uploadBtn} onClick={() => handleClick(answerRef)}>
               อัพโหลดไฟล์
             </button>

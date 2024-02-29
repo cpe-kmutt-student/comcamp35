@@ -23,7 +23,7 @@
       gap: 20px;
     }
 
-    .downloadBtn {
+    .uploadBtn {
       text-decoration: none;
       width: auto;
       border: none;
@@ -41,8 +41,16 @@
       }
     }
 
-    .uploadBtn {
-      @extend .downloadBtn;
+    .downloadBtn {
+      @extend .uploadBtn;
+      background: transparent;
+      border: 1px solid #143464;
+      color: #ffffff;
+
+      &:hover {
+        color: #ffffff;
+        background: #3079ff40;
+      }
     }
   }
 
