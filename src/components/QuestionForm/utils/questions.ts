@@ -5,7 +5,7 @@ export interface IQuestion {
 
 export const questions: IQuestion[] = [
   {
-    question: 'น้องคาดหวังอะไรจากค่าย Comcamp',
+    question: 'น้องคาดหวังอะไรจากค่าย ComCamp',
   },
   {
     question:

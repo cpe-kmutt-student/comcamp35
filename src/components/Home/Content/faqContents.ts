@@ -39,7 +39,7 @@ export const faqContents: IFaq[] = [
   {
     question: 'ค่ายนี้มีเรียนอะไรบ้างครับ',
     answer:
-      'ค่าย Comcamp 35 จะมีการสอนทั้งหมด 4 วิชา ได้แก่ C programming, Web development, Introduction and Data Visualization in Python, UI Design อีกทั้งยังมีการทำ Mini project เพื่อให้น้อง ๆ ได้นำสิ่งที่น้อง ๆ ได้เรียนรู้มาใช้แก้ไขปัญหาร่วมกันภายในค่ายค่ะ',
+      'ค่าย ComCamp 35 จะมีการสอนทั้งหมด 4 วิชา ได้แก่ C programming, Web development, Introduction and Data Visualization in Python, UI Design อีกทั้งยังมีการทำ Mini project เพื่อให้น้อง ๆ ได้นำสิ่งที่น้อง ๆ ได้เรียนรู้มาใช้แก้ไขปัญหาร่วมกันภายในค่ายค่ะ',
   },
   {
     question: 'ค่ายนี้ต้องค้างคืนไหมคะ แล้วพักที่ไหนคะ',
