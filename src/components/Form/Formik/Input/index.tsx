@@ -6,7 +6,7 @@ import Label from '../../Label'
 // Synchronous validation function
 const validate = (value: string) => {
   let errorMessage
-  if (/[!@#$%^&*(),.?":{}|<>'"]/.test(value)) {
+  if (/[-!@#$%^&*(),.?":{}|<>'/"]/.test(value)) {
     errorMessage = 'กรุณาไม่ใช้ตัวอักษรพิเศษ'
   }
   return errorMessage
@@ -38,7 +38,6 @@ const FormikTextField: React.FC<Props> = ({
   errors,
   touched,
 }: Props): JSX.Element => {
-  // const specialCharacterError = errors && touched && errors && validate(String(value))
   return (
     <div>
       <Label name={label} htmlFor={name} required={required} />
