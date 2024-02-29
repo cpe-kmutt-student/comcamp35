@@ -10,33 +10,41 @@ interface ISponsor {
   level?: string
 }
 
+enum SponsorTier {
+  DIAMOND = 'Diamond',
+  GOLD = 'Gold',
+  PLATINUM = 'Platinum',
+  SILVER = 'Silver',
+  BRONZE = 'Bronze',
+}
+
 const Sponsors: ISponsor[] = [
   {
     img: Advice,
-    level: 'Diamond',
+    level: SponsorTier.DIAMOND,
   },
   {
     img: LDA,
-    level: 'Platinum',
+    level: SponsorTier.PLATINUM,
   },
   {
     img: ThaiData,
-    level: 'Gold',
+    level: SponsorTier.GOLD,
   },
 ]
 
 const Sponsor: React.FC = () => {
   const renderSponsor = (rank: string) => {
     return Sponsors.filter((sponsor) => sponsor.level === rank).map((sponsor, i) => {
-      let size_img = '60px' // Default size for all ranks
-      if (rank === 'Diamond') {
-        size_img = '160px' // Adjust size for Diamond rank
-      } else if (rank === 'Platinum') {
-        size_img = '100px' // Adjust size for Platinum rank
+      let size_img = '60px'
+      if (rank === SponsorTier.DIAMOND) {
+        size_img = '150px'
+      } else if (rank === SponsorTier.PLATINUM) {
+        size_img = '100px'
       }
       return (
         <div key={i} className={styles.logo}>
-          <img src={sponsor.img} style={{ height: size_img, width: 'auto' }} alt={`sponsor-${i}`} />
+          <img src={sponsor.img} style={{ width: size_img }} alt={`sponsor-${i}`} />
         </div>
       )
     })
