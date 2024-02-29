@@ -7,4 +7,12 @@
     overflow-y: auto;
     height: 500px;
   }
+  .link {
+    color: white;
+    margin-top: 5px;
+    text-decoration: none;
+  }
+  .link.hover{
+    color: #0056b3;
+  }
 }
