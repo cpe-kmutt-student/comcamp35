@@ -118,7 +118,7 @@ const FileUpload: React.FC<Props> = ({ onSubmit, isSubmitting, currentStep, setC
       <form>
         <div className={styles.input}>
           <Label required name={`หนังสือขออนุญาตผู้ปกครอง (ขนาดไฟล์ไม่เกิน ${LIMIT_FILE_SIZE_MB} MB)`} />
-          {file.length >= 5 && <a href={getFileInfoByType('parents')?.url}>ดาวน์โหลด</a>}
+          {file.length >= 5 && <a href={getFileInfoByType('parents')?.url}>{getFileInfoByType('parents')?.url}</a>}
           <div className={styles.fileUploadGroup}>
             <a href={PARENTS_APPROVEMENT} target="_blank" rel="noreferrer">
               <button type="button" className={styles.downloadBtn}>
@@ -145,7 +145,9 @@ const FileUpload: React.FC<Props> = ({ onSubmit, isSubmitting, currentStep, setC
             required
             name={`สําเนาบัตรประจําตัวประชาชนหรือสําเนาบัตรนักเรียนของผู้สมัคร (เซ็นสําเนาถูกต้อง และ ขนาดไฟล์ไม่เกิน ${LIMIT_FILE_SIZE_MB} MB)`}
           />
-          {file.length >= 5 && <a href={getFileInfoByType('citizenship')?.url}>ดาวน์โหลด</a>}
+          {file.length >= 5 && (
+            <a href={getFileInfoByType('citizenship')?.url}>{getFileInfoByType('citizenship')?.url}</a>
+          )}
           <div className={styles.fileUploadGroup}>
             <button type="button" className={styles.uploadBtn} onClick={() => handleClick(citizenshipInputRef)}>
               อัพโหลดไฟล์
@@ -169,7 +171,9 @@ const FileUpload: React.FC<Props> = ({ onSubmit, isSubmitting, currentStep, setC
             required
             name={`เอกสารรับรองความเป็นนักเรียนหรือเอกสารรับรองผลการศึกษา (ปพ.7) (เซ็นสําเนาถูกต้อง และ ขนาดไฟล์ไม่เกิน ${LIMIT_FILE_SIZE_MB} MB)`}
           />
-          {file.length >= 5 && <a href={getFileInfoByType('certificate')?.url}>ดาวน์โหลด</a>}
+          {file.length >= 5 && (
+            <a href={getFileInfoByType('certificate')?.url}>{getFileInfoByType('certificate')?.url}</a>
+          )}
           <div className={styles.fileUploadGroup}>
             <button type="button" className={styles.uploadBtn} onClick={() => handleClick(certificateInputRef)}>
               อัพโหลดไฟล์
@@ -194,7 +198,9 @@ const FileUpload: React.FC<Props> = ({ onSubmit, isSubmitting, currentStep, setC
             name={`ระเบียนแสดงผลการศึกษาของระดับช้นมัธยมศึกษาตอนปลาย (ปพ.1) หรือหนังสือแสดงผลการเรียนเฉลี่ย
             (เซ็นสําเนาถูกต้อง และ ขนาดไฟล์ไม่เกิน ${LIMIT_FILE_SIZE_MB} MB)`}
           />
-          {file.length >= 5 && <a href={getFileInfoByType('transcript')?.url}>ดาวน์โหลด</a>}
+          {file.length >= 5 && (
+            <a href={getFileInfoByType('transcript')?.url}>{getFileInfoByType('transcript')?.url}</a>
+          )}
           <div className={styles.fileUploadGroup}>
             <button type="button" className={styles.uploadBtn} onClick={() => handleClick(transcriptInputRef)}>
               อัพโหลดไฟล์
@@ -218,7 +224,7 @@ const FileUpload: React.FC<Props> = ({ onSubmit, isSubmitting, currentStep, setC
             required
             name={`ภาพถ่ายอิสระของผู้สมัครที่ เห็นใบหน้าชัดเจน (ขนาดไฟล์ไม่เกิน ${LIMIT_FILE_SIZE_MB} MB)`}
           />
-          {file.length >= 5 && <a href={getFileInfoByType('image')?.url}>ดาวน์โหลด</a>}
+          {file.length >= 5 && <a href={getFileInfoByType('image')?.url}>{getFileInfoByType('image')?.url}</a>}
           <div className={styles.fileUploadGroup}>
             <button type="button" className={styles.uploadBtn} onClick={() => handleClick(imageInputRef)}>
               อัพโหลดไฟล์
