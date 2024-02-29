@@ -1,10 +1,12 @@
-import { AlertDialog, Button, Flex, Heading, Separator, Text } from '@radix-ui/themes'
+import { Button, Flex, Heading, Separator, Text } from '@radix-ui/themes'
 import styles from './index.module.scss'
 import { useFormik } from 'formik'
 import Label from '../Form/Label'
-import { useRef } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 import ErrorMessage from '../Form/ErrorMessage'
 import { PDF_QUESTION, WORD_QUESTION } from 'src/constants/path'
+import { apiInstance } from 'src/lib/axios'
+import { IFileData } from '../FileUpload'
 
 type Props = {
   onSubmit: (values: IAcademic) => void
@@ -14,20 +16,22 @@ type Props = {
 
 export interface IAcademic {
   answer: File | null
+  currentAnswer: string
 }
 
 const initialValues: IAcademic = {
   answer: null,
-}
-
-const validate = (values: IAcademic) => {
-  const errors: Record<string, string> = {}
-  if (!values.answer) errors.answer = 'กรุณาอัพโหลดไฟล์คำตอบ'
-
-  return errors
+  currentAnswer: '',
 }
 
 const AcademicForm: React.FC<Props> = ({ onSubmit, goBack, isSubmitting }: Props): JSX.Element => {
+  const validate = (values: IAcademic) => {
+    const errors: Record<string, string> = {}
+    if (!formik.values.currentAnswer && !values.answer) errors.answer = 'กรุณาอัพโหลดไฟล์คำตอบ'
+
+    return errors
+  }
+
   const formik = useFormik({
     initialValues,
     validate,
@@ -48,11 +52,27 @@ const AcademicForm: React.FC<Props> = ({ onSubmit, goBack, isSubmitting }: Props
     formik.setFieldValue(name, selectedFile)
   }
 
+  const getFileInfo = useCallback(async () => {
+    const { data } = await apiInstance.get('/file')
+
+    const getAcademicAnswer = data.find((item: IFileData) => item.type === 'academic-answer')
+
+    if (getAcademicAnswer) {
+      formik.setFieldValue('currentAnswer', getAcademicAnswer.url)
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  useEffect(() => {
+    getFileInfo()
+  }, [getFileInfo])
+
   return (
     <div className={styles.academicForm}>
-      <form>
+      <form onSubmit={formik.handleSubmit}>
         <Heading size="5" mt="3">
-          คำถามจากฝ่ายวิชาการ
+          คำถามในการคัดเลือก
         </Heading>
         <Separator my="4" size="4" />
         <div className={styles.input}>
@@ -79,6 +99,7 @@ const AcademicForm: React.FC<Props> = ({ onSubmit, goBack, isSubmitting }: Props
             style={{ display: 'none' }}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => uploadFile('answer', e.target.files)}
           />
+          {formik.values.currentAnswer && <a href={formik.values.currentAnswer}>ดาวน์โหลดคำตอบ</a>}
           <Flex direction="column" justify="center" gap="3" mt="5">
             <Label name="ส่งคำตอบ" required />
             <button type="button" className={styles.uploadBtn} onClick={() => handleClick(answerRef)}>
@@ -92,28 +113,9 @@ const AcademicForm: React.FC<Props> = ({ onSubmit, goBack, isSubmitting }: Props
           <Button onClick={goBack} variant="outline">
             ย้อนกลับ
           </Button>
-          <AlertDialog.Root>
-            <AlertDialog.Trigger>
-              <Button disabled={isSubmitting}>ยืนยัน</Button>
-            </AlertDialog.Trigger>
-            <AlertDialog.Content style={{ maxWidth: 450 }}>
-              <AlertDialog.Title>ต้องการยืนยัน?</AlertDialog.Title>
-              <AlertDialog.Description size="2">เมื่อยืนยันแล้วข้อมูลจะไม่สามารถแก้ไขได้อีก</AlertDialog.Description>
-
-              <Flex gap="3" mt="4" justify="end">
-                <AlertDialog.Cancel>
-                  <Button variant="soft" color="gray">
-                    ยกเลิก
-                  </Button>
-                </AlertDialog.Cancel>
-                <AlertDialog.Action>
-                  <Button variant="solid" onClick={() => formik.handleSubmit()} disabled={isSubmitting}>
-                    ยืนยัน
-                  </Button>
-                </AlertDialog.Action>
-              </Flex>
-            </AlertDialog.Content>
-          </AlertDialog.Root>
+          <Button type="submit" disabled={isSubmitting}>
+            ถัดไป
+          </Button>
         </Flex>
       </form>
     </div>

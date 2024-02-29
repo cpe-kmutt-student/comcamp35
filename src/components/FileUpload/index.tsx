@@ -1,7 +1,7 @@
 import { useFormik } from 'formik'
 import styles from './index.module.scss'
 import Label from '../Form/Label'
-import { Button, Flex, Text } from '@radix-ui/themes'
+import { AlertDialog, Button, Flex, Heading, Separator, Text } from '@radix-ui/themes'
 import ErrorMessage from '../Form/ErrorMessage'
 import { apiInstance } from 'src/lib/axios'
 import { useCallback, useEffect, useRef, useState } from 'react'
@@ -52,7 +52,7 @@ const FileUpload: React.FC<Props> = ({ onSubmit, isSubmitting, currentStep, setC
   const validate = (values: IFileUpload) => {
     const errors: Record<string, string> = {}
 
-    if (file.length < 5) {
+    if (file.length < 6) {
       if (!values.citizenship) errors.citizenship = 'กรุณาอัพโหลดไฟล์'
       if (!values.parents) errors.parents = 'กรุณาอัพโหลดไฟล์'
       if (!values.certificate) errors.certificate = 'กรุณาอัพโหลดไฟล์'
@@ -101,7 +101,11 @@ const FileUpload: React.FC<Props> = ({ onSubmit, isSubmitting, currentStep, setC
 
   return (
     <div className={styles.fileUpload}>
-      <form onSubmit={formik.handleSubmit}>
+      <Heading size="5" mt="3">
+        เอกสารที่ต้องอัพโหลด
+      </Heading>
+      <Separator my="4" size="4" />
+      <form>
         <div className={styles.input}>
           <Label required name="หนังสือขออนุญาตผู้ปกครอง" />
           {file.length >= 5 && <a href={getFileInfoByType('parents')?.url}>ดาวน์โหลด</a>}
@@ -217,9 +221,28 @@ const FileUpload: React.FC<Props> = ({ onSubmit, isSubmitting, currentStep, setC
           <Button onClick={() => setCurrentStep(currentStep - 1)} variant="outline">
             ย้อนกลับ
           </Button>
-          <Button type="submit" disabled={isSubmitting}>
-            ถัดไป
-          </Button>
+          <AlertDialog.Root>
+            <AlertDialog.Trigger>
+              <Button disabled={isSubmitting}>ยืนยัน</Button>
+            </AlertDialog.Trigger>
+            <AlertDialog.Content style={{ maxWidth: 450 }}>
+              <AlertDialog.Title>ต้องการยืนยัน?</AlertDialog.Title>
+              <AlertDialog.Description size="2">เมื่อยืนยันแล้วข้อมูลจะไม่สามารถแก้ไขได้อีก</AlertDialog.Description>
+
+              <Flex gap="3" mt="4" justify="end">
+                <AlertDialog.Cancel>
+                  <Button variant="soft" color="gray">
+                    ยกเลิก
+                  </Button>
+                </AlertDialog.Cancel>
+                <AlertDialog.Action>
+                  <Button variant="solid" onClick={() => formik.handleSubmit()} disabled={isSubmitting}>
+                    ยืนยัน
+                  </Button>
+                </AlertDialog.Action>
+              </Flex>
+            </AlertDialog.Content>
+          </AlertDialog.Root>
         </Flex>
       </form>
     </div>

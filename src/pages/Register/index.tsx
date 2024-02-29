@@ -208,8 +208,9 @@ const Register: React.FC = (): JSX.Element => {
         fileUpload(form.file, form.type, form.isFile),
       ),
     )
-      .then((res) => {
-        if (res[0] === true) {
+      .then(async (res) => {
+        if (res[0] && res[1] && res[2] && res[3] && res[4]) {
+          await apiInstance.patch('/users/register')
           setCurrentStep(currentStep + 1)
           savedAlert()
           setSubmit(false)
@@ -227,11 +228,13 @@ const Register: React.FC = (): JSX.Element => {
   const onAcademicUpload = async (values: IAcademic) => {
     setSubmit(true)
 
+    const answer = values.answer === null ? values.currentAnswer : values.answer
+    const isFile = values.answer === null ? false : true
+
     try {
-      const res = await fileUpload(values.answer as File, 'academic-answer', true)
+      const res = await fileUpload(answer, 'academic-answer', isFile)
 
       if (res) {
-        await apiInstance.patch('/users/register')
         setCurrentStep(currentStep + 1)
         savedAlert()
         setSubmit(false)
@@ -260,6 +263,10 @@ const Register: React.FC = (): JSX.Element => {
       case 3:
         return <EducationForm onSubmit={onEducationFormSubmit} goBack={goBack} isSubmitting={isSubmitting} />
       case 4:
+        return <QuestionForm onSubmit={onQuestionFormSubmit} goBack={goBack} isSubmitting={isSubmitting} />
+      case 5:
+        return <AcademicForm onSubmit={onAcademicUpload} goBack={goBack} isSubmitting={isSubmitting} />
+      case 6:
         return (
           <FileUpload
             onSubmit={onFileUploadSubmit}
@@ -268,10 +275,6 @@ const Register: React.FC = (): JSX.Element => {
             setCurrentStep={setCurrentStep}
           />
         )
-      case 5:
-        return <QuestionForm onSubmit={onQuestionFormSubmit} goBack={goBack} isSubmitting={isSubmitting} />
-      case 6:
-        return <AcademicForm onSubmit={onAcademicUpload} goBack={goBack} isSubmitting={isSubmitting} />
       case 7:
         return <RegisComplete />
     }
