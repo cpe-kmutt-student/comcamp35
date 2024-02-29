@@ -3,15 +3,6 @@ import { TextField } from '@radix-ui/themes'
 import ErrorMessage from '../../ErrorMessage'
 import Label from '../../Label'
 
-// Synchronous validation function
-const validate = (value: string) => {
-  let errorMessage
-  if (/[!@#$%^&*(),?":{}|<>'"]/.test(value)) {
-    errorMessage = 'กรุณาไม่ใช้ตัวอักษรพิเศษ'
-  }
-  return errorMessage
-}
-
 type Props = {
   required?: boolean
   name: string
@@ -50,7 +41,7 @@ const FormikTextField: React.FC<Props> = ({
         onChange={onChange}
         value={value}
       />
-      <ErrorMessage>{(touched && validate(String(value))) || (errors && touched && errors)}</ErrorMessage>
+      <ErrorMessage>{errors && touched && errors}</ErrorMessage>
     </div>
   )
 }
