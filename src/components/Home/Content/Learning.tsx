@@ -34,8 +34,9 @@ const LearningContents: { topic: string; details: string; image: string }[] = [
     image: python,
   },
   {
-    topic: 'มารู้จักกับการออกแบบเว็บไซต์ (UI Design)',
-    details: 'เรียนรู้ไปพร้อมกันกับศิลปะแห่งการออกแบบ UX/UI ให้สวยงามและมีประสิทธิภาพ ด้วยเครื่องมือยอดนิยมอย่าง Figma',
+    topic: 'มารู้จักกับการออกแบบเว็บไซต์ (UX / Ui Design)',
+    details:
+      'เรียนรู้ไปพร้อมกันกับศิลปะแห่งการออกแบบเว็บไซต์ให้สวยงามและมีประสิทธิภาพ ด้วยเครื่องมือยอดนิยมอย่าง Figma',
     image: figma,
   },
   {
