@@ -6,6 +6,8 @@ import ErrorMessage from '../Form/ErrorMessage'
 import { apiInstance } from 'src/lib/axios'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { PARENTS_APPROVEMENT } from 'src/constants/path'
+import { errorAlert } from 'src/lib/toast'
+import { LIMIT_FILE_SIZE_MB } from 'src/constants/file'
 
 type Props = {
   onSubmit: (values: IFileUpload) => void
@@ -78,7 +80,15 @@ const FileUpload: React.FC<Props> = ({ onSubmit, isSubmitting, currentStep, setC
   const uploadFile = (name: string, files: FileList | null) => {
     const selectedFile = files ? files[0] : null
 
-    formik.setFieldValue(name, selectedFile)
+    if (selectedFile) {
+      const fileSize = selectedFile.size / 1024 / 1024
+
+      if (fileSize > LIMIT_FILE_SIZE_MB) {
+        errorAlert('ขนาดไฟล์ต้องไม่เกิน 10 MB')
+      } else {
+        formik.setFieldValue(name, selectedFile)
+      }
+    }
   }
 
   const getFileInfo = useCallback(async () => {
@@ -107,7 +117,7 @@ const FileUpload: React.FC<Props> = ({ onSubmit, isSubmitting, currentStep, setC
       <Separator my="4" size="4" />
       <form>
         <div className={styles.input}>
-          <Label required name="หนังสือขออนุญาตผู้ปกครอง" />
+          <Label required name={`หนังสือขออนุญาตผู้ปกครอง (ขนาดไฟล์ไม่เกิน ${LIMIT_FILE_SIZE_MB} MB)`} />
           {file.length >= 5 && <a href={getFileInfoByType('parents')?.url}>ดาวน์โหลด</a>}
           <div className={styles.fileUploadGroup}>
             <a href={PARENTS_APPROVEMENT} target="_blank" rel="noreferrer">
@@ -131,7 +141,10 @@ const FileUpload: React.FC<Props> = ({ onSubmit, isSubmitting, currentStep, setC
           <ErrorMessage>{formik.errors.parents && formik.touched.parents && formik.errors.parents}</ErrorMessage>
         </div>
         <div className={styles.input}>
-          <Label required name="สําเนาบัตรประจําตัวประชาชนหรือสําเนาบัตรนักเรียนของผู้สมัคร (เซ็นสําเนาถูกต้อง)" />
+          <Label
+            required
+            name={`สําเนาบัตรประจําตัวประชาชนหรือสําเนาบัตรนักเรียนของผู้สมัคร (เซ็นสําเนาถูกต้อง และ ขนาดไฟล์ไม่เกิน ${LIMIT_FILE_SIZE_MB} MB)`}
+          />
           {file.length >= 5 && <a href={getFileInfoByType('citizenship')?.url}>ดาวน์โหลด</a>}
           <div className={styles.fileUploadGroup}>
             <button type="button" className={styles.uploadBtn} onClick={() => handleClick(citizenshipInputRef)}>
@@ -152,7 +165,10 @@ const FileUpload: React.FC<Props> = ({ onSubmit, isSubmitting, currentStep, setC
           </ErrorMessage>
         </div>
         <div className={styles.input}>
-          <Label required name="เอกสารรับรองความเป็นนักเรียนหรือเอกสารรับรองผลการศึกษา (ปพ.7) (เซ็นสําเนาถูกต้อง)" />
+          <Label
+            required
+            name={`เอกสารรับรองความเป็นนักเรียนหรือเอกสารรับรองผลการศึกษา (ปพ.7) (เซ็นสําเนาถูกต้อง และ ขนาดไฟล์ไม่เกิน ${LIMIT_FILE_SIZE_MB} MB)`}
+          />
           {file.length >= 5 && <a href={getFileInfoByType('certificate')?.url}>ดาวน์โหลด</a>}
           <div className={styles.fileUploadGroup}>
             <button type="button" className={styles.uploadBtn} onClick={() => handleClick(certificateInputRef)}>
@@ -175,8 +191,8 @@ const FileUpload: React.FC<Props> = ({ onSubmit, isSubmitting, currentStep, setC
         <div className={styles.input}>
           <Label
             required
-            name="ระเบียนแสดงผลการศึกษาของระดับช้นมัธยมศึกษาตอนปลาย (ปพ.1) หรือหนังสือแสดงผลการเรียนเฉลี่ย
-              (เซ็นสําเนาถูกต้อง)"
+            name={`ระเบียนแสดงผลการศึกษาของระดับช้นมัธยมศึกษาตอนปลาย (ปพ.1) หรือหนังสือแสดงผลการเรียนเฉลี่ย
+            (เซ็นสําเนาถูกต้อง และ ขนาดไฟล์ไม่เกิน ${LIMIT_FILE_SIZE_MB} MB)`}
           />
           {file.length >= 5 && <a href={getFileInfoByType('transcript')?.url}>ดาวน์โหลด</a>}
           <div className={styles.fileUploadGroup}>
@@ -198,7 +214,10 @@ const FileUpload: React.FC<Props> = ({ onSubmit, isSubmitting, currentStep, setC
           </ErrorMessage>
         </div>
         <div className={styles.input}>
-          <Label required name="ภาพถ่ายอิสระของผู้สมัครที่ เห็นใบหน้าชัดเจน" />
+          <Label
+            required
+            name={`ภาพถ่ายอิสระของผู้สมัครที่ เห็นใบหน้าชัดเจน (ขนาดไฟล์ไม่เกิน ${LIMIT_FILE_SIZE_MB} MB)`}
+          />
           {file.length >= 5 && <a href={getFileInfoByType('image')?.url}>ดาวน์โหลด</a>}
           <div className={styles.fileUploadGroup}>
             <button type="button" className={styles.uploadBtn} onClick={() => handleClick(imageInputRef)}>

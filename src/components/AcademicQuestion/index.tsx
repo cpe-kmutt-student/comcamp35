@@ -7,6 +7,8 @@ import ErrorMessage from '../Form/ErrorMessage'
 import { PDF_QUESTION, WORD_QUESTION } from 'src/constants/path'
 import { apiInstance } from 'src/lib/axios'
 import { IFileData } from '../FileUpload'
+import { errorAlert } from 'src/lib/toast'
+import { LIMIT_FILE_SIZE_MB } from 'src/constants/file'
 
 type Props = {
   onSubmit: (values: IAcademic) => void
@@ -49,7 +51,15 @@ const AcademicForm: React.FC<Props> = ({ onSubmit, goBack, isSubmitting }: Props
   const uploadFile = (name: string, files: FileList | null) => {
     const selectedFile = files ? files[0] : null
 
-    formik.setFieldValue(name, selectedFile)
+    if (selectedFile) {
+      const fileSize = selectedFile.size / 1024 / 1024
+
+      if (fileSize > LIMIT_FILE_SIZE_MB) {
+        errorAlert(`ขนาดไฟล์ต้องไม่เกิน ${LIMIT_FILE_SIZE_MB} MB`)
+      } else {
+        formik.setFieldValue(name, selectedFile)
+      }
+    }
   }
 
   const getFileInfo = useCallback(async () => {
@@ -101,7 +111,7 @@ const AcademicForm: React.FC<Props> = ({ onSubmit, goBack, isSubmitting }: Props
           />
           {formik.values.currentAnswer && <a href={formik.values.currentAnswer}>ดาวน์โหลดคำตอบ</a>}
           <Flex direction="column" justify="center" gap="3" mt="5">
-            <Label name="ส่งคำตอบ" required />
+            <Label name={`ส่งคำตอบ (ขนาดไฟล์ไม่เกิน ${LIMIT_FILE_SIZE_MB} MB)`} required />
             <button type="button" className={styles.uploadBtn} onClick={() => handleClick(answerRef)}>
               อัพโหลดไฟล์
             </button>
