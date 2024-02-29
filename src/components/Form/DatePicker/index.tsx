@@ -22,6 +22,9 @@ type Props = {
 const CustomDatePicker: React.FC<Props> = ({ onChange, value, onBlur, name, id }: Props): JSX.Element => {
   return (
     <DatePicker
+      showYearDropdown
+      showMonthDropdown
+      dropdownMode="select"
       showIcon
       name={name}
       id={id}
