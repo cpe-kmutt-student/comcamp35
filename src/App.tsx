@@ -1,7 +1,7 @@
 import React from 'react'
 import Home from './pages/Home'
 import { Route, Routes, useLocation } from 'react-router-dom'
-import { BASE_PATH, REGISTER_PATH, FAQ_PATH } from './constants/router'
+import { BASE_PATH, REGISTER_PATH, FAQ_PATH, POLICY_PATH } from './constants/router'
 import Navbar from './components/Navbar'
 import Register from './pages/Register'
 import NotFoundPage from './pages/NotFoundPage'
@@ -12,6 +12,8 @@ import Footer from './components/Footer'
 import { Toaster } from 'react-hot-toast'
 import FrequentlyAskedQuestionFull from './pages/Faq'
 import ReactGA from 'react-ga4'
+import CookieConsent from './components/CookieConsent'
+import PrivacyPolicyPage from './pages/PrivacyPolicy'
 
 const App: React.FC = (): JSX.Element => {
   const location = useLocation()
@@ -38,9 +40,12 @@ const App: React.FC = (): JSX.Element => {
           <Route path={REGISTER_PATH} element={<Register />} />
         </Route>
         <Route path={FAQ_PATH} element={<FrequentlyAskedQuestionFull />} />
+        <Route path={POLICY_PATH} element={<PrivacyPolicyPage />} />
+
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
+      <CookieConsent />
     </Theme>
   )
 }

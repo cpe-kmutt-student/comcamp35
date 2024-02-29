@@ -14,48 +14,28 @@ export const prefixChoices: ISelectItem[] = [
 
 export const shirtSizeChoices: ISelectItem[] = [
   {
-    label: 'S',
+    label: 'S (รอบอก 33 นิ้ว)',
     value: 'S',
   },
   {
-    label: 'M',
+    label: 'M (รอบอก 36 นิ้ว)',
     value: 'M',
   },
   {
-    label: 'L',
+    label: 'L (รอบอก 40 นิ้ว)',
     value: 'L',
   },
   {
-    label: 'XL',
+    label: 'XL (รอบอก 44 นิ้ว)',
     value: 'XL',
   },
   {
-    label: '2XL',
-    value: '2XL',
+    label: 'XXL (รอบอก 48 นิ้ว)',
+    value: 'XXL',
   },
   {
-    label: '3XL',
+    label: '3XL (รอบอก 52 นิ้ว)',
     value: '3XL',
-  },
-  {
-    label: '4XL',
-    value: '4XL',
-  },
-  {
-    label: '5XL',
-    value: '5XL',
-  },
-  {
-    label: '6XL',
-    value: '6XL',
-  },
-  {
-    label: '7XL',
-    value: '7XL',
-  },
-  {
-    label: '8XL',
-    value: '8XL',
   },
 ]
 
