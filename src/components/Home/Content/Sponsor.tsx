@@ -6,7 +6,7 @@ import ThaiData from 'src/assets/thaidata_logo.webp'
 import Advice from 'src/assets/advice_logo.webp'
 import Cpe from 'src/assets/cpe_logo.svg'
 import Kmutt from 'src/assets/kmutt_logo.svg'
-// import Applicad from 'src/assets/applicad_logo.webp'
+import Applicad from 'src/assets/applicad_logo.webp'
 
 interface ISponsor {
   img: string
@@ -26,10 +26,10 @@ const Sponsors: ISponsor[] = [
     img: ThaiData,
     level: 'Gold',
   },
-  // {
-  //   img: Applicad,
-  //   level: 'Gold',
-  // },
+  {
+    img: Applicad,
+    level: 'Gold',
+  },
 ]
 
 const Sponsor: React.FC = () => {
@@ -68,7 +68,7 @@ const Sponsor: React.FC = () => {
         <Grid columns={{ initial: '1', sm: '1', md: '1' }} className={styles.contents}>
           {renderSponsor('Platinum')}
         </Grid>
-        <Grid columns={{ initial: '1', sm: '1', md: '1' }} className={styles.contents}>
+        <Grid columns={{ initial: '2', sm: '2', md: '2' }} className={styles.contents}>
           {renderSponsor('Gold')}
         </Grid>
       </div>
