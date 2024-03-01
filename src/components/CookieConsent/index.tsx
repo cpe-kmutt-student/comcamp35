@@ -5,7 +5,7 @@ import { POLICY_PATH } from 'src/constants/router'
 import { useEffect, useState } from 'react'
 
 const CookieConsent: React.FC = (): JSX.Element => {
-  const [isShow, setShow] = useState<boolean>(true)
+  const [isShow, setShow] = useState<boolean>(false)
 
   const consent = localStorage.getItem('cookie-consent')
 
@@ -14,6 +14,7 @@ const CookieConsent: React.FC = (): JSX.Element => {
       setShow(consent === 'true')
     } else {
       localStorage.setItem('cookie-consent', 'true')
+      setShow(true)
     }
   }, [consent])
 
