@@ -32,7 +32,7 @@ const TimelineContents: ITimeline[] = [
   {
     title: '16 มีนาคม 2567',
     date: {
-      from: '2024/03/16',
+      from: '2024/03/11',
       until: '2024/03/16',
     },
     event: 'ประกาศผล',
