@@ -7,6 +7,7 @@ import Advice from 'src/assets/advice_logo.webp'
 import Cpe from 'src/assets/cpe_logo.svg'
 import Kmutt from 'src/assets/kmutt_logo.svg'
 import Applicad from 'src/assets/applicad_logo.webp'
+import YIP from 'src/assets/YIP_LOGO.png'
 
 interface ISponsor {
   img: string
@@ -16,6 +17,10 @@ interface ISponsor {
 const Sponsors: ISponsor[] = [
   {
     img: Advice,
+    level: 'Diamond',
+  },
+  {
+    img: YIP,
     level: 'Diamond',
   },
   {
@@ -62,7 +67,7 @@ const Sponsor: React.FC = () => {
         SPONSOR
       </Heading>
       <div style={{ width: '80%' }}>
-        <Grid columns={{ initial: '1', sm: '1', md: '1' }} className={styles.contents}>
+        <Grid columns={{ initial: '2', sm: '2', md: '2' }} className={styles.contents}>
           {renderSponsor('Diamond')}
         </Grid>
         <Grid columns={{ initial: '1', sm: '1', md: '1' }} className={styles.contents}>
