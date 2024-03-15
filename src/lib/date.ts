@@ -1,6 +1,6 @@
 export const REGIS_START_DATE = '2024/03/01 09:00:00'
 export const REGIS_END_DATE = '2024/03/11 23:59:59'
-export const ANNOUNCE_RESULT_DATE = '2024/03/15 09:00:00' // ประกาศจริง 16 กี่โมงไม่รู้
+export const ANNOUNCE_RESULT_DATE = '2024/03/16 09:00:00'
 
 const today = new Date().getTime()
 const startDate = new Date(REGIS_START_DATE).getTime()

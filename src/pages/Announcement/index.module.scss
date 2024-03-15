@@ -2,7 +2,6 @@
   min-height: 100vh;
   gap: 24px;
   padding: 0 10%;
-  flex-direction: column;
 
   .header {
     font-family: 'Upheavtt', sans-serif;
@@ -13,8 +12,6 @@
 
   .content {
     width: 100%;
-    // display: grid;
-    // row-gap: 10px;
     font-size: larger;
     padding: 0 10px;
     text-align: center;
@@ -22,6 +19,7 @@
     table {
       margin: 0 auto;
       width: 100%;
+      
     }
 
     td, th {
@@ -32,7 +30,7 @@
 
 .button {
   width: 125px;
-  padding: 10px 15px;
+  padding: 5px 10px;
   border: none;
   background: #14346440;
   color: #fff;
@@ -61,7 +59,7 @@
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
   .content {
     font-size: medium !important;
   }
