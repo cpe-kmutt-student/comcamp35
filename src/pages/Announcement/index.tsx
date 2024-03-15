@@ -13,9 +13,7 @@ const ResultsAnnouncement: React.FC<Props> = (active) => {
   const renderresult = ResultList.map((item, i) => (
     <div key={i} className={styles.content}>
       <div>
-        {item.Firstname}
-        {` `}
-        {item.Lastname}
+        {i + 1}. {item.Firstname} {item.Lastname}
       </div>
     </div>
   ))
