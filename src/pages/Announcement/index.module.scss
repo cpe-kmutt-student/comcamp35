@@ -1,27 +1,40 @@
-@import '../../variable';
-
-.faq {
+.announcement {
   min-height: 100vh;
   gap: 24px;
   padding: 0 10%;
 
   .content {
     width: 100%;
+    display: grid;
+    row-gap: 10px;
+    font-size: larger;
   }
 }
 
-.back {
-  color: white;
+.button {
+  padding: 5px 20px;
+  border: none;
+  background: #14346440;
+  color: #fff;
+  font-size: 16px;
+  font-weight: normal;
+  transition: all 200ms;
+  cursor: pointer;
+  font-family: 'Prompt', sans-serif !important;
   text-decoration: none;
-  width: auto;
-  text-align: center;
-  margin-bottom: 24px;
-  padding: 6px 12px;
-  transition: all 300ms;
-  border-radius: 2px;
 
   &:hover {
-    background-color: #285cc440;
-    color: $primary-color;
+    background: #143464;
+    color: #ffffff;
+  }
+}
+.buttonActive {
+  @extend .button;
+  background: #143464;
+  color: #ffffff;
+
+  &:hover {
+    color: #ffd541;
+    background: #14346440;
   }
 }
