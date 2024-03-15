@@ -1,10 +1,11 @@
 import React from 'react'
 import styles from './hero.module.scss'
 import RegisterButton from 'src/components/RegisterButton'
+import AnnounceButton from 'src/components/AnnouncementButton'
 import Logo from 'src/assets/logo.svg'
 import { useAuth } from 'src/context/auth'
 import { Heading, Text } from '@radix-ui/themes'
-import { isTodayRegis } from 'src/lib/date'
+import { isTodayRegis, isTodayAnnounce } from 'src/lib/date'
 
 const quotes: string[] = ['CPE37', 'บางมด', 'KMUTT']
 
@@ -32,6 +33,7 @@ const Hero: React.FC = () => {
       {(auth.is_authenticated == null || !auth.is_authenticated) && isTodayRegis() && (
         <RegisterButton active>ลงทะเบียน</RegisterButton>
       )}
+      {isTodayAnnounce() && <AnnounceButton active>ผลการคัดเลือก</AnnounceButton>}
     </div>
   )
 }

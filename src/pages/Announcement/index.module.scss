@@ -1,0 +1,66 @@
+.announcement {
+  min-height: 100vh;
+  gap: 24px;
+  padding: 0 10%;
+
+  .header {
+    font-family: 'Upheavtt', sans-serif;
+    font-weight: bold;
+    margin-top: 10%;
+    color: #FFD541;
+  }
+
+  .content {
+    width: 100%;
+    font-size: larger;
+    padding: 0 10px;
+    text-align: center;
+
+    table {
+      margin: 0 auto;
+      width: 100%;
+      
+    }
+
+    td, th {
+      padding: 8px;
+    }
+  }
+}
+
+.button {
+  width: 125px;
+  padding: 5px 10px;
+  border: none;
+  background: #14346440;
+  color: #fff;
+  font-size: 16px;
+  font-weight: normal;
+  transition: all 200ms;
+  cursor: pointer;
+  font-family: 'Prompt', sans-serif !important;
+  text-decoration: none;
+  text-align: center;
+  margin: 0 auto;
+
+  &:hover {
+    background: #143464;
+    color: #ffffff;
+  }
+}
+.buttonActive {
+  @extend .button;
+  background: #143464;
+  color: #ffffff;
+
+  &:hover {
+    color: #ffd541;
+    background: #14346440;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .content {
+    font-size: medium !important;
+  }
+}
