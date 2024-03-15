@@ -1,9 +1,10 @@
 import React from 'react'
 import Home from './pages/Home'
 import { Route, Routes, useLocation } from 'react-router-dom'
-import { BASE_PATH, REGISTER_PATH, FAQ_PATH, POLICY_PATH } from './constants/router'
+import { BASE_PATH, REGISTER_PATH, ANNOUNCE_PATH, FAQ_PATH, POLICY_PATH } from './constants/router'
 import Navbar from './components/Navbar'
 import Register from './pages/Register'
+import ResultsAnnouncement from './pages/Announcement'
 import NotFoundPage from './pages/NotFoundPage'
 import ProtectedRoute from './components/ProtectedRoute'
 import { Theme } from '@radix-ui/themes'
@@ -39,6 +40,7 @@ const App: React.FC = (): JSX.Element => {
         <Route element={<ProtectedRoute />}>
           <Route path={REGISTER_PATH} element={<Register />} />
         </Route>
+        <Route path={ANNOUNCE_PATH} element={<ResultsAnnouncement />} />
         <Route path={FAQ_PATH} element={<FrequentlyAskedQuestionFull />} />
         <Route path={POLICY_PATH} element={<PrivacyPolicyPage />} />
 

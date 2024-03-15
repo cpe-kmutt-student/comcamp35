@@ -1,0 +1,28 @@
+.button {
+    padding: 5px 20px;
+    border: none;
+    background: #14346440;
+    color: #000000;
+    font-size: 16px;
+    font-weight: normal;
+    transition: all 200ms;
+    cursor: pointer;
+    font-family: 'Prompt', sans-serif !important;
+  
+    &:hover {
+      background: #143464;
+      color: #ffffff;
+    }
+  }
+  
+  .buttonActive {
+    @extend .button;
+    background: #143464;
+    color: #ffffff;
+  
+    &:hover {
+      color: #ffd541;
+      background: #14346440;
+    }
+  }
+  
