@@ -20,8 +20,8 @@ const ResultsAnnouncement: React.FC<Props> = (active) => {
     </div>
   ))
   return (
-    <Flex direction="column" justify="center" align="center" className={styles.announcement}>
-      <Heading size={{ initial: '8', md: '9' }} className="title" align="center">
+    <Flex direction="column" className={styles.announcement}>
+      <Heading size={{ initial: '8', md: '9' }} className={styles.header} align="center">
         ประกาศผลการคัดเลือก ComCamp 35
       </Heading>
       <hr />

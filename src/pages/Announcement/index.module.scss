@@ -2,17 +2,26 @@
   min-height: 100vh;
   gap: 24px;
   padding: 0 10%;
+  flex-direction: column;
+
+  .header {
+    font-family: 'Upheavtt', sans-serif;
+    font-weight: bold;
+    margin-top: 10%;
+  }
 
   .content {
     width: 100%;
     display: grid;
     row-gap: 10px;
     font-size: larger;
+    padding: 0 10px;
   }
 }
 
 .button {
-  padding: 5px 20px;
+  width: 125px;
+  padding: 5px 10px;
   border: none;
   background: #14346440;
   color: #fff;
@@ -22,6 +31,8 @@
   cursor: pointer;
   font-family: 'Prompt', sans-serif !important;
   text-decoration: none;
+  text-align: center;
+  margin: 0 auto;
 
   &:hover {
     background: #143464;
