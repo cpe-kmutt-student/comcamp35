@@ -10,13 +10,29 @@ type Props = {
 }
 
 const ResultsAnnouncement: React.FC<Props> = (active) => {
-  const renderresult = ResultList.map((item, i) => (
-    <div key={i} className={styles.content}>
-      <div>
-        {i + 1}. {item.Firstname} {item.Lastname}
-      </div>
-    </div>
-  ))
+  const renderresult = (
+    <table className={styles.content}>
+      <thead>
+        <tr className={styles.tableHeader}>
+          <th>ลำดับ</th>
+          <th>ชื่อจริง</th>
+          <th>นามสกุล</th>
+          <th>ชื่อเล่น</th>
+        </tr>
+      </thead>
+      <tbody>
+        {ResultList.map((item, i) => (
+          <tr key={i}>
+            <td>{i + 1}</td>
+            <td>{item.Firstname}</td>
+            <td>{item.Lastname}</td>
+            <td>{item.Nickname}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  )
+
   return (
     <Flex direction="column" className={styles.announcement}>
       <Heading size={{ initial: '8', md: '9' }} className={styles.header} align="center">
@@ -24,6 +40,7 @@ const ResultsAnnouncement: React.FC<Props> = (active) => {
       </Heading>
       <hr />
       <div className={styles.content}>{renderresult}</div>
+      <hr />
       <Link to={BASE_PATH} className={active ? styles.buttonActive : styles.button}>
         ย้อนกลับ
       </Link>
