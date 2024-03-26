@@ -8,6 +8,8 @@ import Cpe from 'src/assets/cpe_logo.svg'
 import Kmutt from 'src/assets/kmutt_logo.svg'
 import Applicad from 'src/assets/applicad_logo.webp'
 import YIP from 'src/assets/YIP_LOGO.png'
+import KBTG from 'src/assets/KBTG_logo.webp'
+import IRPC from 'src/assets/IRPC_logo.webp'
 
 interface ISponsor {
   img: string
@@ -24,7 +26,15 @@ const Sponsors: ISponsor[] = [
     level: 'Diamond',
   },
   {
+    img: KBTG,
+    level: 'Diamond',
+  },
+  {
     img: LDA,
+    level: 'Platinum',
+  },
+  {
+    img: IRPC,
     level: 'Platinum',
   },
   {
@@ -67,10 +77,10 @@ const Sponsor: React.FC = () => {
         SPONSOR
       </Heading>
       <div style={{ width: '80%' }}>
-        <Grid columns={{ initial: '2', sm: '2', md: '2' }} className={styles.contents}>
+        <Grid columns={{ initial: '3', sm: '3', md: '3' }} className={styles.contents}>
           {renderSponsor('Diamond')}
         </Grid>
-        <Grid columns={{ initial: '1', sm: '1', md: '1' }} className={styles.contents}>
+        <Grid columns={{ initial: '2', sm: '2', md: '2' }} className={styles.contents}>
           {renderSponsor('Platinum')}
         </Grid>
         <Grid columns={{ initial: '2', sm: '2', md: '2' }} className={styles.contents}>
