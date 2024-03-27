@@ -77,7 +77,7 @@ const Sponsor: React.FC = () => {
         SPONSOR
       </Heading>
       <div style={{ width: '80%' }}>
-        <Grid columns={{ initial: '3', sm: '3', md: '3' }} className={styles.contents}>
+        <Grid columns={{ initial: '1', sm: '3', md: '3' }} className={styles.contents}>
           {renderSponsor('Diamond')}
         </Grid>
         <Grid columns={{ initial: '2', sm: '2', md: '2' }} className={styles.contents}>
